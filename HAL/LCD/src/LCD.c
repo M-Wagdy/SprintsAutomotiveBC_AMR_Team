@@ -185,7 +185,7 @@ ERROR_STATE_t LCD_Init()
 	uint8_t LCD_SendCommandRetVal = OperationStarted;
 	switch (State) {
 	case OperationStarted:
-		/*Dio Initialize for the*/
+		/*Dio and Timer Initialize for the*/
 		TIM_Init(TIMER_2);
 		DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D7, PIN_OUTPUT);
 		DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D6, PIN_OUTPUT);
@@ -261,7 +261,7 @@ ERROR_STATE_t LCD_Init()
 		}
 		break;
 	case Sixth_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_SHIFTINCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = Seventh_Cmd_In_Initialization_Sequence_Is_Sent;
@@ -311,6 +311,8 @@ ERROR_STATE_t LCD_SendString(const uint8_t* String)
 	}
 	return ErrRetVal;
 }
+
+/*urgent a blocking function*/
 ERROR_STATE_t LCD_SendNumber(uint32_t Number)
 {
 	uint8_t ErrRetVal = OperationStarted;
