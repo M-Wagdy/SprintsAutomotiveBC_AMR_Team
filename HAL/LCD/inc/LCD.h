@@ -16,10 +16,6 @@
 #define OperationSuccess 											0
 #define OperationFail 												1
 #define OperationRunning											2
-#define Reading_First_Nibble										3
-#define Reading_Second_Nibble										4
-#define Reading_Second_Nibble_Done									5
-#define Sending_Character_Location									6
 #define OperationStarted 											255
 
 /*Macros*/

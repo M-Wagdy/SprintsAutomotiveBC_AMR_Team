@@ -2,21 +2,25 @@
 #define Timer_Usage 0
 /*Local Macros*/
 /*functions states*/
-#define Sending_First_Nibble										      (1)
-#define First_Nibble_Sent											      (2)
-#define Sending_Second_Nibble										      (3)
-#define Second_Nibble_Sent											      (4)
-#define LCD_Pin_Initializing										      (5)
-#define LCD_Start_Sending_Initialization_Sequence					(6)
-#define LCD_Sent_Initialization_Sequence							   (7)
-#define First_Cmd_In_Initialization_Sequence_Is_Sent				(8)
-#define Second_Cmd_In_Initialization_Sequence_Is_Sent				(9)
-#define Third_Cmd_In_Initialization_Sequence_Is_Sent				(10)
-#define Fourth_Cmd_In_Initialization_Sequence_Is_Sent				(11)
-#define Fifth_Cmd_In_Initialization_Sequence_Is_Sent				(12)
-#define Sixth_Cmd_In_Initialization_Sequence_Is_Sent				(13)
-#define Seventh_Cmd_In_Initialization_Sequence_Is_Sent			(14)
-#define Final_Cmd_In_Initialization_Sequence_Is_Sent				(15)
+#define Sending_First_Nibble								(1)
+#define First_Nibble_Sent									(2)
+#define Sending_Second_Nibble								(3)
+#define Second_Nibble_Sent									(4)
+#define LCD_Pin_Initializing								(5)
+#define LCD_Start_Sending_Initialization_Sequence			(6)
+#define LCD_Sent_Initialization_Sequence					(7)
+#define First_Cmd_In_Initialization_Sequence_Is_Sent		(8)
+#define Second_Cmd_In_Initialization_Sequence_Is_Sent		(9)
+#define Third_Cmd_In_Initialization_Sequence_Is_Sent		(10)
+#define Fourth_Cmd_In_Initialization_Sequence_Is_Sent		(11)
+#define Fifth_Cmd_In_Initialization_Sequence_Is_Sent		(12)
+#define Sixth_Cmd_In_Initialization_Sequence_Is_Sent		(13)
+#define Seventh_Cmd_In_Initialization_Sequence_Is_Sent		(14)
+#define Final_Cmd_In_Initialization_Sequence_Is_Sent		(15)
+#define Reading_First_Nibble								(16)
+#define Reading_Second_Nibble								(17)
+#define Reading_Second_Nibble_Done							(18)
+#define Sending_Character_Location							(19)
 
 /*Externed global variables*/
 extern const STR_LCD_config_t gastr_LCD_Config[LCD_NUMBER];
@@ -123,8 +127,13 @@ ERROR_STATE_t LCD_SendData(uint8_t Character)
 
 		/*writing data to the register by pulling the enable pin high for 1 Us*/
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_HIGH);
+		#if Timer_Usage
+		/*set status of the function*/
+		State = First_Nibble_Sent;
+		#else
 		/*set status of the function*/
 		State = Sending_First_Nibble;
+		#endif
 		break;
 	case Sending_First_Nibble:
 		/*start timer delay in background*/
@@ -150,8 +159,13 @@ ERROR_STATE_t LCD_SendData(uint8_t Character)
 
 		/*writing data to the register by pulling the enable pin high for 1 Us*/
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_HIGH);
+		#if Timer_Usage
+		/*set status of the function*/
+		State = OperationStarted;
+		#else
 		/*set status of the function*/
 		State = Sending_Second_Nibble;
+		#endif
 		break;
 	case Sending_Second_Nibble:
 		/*start timer delay in background*/
