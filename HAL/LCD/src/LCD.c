@@ -47,10 +47,10 @@ ERROR_STATE_t LCD_SendCommand(uint8_t CMD)
 		break;
 	case Sending_First_Nibble:
 		/*start timer delay in background*/
-		if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, LCD_SendCommand))
+		if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand))
 		{
-   		TIM_DelayUs(TIMER_2, 1, LCD_SendCommand);
-         while(ERROR_OK != TIM_DelayStatus(TIMER_2, LCD_SendCommand));
+   		TIM_DelayUs(TIMER_2, 1, (void (*)(void))LCD_SendCommand);
+         while(ERROR_OK != TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand));
          /*if timer delay function finished correctly pull enable pin low*/
          DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_LOW);
          /*update the function's state*/
@@ -73,10 +73,10 @@ ERROR_STATE_t LCD_SendCommand(uint8_t CMD)
 		break;
 	case Sending_Second_Nibble:
 		/*start timer delay in background*/
-      if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, LCD_SendCommand))
+      if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand))
       {
-         TIM_DelayUs(TIMER_2, 1, LCD_SendCommand);
-         while(ERROR_OK != TIM_DelayStatus(TIMER_2, LCD_SendCommand));
+         TIM_DelayUs(TIMER_2, 1, (void (*)(void))LCD_SendCommand);
+         while(ERROR_OK != TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand));
          /*if timer delay function finished correctly pull enable pin low*/
          DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port,gastr_LCD_Config[LCD_Channel_0].u8_LCD_En,PIN_LOW);
          /*reset the function's state*/
@@ -85,10 +85,10 @@ ERROR_STATE_t LCD_SendCommand(uint8_t CMD)
 		break;
 	case Second_Nibble_Sent:
 		/*start timer delay in background*/
-      TimerRetVal = TIM_DelayStatus(TIMER_2, LCD_SendCommand);
+      TimerRetVal = TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand);
       if(TIMER_E_DELAY_EMPTY == TimerRetVal)
       {
-         TIM_DelayMs(TIMER_2,2, LCD_SendCommand);
+         TIM_DelayMs(TIMER_2,2, (void (*)(void))LCD_SendCommand);
       }         
 		if(TimerRetVal == ((uint8_t)ERROR_OK))
 		{
@@ -110,8 +110,6 @@ ERROR_STATE_t LCD_SendData(uint8_t Character)
 	uint8_t ErrRetVal = OperationStarted;
 	/*setting the functions state*/
 	uint8_t static State = OperationStarted;
-	/*declaring a variable for the timer return*/
-	uint8_t TimerRetVal = 1;
 	switch (State) {
 	case OperationStarted:
 		/*sending control signals with configurations of selection of control reg. and write process*/
@@ -130,10 +128,10 @@ ERROR_STATE_t LCD_SendData(uint8_t Character)
 		break;
 	case Sending_First_Nibble:
 		/*start timer delay in background*/
-      if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, LCD_SendCommand))
+      if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand))
       {
-         TIM_DelayUs(TIMER_2, 1, LCD_SendCommand);
-         while(ERROR_OK != TIM_DelayStatus(TIMER_2, LCD_SendCommand));
+         TIM_DelayUs(TIMER_2, 1,(void (*)(void)) LCD_SendCommand);
+         while(ERROR_OK != TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand));
          /*if timer delay function finished correctly pull enable pin low*/
          DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_LOW);
          /*update the function's state*/
@@ -157,10 +155,10 @@ ERROR_STATE_t LCD_SendData(uint8_t Character)
 		break;
 	case Sending_Second_Nibble:
 		/*start timer delay in background*/
-      if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, LCD_SendCommand))
+      if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand))
       {
-         TIM_DelayUs(TIMER_2, 1, LCD_SendCommand);
-         while(ERROR_OK != TIM_DelayStatus(TIMER_2, LCD_SendCommand));
+         TIM_DelayUs(TIMER_2, 1, (void (*)(void))LCD_SendCommand);
+         while(ERROR_OK != TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand));
          /*if timer delay function finished correctly pull enable pin low*/
          DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_LOW);
          /*reset the function's state*/
@@ -209,10 +207,10 @@ ERROR_STATE_t LCD_Init()
 		break;
 	case LCD_Pin_Initializing:
 		/*start timer delay in background*/
-		TimerRetVal = TIM_DelayStatus(TIMER_2, LCD_SendCommand);
+		TimerRetVal = TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand);
 		if(TIMER_E_DELAY_EMPTY == TimerRetVal)
 		{
-   		TIM_DelayMs(TIMER_2,15, LCD_SendCommand);
+   		TIM_DelayMs(TIMER_2,15, (void (*)(void))LCD_SendCommand);
 		}
 		if(TimerRetVal == ((uint8_t)ERROR_OK))
 		{

@@ -38,3 +38,5 @@
 
 main.c
 
+MCAL\EEPROM\src\EEPROM.c
+
