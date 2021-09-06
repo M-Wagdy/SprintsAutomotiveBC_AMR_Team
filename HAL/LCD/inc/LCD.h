@@ -16,6 +16,10 @@
 #define OperationSuccess 											0
 #define OperationFail 												1
 #define OperationRunning											2
+#define Reading_First_Nibble										3
+#define Reading_Second_Nibble										4
+#define Reading_Second_Nibble_Done									5
+#define Sending_Character_Location									6
 #define OperationStarted 											255
 
 /*Macros*/
@@ -57,5 +61,6 @@ ERROR_STATE_t LCD_SendCommand(uint8_t Cmd);
 ERROR_STATE_t LCD_SendData(uint8_t Data);
 ERROR_STATE_t LCD_SendString(const uint8_t* String);
 ERROR_STATE_t LCD_SendNumber(uint32_t Number);
+ERROR_STATE_t LCD_ReadDispLoc(uint8_t Location, uint8_t* Character);
 
 #endif /* HAL_LCD_LCD_H_ */

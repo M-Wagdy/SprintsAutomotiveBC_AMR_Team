@@ -261,7 +261,7 @@ ERROR_STATE_t LCD_Init()
 		}
 		break;
 	case Sixth_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_SHIFTINCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE/LCD_SHIFTINCREMENTENTRYMODE
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = Seventh_Cmd_In_Initialization_Sequence_Is_Sent;
@@ -311,7 +311,6 @@ ERROR_STATE_t LCD_SendString(const uint8_t* String)
 	}
 	return ErrRetVal;
 }
-
 /*urgent a blocking function*/
 ERROR_STATE_t LCD_SendNumber(uint32_t Number)
 {
@@ -331,5 +330,101 @@ ERROR_STATE_t LCD_SendNumber(uint32_t Number)
          ErrRetVal = OperationFail;
       }
    }
+	return ErrRetVal;
+}
+ERROR_STATE_t LCD_ReadDispLoc(uint8_t Location, uint8_t* Data)
+{
+	uint8_t ErrRetVal = OperationStarted;
+	uint8_t BitVal = 0;
+	uint8_t static State = Sending_Character_Location;
+	uint8_t static Character = 0;
+	switch(State)
+	{
+		case Sending_Character_Location:
+		if(LCD_SendCommand(Location) == OperationSuccess)
+		{
+			State = OperationStarted;
+		}
+		break;
+		case OperationStarted:
+			Character = 0;
+			/*Dio Initialize for the*/
+			DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D7, PIN_INPUT);
+			DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D6, PIN_INPUT);
+			DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D5, PIN_INPUT);
+			DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D4, PIN_INPUT);
+			DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_Rs, PIN_OUTPUT);
+			DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_Rw, PIN_OUTPUT);
+			DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_OUTPUT);
+			/*sending control signals with configurations of selection of control reg. and write process*/
+			DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_Rs, PIN_HIGH);
+			DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_Rw, PIN_HIGH);
+			/*writing data to the register by pulling the enable pin high for 1 Us*/
+			DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_HIGH);
+			/*getting first nibble*/
+			DIO_ReadPin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D7, &BitVal);
+			(Character) |= BitVal;
+			(Character) <<= 1;
+			DIO_ReadPin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D6, &BitVal);
+			(Character) |= BitVal;
+			(Character) <<= 1;
+			DIO_ReadPin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D5, &BitVal);
+			(Character) |= BitVal;
+			(Character) <<= 1;
+			DIO_ReadPin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D4, &BitVal);
+			(Character) |= BitVal;
+			(Character) <<= 1;
+			/*set status of the function*/
+			State = Reading_First_Nibble;
+		case Reading_First_Nibble:
+		/*start timer delay in background*/
+			if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_ReadDispLoc))
+			{
+				TIM_DelayUs(TIMER_2, 1, (void (*)(void))LCD_ReadDispLoc);
+				while(ERROR_OK != TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_ReadDispLoc));
+				/*if timer delay function finished correctly pull enable pin low*/
+				DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_LOW);
+				State = Reading_Second_Nibble;
+			}
+		break;
+		case Reading_Second_Nibble:
+			/*sending control signals with configurations of selection of control reg. and write process*/
+			DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_Rs, PIN_HIGH);
+			DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_Rw, PIN_HIGH);
+			/*writing data to the register by pulling the enable pin high for 1 Us*/
+			DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_HIGH);
+			/*getting first nibble*/
+			DIO_ReadPin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D7, &BitVal);
+			(Character) |= BitVal;
+			(Character) <<= 1;
+			DIO_ReadPin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D6, &BitVal);
+			(Character) |= BitVal;
+			(Character) <<= 1;
+			DIO_ReadPin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D5, &BitVal);
+			(Character) |= BitVal;
+			(Character) <<= 1;
+			DIO_ReadPin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D4, &BitVal);
+			(Character) |= BitVal;
+			/*set status of the function*/
+			State = Reading_Second_Nibble_Done;
+			case Reading_Second_Nibble_Done:
+			/*start timer delay in background*/
+			if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_ReadDispLoc))
+			{
+				TIM_DelayUs(TIMER_2, 1, (void (*)(void))LCD_ReadDispLoc);
+				while(ERROR_OK != TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_ReadDispLoc));
+				/*if timer delay function finished correctly pull enable pin low*/
+				DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_LOW);
+				/*reset the function's state*/
+				State = Sending_Character_Location;
+				/*process finished successfully*/
+				ErrRetVal = OperationSuccess;
+				DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D7, PIN_OUTPUT);
+				DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D6, PIN_OUTPUT);
+				DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D5, PIN_OUTPUT);
+				DIO_SetPinDirection(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D4, PIN_OUTPUT);
+				*Data = Character;
+			}
+	}
 	return ErrRetVal;
 }
