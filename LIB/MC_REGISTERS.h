@@ -8,7 +8,7 @@
 #ifndef __MC_REGISTERS__
 #define __MC_REGISTERS__
 
-#define F_CPU 16000000ul
+#define F_CPU 8000000ul
 
 //FILES INCLUDING
 #include "STD_TYPES.h"
