@@ -52,9 +52,10 @@ uint8_t EEPROM_Write(uint8_t Data,uint16_t Address)
 	if(~(READ_BIT(EECR,EEWE) || READ_BIT(SPMCR,SPMEN)))
 	{
 		/*3. Write new EEPROM address to EEAR (optional).*/
-		WRITE_REG(EEAR, Address);
+		WRITE_REG(EEARH, 0x00);
+		WRITE_REG(EEARL, 0x05);
 		/*4. Write new EEPROM data to EEDR (optional).*/
-		WRITE_REG(EEDR, Data);
+		WRITE_REG(*((volatile ptr_uint8_t)(0X3D)), Data);
 		/*5. Disable the Global Interrupt*/
 		StatusRegVal = READ_REG(SREG);
 		CLEAR_BIT(SREG, I);
@@ -73,3 +74,38 @@ uint8_t EEPROM_Write(uint8_t Data,uint16_t Address)
 	}
 		return ErrRetVal;
 }
+//void EEPROM_write(unsigned int uiAddress, unsigned char ucData)
+//{
+	///* Wait for completion of previous write */
+	//while(EECR & (1<<EEWE))
+	//;
+	///* Set up address and data registers */
+	//EEAR = uiAddress;
+	//EEDR = ucData;
+	///* Write logical one to EEMWE */
+	////for(volatile int i = 0; i<5000;i++)
+	////EECR |= (1<<EEMWE);
+	////CLEAR_BIT(EECR,EEMWE);
+	////CLEAR_BIT(EECR,EEWE);
+	////for(volatile int i = 0; i<5000;i++);
+	////SET_BIT(EECR,EEMWE);
+	///* Start eeprom write by setting EEWE */
+	////EECR |= (1<<EEMWE)|(1<<EEWE);
+	//EECR =0x04;
+	//EECR =0x02;
+	////SET_BIT(EECR,EEWE);
+	//while(READ_BIT(EECR,EEWE));
+	//for(volatile int i = 0; i<5000;i++);
+//}
+//unsigned char EEPROM_read(unsigned int uiAddress)
+//{
+	///* Wait for completion of previous write */
+	//while(EECR & (1<<EEWE))
+	//;
+	///* Set up address register */
+	//EEAR = uiAddress;
+	///* Start eeprom read by writing EERE */
+	//EECR |= (1<<EERE);
+	///* Return data from data register */
+	//return EEDR;
+//}

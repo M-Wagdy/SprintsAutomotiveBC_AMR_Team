@@ -13,10 +13,10 @@
 #include "LCD_Lcfg.h"
 
 /*functions return*/
-#define OperationSuccess 											0
-#define OperationFail 												1
-#define OperationRunning											2
-#define OperationStarted 											255
+#define OperationSuccess 											(0)
+#define OperationFail 												(1)
+#define OperationRunning											(2)
+#define OperationStarted 											(255)
 
 /*Macros*/
 #define LCD_CLR           		    0x01		/*Clear Screen 0x00000001*/

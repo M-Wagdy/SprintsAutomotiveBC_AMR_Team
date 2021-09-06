@@ -8,7 +8,7 @@
 #ifndef __MC_REGISTERS__
 #define __MC_REGISTERS__
 
-#define F_CPU 8000000ul
+#define F_CPU 16000000ul
 
 //FILES INCLUDING
 #include "STD_TYPES.h"
@@ -240,11 +240,11 @@
 /*                         EEPROM REGISTERS                             */
 /************************************************************************/
 //EEPROM REGISTERS
-#define EEARH *((volatile ptr_uint8_t)(0X3F))
-#define EEARL *((volatile ptr_uint8_t)(0X3E))
-#define EEAR *((volatile ptr_uint16_t)(0X3E))
-#define EEDR *((volatile ptr_uint8_t)(0X3D))
-#define EECR *((volatile ptr_uint8_t)(0X3C))
+#define EEARH *((volatile uint8_t*)(0X3F))
+#define EEARL *((volatile uint8_t*)(0X3E))
+#define EEAR *((volatile uint16_t*)(0X3E))
+#define EEDR *((volatile uint8_t*)(0X3D))
+#define EECR *((volatile uint8_t*)(0X3C))
 
 
 //EECR REGISTER BITS
