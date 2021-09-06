@@ -12,7 +12,8 @@ void myTask1 (void *p)
 {
 	while(1)
 	{
-		LCD_SendData('A');
+		//LCD_SendData('A');
+		LCD_SendCommand(0x1C);
 		vTaskDelay(2);
 	}
 }
@@ -22,8 +23,8 @@ int main(void)
 	
 	while(LCD_Init()!= OperationSuccess);
 	xTaskCreate(myTask1,"Task1",200,NULL_PTR,1,&myTaskHandle);
+	while(LCD_SendData('A')!=OperationSuccess);
 	vTaskStartScheduler();
-	//while(LCD_SendData('A')!=OperationSuccess);
 	//uint8_t x =0;
     //LCD_ReadDispLoc(1,&x);
 	while (1) 

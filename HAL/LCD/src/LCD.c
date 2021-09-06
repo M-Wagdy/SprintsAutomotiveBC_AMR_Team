@@ -1,5 +1,7 @@
+/*Include*/
 #include "LCD.h"
-#define Timer_Usage 0
+/*set the value to 1 if you are not using RTOS*/
+#define Timer_Usage 0 
 /*Local Macros*/
 /*functions states*/
 #define Sending_First_Nibble								(1)
@@ -46,8 +48,13 @@ ERROR_STATE_t LCD_SendCommand(uint8_t CMD)
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D7, READ_BIT(CMD, BIT_7));
 		/*writing data to the register by pulling the enable pin high for 1 Us*/
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_HIGH);
+		#if Timer_Usage
+		/*set status of the function*/
+		State = First_Nibble_Sent;
+		#else
 		/*set status of the function*/
 		State = Sending_First_Nibble;
+		#endif
 		break;
 	case Sending_First_Nibble:
 		/*start timer delay in background*/
@@ -83,8 +90,13 @@ ERROR_STATE_t LCD_SendCommand(uint8_t CMD)
          while(ERROR_OK != TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand));
          /*if timer delay function finished correctly pull enable pin low*/
          DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port,gastr_LCD_Config[LCD_Channel_0].u8_LCD_En,PIN_LOW);
+		 #if Timer_Usage
+		 /*set status of the function*/
+		 State = OperationStarted;
+		 #else
          /*reset the function's state*/
          State = Second_Nibble_Sent;
+		 #endif
       }
 		break;
 	case Second_Nibble_Sent:
@@ -275,7 +287,7 @@ ERROR_STATE_t LCD_Init()
 		}
 		break;
 	case Sixth_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE/LCD_SHIFTINCREMENTENTRYMODE
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_SHIFTINCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE/LCD_SHIFTINCREMENTENTRYMODE
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = Seventh_Cmd_In_Initialization_Sequence_Is_Sent;
