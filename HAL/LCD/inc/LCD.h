@@ -2,7 +2,7 @@
  * LCD.h
  *
  *  Created on: Jul 31, 2021
- *      Author: zoldeyck
+ *      Author: Ahmed Adel
  */
 #ifndef HAL_LCD_LCD_H_
 #define HAL_LCD_LCD_H_
@@ -44,6 +44,7 @@
 #define LCD_FUNCSET_5     			0x24        /*4-bit data, 1-line display, 5 x 10 font*/
 #define LCD_FUNCSET_6   			0x28        /*4-bit data, 2-line display, 5 x 7 font*/
 #define LCD_Init_CMD_1				0x03		/*first command in initializing sequence*/
+#define LCD_Init_CMD_8_BIT			0x30		/*first command in initializing sequence*/
 /*positions*/
 #define LCD_CURS_Position0			0x80		/*First Position in the LCD*/
 #define LCD_CURS_Position10			0x8A		/*First Position in the LCD*/

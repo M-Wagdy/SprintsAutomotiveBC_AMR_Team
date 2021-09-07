@@ -23,8 +23,7 @@
 uint8_t EEPROM_Init(void);
 uint8_t EEPROM_Read(uint8_t * Data,uint16_t Address);
 uint8_t EEPROM_Write(uint8_t Data,uint16_t Address);
-//void EEPROM_write(unsigned int uiAddress, unsigned char ucData);
-//unsigned char EEPROM_read(unsigned int uiAddress);
+
 
 
 #endif /* EEPROM_H_ */

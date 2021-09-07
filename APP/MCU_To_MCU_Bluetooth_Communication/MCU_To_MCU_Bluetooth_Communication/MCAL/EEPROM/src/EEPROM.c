@@ -74,38 +74,3 @@ uint8_t EEPROM_Write(uint8_t Data,uint16_t Address)
 	}
 		return ErrRetVal;
 }
-//void EEPROM_write(unsigned int uiAddress, unsigned char ucData)
-//{
-	///* Wait for completion of previous write */
-	//while(EECR & (1<<EEWE))
-	//;
-	///* Set up address and data registers */
-	//EEAR = uiAddress;
-	//EEDR = ucData;
-	///* Write logical one to EEMWE */
-	////for(volatile int i = 0; i<5000;i++)
-	////EECR |= (1<<EEMWE);
-	////CLEAR_BIT(EECR,EEMWE);
-	////CLEAR_BIT(EECR,EEWE);
-	////for(volatile int i = 0; i<5000;i++);
-	////SET_BIT(EECR,EEMWE);
-	///* Start eeprom write by setting EEWE */
-	////EECR |= (1<<EEMWE)|(1<<EEWE);
-	//EECR =0x04;
-	//EECR =0x02;
-	////SET_BIT(EECR,EEWE);
-	//while(READ_BIT(EECR,EEWE));
-	//for(volatile int i = 0; i<5000;i++);
-//}
-//unsigned char EEPROM_read(unsigned int uiAddress)
-//{
-	///* Wait for completion of previous write */
-	//while(EECR & (1<<EEWE))
-	//;
-	///* Set up address register */
-	//EEAR = uiAddress;
-	///* Start eeprom read by writing EERE */
-	//EECR |= (1<<EERE);
-	///* Return data from data register */
-	//return EEDR;
-//}

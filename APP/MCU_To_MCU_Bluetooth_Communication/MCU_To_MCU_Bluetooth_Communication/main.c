@@ -23,21 +23,22 @@ void myTask1 (void *p)
 
 int main(void)
 {
-	DIO_SetPinDirection(PORT_D,PIN0,PIN_OUTPUT);
-	EEPROM_Write('A',5);
+	//DIO_SetPinDirection(PORT_D,PIN0,PIN_OUTPUT);
+	//EEPROM_Write('A',5);
 	
-	/*while(LCD_Init()!= OperationSuccess);*/
+	while(LCD_Init()!= OperationSuccess);
 	//xTaskCreate(myTask1,"Task1",200,NULL_PTR,1,&myTaskHandle);/*creates a task*/
-	//while(LCD_SendData('A')!=OperationSuccess);
+	while(LCD_SendData('A')!=OperationSuccess);
+	while(LCD_SendString("AHMED")!=OperationSuccess);
 	//vTaskStartScheduler();/*Start Scheduler*/
-	uint8_t volatile x =0;EEPROM_Read(&x,5);
+	//uint8_t x =0;EEPROM_Read(&x,5);
     //LCD_ReadDispLoc(1,&x);
 	//EEPROM_write(5, 'A');
 	//x=EEPROM_read(5);
 	while (1) 
     {
-		if(x=='A')
-		DIO_WritePin(PORT_D,PIN0,PIN_HIGH);
+		//if(x=='A')
+		//DIO_WritePin(PORT_D,PIN0,PIN_HIGH);
 		//LCD_SendCommand(0x1C);
 		//for(volatile int i = 0; i<5000;i++);
 		//LCD_ReadDispLoc(LCD_CURS_Position0,&x);
