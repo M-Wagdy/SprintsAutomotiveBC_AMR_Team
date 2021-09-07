@@ -33,12 +33,15 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
+../App/Display/inc \
+../App/Display/src \
 ../App/HMI \
 ../App/HMI/inc \
 ../App/HMI/src \
 ../App/Indicator \
 ../App/Indicator/inc \
 ../App/Indicator/src \
+../App/Display \
 ../FreeRTOS/ \
 ../FreeRTOS/include \
 ../FreeRTOS/portable \
@@ -52,6 +55,9 @@ SUBDIRS :=  \
 ../HAL/LED \
 ../HAL/LED/inc \
 ../HAL/LED/src \
+../HAL/SevenSeg \
+../HAL/SevenSeg/inc \
+../HAL/SevenSeg/src \
 ../LIB/ \
 ../LIB/inc/ \
 ../Mcal/ \
@@ -77,8 +83,12 @@ C_SRCS +=  \
 ../../../../FreeRTOS/Source/timers.c \
 ../../../../HAL/Keypad/src/Keypad.c \
 ../../../../HAL/LED/src/LED.c \
+../../../../HAL/SevenSeg/src/SevenSeg.c \
 ../../../../MCAL/Atmega32/DIO/src/DIO.c \
 ../../../../MCAL/Atmega32/PWM/src/PWM.c \
+../App/Display/src/Display.c \
+../App/Display/src/Display_Interface.c \
+../App/Display/src/Display_Lcfg.c \
 ../App/HMI/src/HMI.c \
 ../App/HMI/src/HMI_Interface.c \
 ../App/HMI/src/HMI_Lcfg.c \
@@ -87,6 +97,7 @@ C_SRCS +=  \
 ../App/Indicator/src/Indicator_Lcfg.c \
 ../HAL/Keypad/src/Keypad_Lcfg.c \
 ../HAL/LED/src/LED_Lcfg.c \
+../HAL/SevenSeg/src/SevenSeg_Lcfg.c \
 ../main.c \
 ../Mcal/Atmega32/PWM/src/PWM_Lcfg.c
 
@@ -108,8 +119,12 @@ FreeRTOS/tasks.o \
 FreeRTOS/timers.o \
 HAL/Keypad/src/Keypad.o \
 HAL/LED/src/LED.o \
+HAL/SevenSeg/src/SevenSeg.o \
 Mcal/Atmega32/DIO/src/DIO.o \
 Mcal/Atmega32/PWM/src/PWM.o \
+App/Display/src/Display.o \
+App/Display/src/Display_Interface.o \
+App/Display/src/Display_Lcfg.o \
 App/HMI/src/HMI.o \
 App/HMI/src/HMI_Interface.o \
 App/HMI/src/HMI_Lcfg.o \
@@ -118,6 +133,7 @@ App/Indicator/src/Indicator_interface.o \
 App/Indicator/src/Indicator_Lcfg.o \
 HAL/Keypad/src/Keypad_Lcfg.o \
 HAL/LED/src/LED_Lcfg.o \
+HAL/SevenSeg/src/SevenSeg_Lcfg.o \
 main.o \
 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
 
@@ -132,8 +148,12 @@ FreeRTOS/tasks.o \
 FreeRTOS/timers.o \
 HAL/Keypad/src/Keypad.o \
 HAL/LED/src/LED.o \
+HAL/SevenSeg/src/SevenSeg.o \
 Mcal/Atmega32/DIO/src/DIO.o \
 Mcal/Atmega32/PWM/src/PWM.o \
+App/Display/src/Display.o \
+App/Display/src/Display_Interface.o \
+App/Display/src/Display_Lcfg.o \
 App/HMI/src/HMI.o \
 App/HMI/src/HMI_Interface.o \
 App/HMI/src/HMI_Lcfg.o \
@@ -142,6 +162,7 @@ App/Indicator/src/Indicator_interface.o \
 App/Indicator/src/Indicator_Lcfg.o \
 HAL/Keypad/src/Keypad_Lcfg.o \
 HAL/LED/src/LED_Lcfg.o \
+HAL/SevenSeg/src/SevenSeg_Lcfg.o \
 main.o \
 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
 
@@ -156,8 +177,12 @@ FreeRTOS/tasks.d \
 FreeRTOS/timers.d \
 HAL/Keypad/src/Keypad.d \
 HAL/LED/src/LED.d \
+HAL/SevenSeg/src/SevenSeg.d \
 Mcal/Atmega32/DIO/src/DIO.d \
 Mcal/Atmega32/PWM/src/PWM.d \
+App/Display/src/Display.d \
+App/Display/src/Display_Interface.d \
+App/Display/src/Display_Lcfg.d \
 App/HMI/src/HMI.d \
 App/HMI/src/HMI_Interface.d \
 App/HMI/src/HMI_Lcfg.d \
@@ -166,6 +191,7 @@ App/Indicator/src/Indicator_interface.d \
 App/Indicator/src/Indicator_Lcfg.d \
 HAL/Keypad/src/Keypad_Lcfg.d \
 HAL/LED/src/LED_Lcfg.d \
+HAL/SevenSeg/src/SevenSeg_Lcfg.d \
 main.d \
 Mcal/Atmega32/PWM/src/PWM_Lcfg.d
 
@@ -180,8 +206,12 @@ FreeRTOS/tasks.d \
 FreeRTOS/timers.d \
 HAL/Keypad/src/Keypad.d \
 HAL/LED/src/LED.d \
+HAL/SevenSeg/src/SevenSeg.d \
 Mcal/Atmega32/DIO/src/DIO.d \
 Mcal/Atmega32/PWM/src/PWM.d \
+App/Display/src/Display.d \
+App/Display/src/Display_Interface.d \
+App/Display/src/Display_Lcfg.d \
 App/HMI/src/HMI.d \
 App/HMI/src/HMI_Interface.d \
 App/HMI/src/HMI_Lcfg.d \
@@ -190,6 +220,7 @@ App/Indicator/src/Indicator_interface.d \
 App/Indicator/src/Indicator_Lcfg.d \
 HAL/Keypad/src/Keypad_Lcfg.d \
 HAL/LED/src/LED_Lcfg.d \
+HAL/SevenSeg/src/SevenSeg_Lcfg.d \
 main.d \
 Mcal/Atmega32/PWM/src/PWM_Lcfg.d
 
@@ -210,154 +241,189 @@ LINKER_SCRIPT_DEP+=
 FreeRTOS/croutine.o: ../../../../FreeRTOS/Source/croutine.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/event_groups.o: ../../../../FreeRTOS/Source/event_groups.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/list.o: ../../../../FreeRTOS/Source/list.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/portable/GCC/ATMega323/port.o: ../../../../FreeRTOS/Source/portable/GCC/ATMega323/port.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/portable/MemMang/heap_4.o: ../../../../FreeRTOS/Source/portable/MemMang/heap_4.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/queue.o: ../../../../FreeRTOS/Source/queue.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/tasks.o: ../../../../FreeRTOS/Source/tasks.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/timers.o: ../../../../FreeRTOS/Source/timers.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/Keypad/src/Keypad.o: ../../../../HAL/Keypad/src/Keypad.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/LED/src/LED.o: ../../../../HAL/LED/src/LED.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/SevenSeg/src/SevenSeg.o: ../../../../HAL/SevenSeg/src/SevenSeg.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 Mcal/Atmega32/DIO/src/DIO.o: ../../../../MCAL/Atmega32/DIO/src/DIO.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 Mcal/Atmega32/PWM/src/PWM.o: ../../../../MCAL/Atmega32/PWM/src/PWM.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+App/Display/src/Display.o: ../App/Display/src/Display.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+App/Display/src/Display_Interface.o: ../App/Display/src/Display_Interface.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+App/Display/src/Display_Lcfg.o: ../App/Display/src/Display_Lcfg.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 App/HMI/src/HMI.o: ../App/HMI/src/HMI.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 App/HMI/src/HMI_Interface.o: ../App/HMI/src/HMI_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 App/HMI/src/HMI_Lcfg.o: ../App/HMI/src/HMI_Lcfg.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 App/Indicator/src/Indicator.o: ../App/Indicator/src/Indicator.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 App/Indicator/src/Indicator_interface.o: ../App/Indicator/src/Indicator_interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 App/Indicator/src/Indicator_Lcfg.o: ../App/Indicator/src/Indicator_Lcfg.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/Keypad/src/Keypad_Lcfg.o: ../HAL/Keypad/src/Keypad_Lcfg.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/LED/src/LED_Lcfg.o: ../HAL/LED/src/LED_Lcfg.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/SevenSeg/src/SevenSeg_Lcfg.o: ../HAL/SevenSeg/src/SevenSeg_Lcfg.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 Mcal/Atmega32/PWM/src/PWM_Lcfg.o: ../Mcal/Atmega32/PWM/src/PWM_Lcfg.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../HAL/Keypad/inc" -I"../../../../LIB/inc" -I"../../../../FreeRTOS/Source/include" -I"../../../../FreeRTOS/Source/portable/GCC/ATMega323" -I"../../../../FreeRTOS/Source/portable/MemMang" -I"../FreeRTOS" -I"../App/HMI/inc" -I"../../../../HAL/LED/inc" -I"../App/Indicator/inc" -I"../../../../HAL/SevenSeg/inc" -I"../App/Display/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

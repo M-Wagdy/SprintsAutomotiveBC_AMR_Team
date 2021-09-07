@@ -1,5 +1,6 @@
-main.d main.o: .././main.c ../App/HMI/inc/HMI.h \
- ../../../../LIB/inc/STD_types.h ../App/Indicator/inc/Indicator.h \
+main.d main.o: .././main.c ../App/Display/inc/Display.h \
+ ../../../../LIB/inc/STD_types.h ../App/HMI/inc/HMI.h \
+ ../App/Indicator/inc/Indicator.h \
  ../../../../FreeRTOS/Source/include/FreeRTOS.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -20,11 +21,14 @@ main.d main.o: .././main.c ../App/HMI/inc/HMI.h \
  ../../../../FreeRTOS/Source/portable/GCC/ATMega323/portmacro.h \
  ../../../../FreeRTOS/Source/include/mpu_wrappers.h \
  ../../../../FreeRTOS/Source/include/task.h \
- ../../../../FreeRTOS/Source/include/list.h
+ ../../../../FreeRTOS/Source/include/list.h \
+ ../App/Display/inc/Display_Interface.h ../App/Display/inc/Display_Lcfg.h
 
-../App/HMI/inc/HMI.h:
+../App/Display/inc/Display.h:
 
 ../../../../LIB/inc/STD_types.h:
+
+../App/HMI/inc/HMI.h:
 
 ../App/Indicator/inc/Indicator.h:
 
@@ -69,3 +73,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../../../../FreeRTOS/Source/include/task.h:
 
 ../../../../FreeRTOS/Source/include/list.h:
+
+../App/Display/inc/Display_Interface.h:
+
+../App/Display/inc/Display_Lcfg.h:

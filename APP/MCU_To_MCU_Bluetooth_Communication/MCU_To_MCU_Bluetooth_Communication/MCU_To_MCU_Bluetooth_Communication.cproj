@@ -122,6 +122,8 @@
       <Value>../App/HMI/inc</Value>
       <Value>../../../../HAL/LED/inc</Value>
       <Value>../App/Indicator/inc</Value>
+      <Value>../../../../HAL/SevenSeg/inc</Value>
+      <Value>../App/Display/inc</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -260,6 +262,18 @@
       <SubType>compile</SubType>
       <Link>HAL\LED\src\LED.c</Link>
     </Compile>
+    <Compile Include="..\..\..\HAL\SevenSeg\inc\SevenSeg.h">
+      <SubType>compile</SubType>
+      <Link>HAL\SevenSeg\inc\SevenSeg.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\HAL\SevenSeg\inc\SevenSeg_Lcfg.h">
+      <SubType>compile</SubType>
+      <Link>HAL\SevenSeg\inc\SevenSeg_Lcfg.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\HAL\SevenSeg\src\SevenSeg.c">
+      <SubType>compile</SubType>
+      <Link>HAL\SevenSeg\src\SevenSeg.c</Link>
+    </Compile>
     <Compile Include="..\..\..\LIB\inc\BIT_MATH.h">
       <SubType>compile</SubType>
       <Link>LIB\inc\BIT_MATH.h</Link>
@@ -299,6 +313,24 @@
     <Compile Include="..\..\..\MCAL\Atmega32\PWM\src\PWM.c">
       <SubType>compile</SubType>
       <Link>Mcal\Atmega32\PWM\src\PWM.c</Link>
+    </Compile>
+    <Compile Include="App\Display\inc\Display.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\Display\inc\Display_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\Display\inc\Display_Lcfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\Display\src\Display.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\Display\src\Display_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\Display\src\Display_Lcfg.c">
+      <SubType>compile</SubType>
     </Compile>
     <Compile Include="App\HMI\inc\HMI.h">
       <SubType>compile</SubType>
@@ -342,6 +374,9 @@
     <Compile Include="HAL\LED\src\LED_Lcfg.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\SevenSeg\src\SevenSeg_Lcfg.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
@@ -350,12 +385,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Display\inc" />
+    <Folder Include="App\Display\src" />
     <Folder Include="App\HMI" />
     <Folder Include="App\HMI\inc" />
     <Folder Include="App\HMI\src" />
     <Folder Include="App\Indicator" />
     <Folder Include="App\Indicator\inc" />
     <Folder Include="App\Indicator\src" />
+    <Folder Include="App\Display" />
     <Folder Include="FreeRTOS\" />
     <Folder Include="FreeRTOS\include" />
     <Folder Include="FreeRTOS\portable" />
@@ -369,6 +407,9 @@
     <Folder Include="HAL\LED" />
     <Folder Include="HAL\LED\inc" />
     <Folder Include="HAL\LED\src" />
+    <Folder Include="HAL\SevenSeg" />
+    <Folder Include="HAL\SevenSeg\inc" />
+    <Folder Include="HAL\SevenSeg\src" />
     <Folder Include="LIB\" />
     <Folder Include="LIB\inc\" />
     <Folder Include="Mcal\" />

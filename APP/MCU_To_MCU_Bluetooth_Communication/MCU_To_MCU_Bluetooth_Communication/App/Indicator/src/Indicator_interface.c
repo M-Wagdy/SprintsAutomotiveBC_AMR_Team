@@ -44,7 +44,7 @@ extern ERROR_STATE_t Indicator_GetPattern(uint8_t * Value)
 *
 * @return function error state.
 */
-extern ERROR_STATE_t Indicator_SetPattern(int8_t Value)
+extern ERROR_STATE_t Indicator_SetPattern(uint8_t Value)
 {
    ERROR_STATE_t Indicator_ErrorState;
    

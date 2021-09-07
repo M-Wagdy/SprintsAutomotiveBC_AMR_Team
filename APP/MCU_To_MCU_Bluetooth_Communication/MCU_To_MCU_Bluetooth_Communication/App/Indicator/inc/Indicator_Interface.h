@@ -40,6 +40,6 @@ extern ERROR_STATE_t Indicator_GetPattern(uint8_t * Value);
 
 /* Indicator Interface Setters */
 /* Set Indicator Pattern Value. */
-extern ERROR_STATE_t Indicator_SetPattern(int8_t Value);
+extern ERROR_STATE_t Indicator_SetPattern(uint8_t Value);
 
 #endif /* __INDICATOR_INTERFACE_H__ */

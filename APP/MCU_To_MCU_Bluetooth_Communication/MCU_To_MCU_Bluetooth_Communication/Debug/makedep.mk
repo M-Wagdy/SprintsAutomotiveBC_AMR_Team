@@ -22,9 +22,17 @@
 
 ..\..\..\HAL\LED\src\LED.c
 
+..\..\..\HAL\SevenSeg\src\SevenSeg.c
+
 ..\..\..\MCAL\Atmega32\DIO\src\DIO.c
 
 ..\..\..\MCAL\Atmega32\PWM\src\PWM.c
+
+App\Display\src\Display.c
+
+App\Display\src\Display_Interface.c
+
+App\Display\src\Display_Lcfg.c
 
 App\HMI\src\HMI.c
 
@@ -41,6 +49,8 @@ App\Indicator\src\Indicator_Lcfg.c
 HAL\Keypad\src\Keypad_Lcfg.c
 
 HAL\LED\src\LED_Lcfg.c
+
+HAL\SevenSeg\src\SevenSeg_Lcfg.c
 
 main.c
 

@@ -38,7 +38,7 @@ extern void HMI_MainFunction(void)
    if (u8_Init == 0)
    {
       KP_Init(KP_UsedChannel);
-      DDRB = 0xF0;
+      DDRB |= 0xF0;
       u8_Init = 1;
    }
    
@@ -51,12 +51,14 @@ extern void HMI_MainFunction(void)
          if(DEVICE_ERASE_VALUE == u32_Key)
          {
             HMI_SetDeviceEraseFlag();
-            PORTB = (13<<4);
+            PORTB &= ~(0xF0);
+            PORTB |= (13<<4);
          }
          else if(PASSWORD_CHANGE_VALUE == u32_Key)
          {
             HMI_SetPasswordChangeFlag();
-            PORTB = (14<<4);
+            PORTB &= ~(0xF0);
+            PORTB |= (14<<4);
          }
          else
          {
@@ -67,7 +69,8 @@ extern void HMI_MainFunction(void)
       {
          u32_Key = (log(u32_Key)/log(2));
          HMI_SetKeyPressed(u32_Key);
-         PORTB = (u32_Key<<4);
+         PORTB &= ~(0xF0);
+         PORTB |= (u32_Key<<4);
       }
       else
       {
