@@ -36,6 +36,10 @@
 
 ..\..\..\MCAL\Atmega32\TIMER\src\TIMER_Lcfg.c
 
+APP\DISPLAY\src\DISPLAY.c
+
+APP\DISPLAY\src\DISPLAY_Interface.c
+
 main.c
 
 MCAL\EEPROM\src\EEPROM.c

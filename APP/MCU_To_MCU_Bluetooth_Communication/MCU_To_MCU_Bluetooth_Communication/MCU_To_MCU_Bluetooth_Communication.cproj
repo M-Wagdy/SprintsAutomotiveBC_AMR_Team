@@ -120,6 +120,7 @@
       <Value>../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323</Value>
       <Value>../FreeRTOS/include_cfg</Value>
       <Value>../../../../MCAL/Atmega32/EEPROM/inc</Value>
+      <Value>../APP/DISPLAY/inc</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
@@ -344,6 +345,18 @@
     <Compile Include="..\..\..\MCAL\Atmega32\TIMER\src\TIMER_Lcfg.c">
       <SubType>compile</SubType>
       <Link>MCAL\TIMER\src\TIMER_Lcfg.c</Link>
+    </Compile>
+    <Compile Include="APP\DISPLAY\inc\DISPLAY.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\DISPLAY\inc\DISPLAY_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\DISPLAY\src\DISPLAY.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\DISPLAY\src\DISPLAY_Interface.c">
+      <SubType>compile</SubType>
     </Compile>
     <Compile Include="FreeRTOS\include_cfg\FreeRTOSConfig.h">
       <SubType>compile</SubType>

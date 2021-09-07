@@ -492,7 +492,7 @@ ERROR_STATE_t LCD_Init()
 		}
 		break;
 		case Fourth_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_DISPON_CURSBLINK);
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_DISPON_CURSOFF);
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = Fifth_Cmd_In_Initialization_Sequence_Is_Sent;
