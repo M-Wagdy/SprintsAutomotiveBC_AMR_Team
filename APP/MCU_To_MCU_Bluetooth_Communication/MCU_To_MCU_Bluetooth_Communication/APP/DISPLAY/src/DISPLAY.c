@@ -113,6 +113,7 @@ void DISPLAY_MainFunction(void)
 	}
 	Last_state = State;
 }
+#if 1
 void DISPLAY_ShiftAndDisplay(uint8_t StringLength, uint8_t* StringPTR)
 {
 	uint8_t static State = OperationStarted;
@@ -159,3 +160,50 @@ void DISPLAY_ShiftAndDisplay(uint8_t StringLength, uint8_t* StringPTR)
 			break;
 	}
 }
+#endif
+/*
+void DISPLAY_ShiftAndDisplay(uint8_t StringLength, uint8_t* StringPTR)
+{
+	uint8_t static State = OperationStarted;
+	
+	switch(State)
+	{
+		case OperationStarted:
+		if(Position<16-StringLength)
+		{
+			State = ShiftingRight;
+		}
+		else if (Position == 15-StringLength)
+		{
+			State = ShiftingLeft;
+		}
+		else
+		{
+			Position = 0;
+			State = ShiftingRight;
+		}
+		break;
+		case ShiftingRight:
+		while(LCD_SendCommand(LCD_HOME) != OperationSuccess);
+		while(LCD_SendString(StringPTR) != OperationSuccess);
+		while(LCD_SendCommand(LCD_SHIFTDISPRIGHT) != OperationSuccess);
+		if (Position == 16-StringLength)
+		{
+			State = ShiftingLeft;
+		}
+		Position++;
+		break;
+		case ShiftingLeft:
+		Position--;
+		if (Position == 0)
+		{
+			State = ShiftingRight;
+		}
+		while(LCD_SendCommand(0x80|Position) != OperationSuccess);
+		while(LCD_SendString(StringPTR) != OperationSuccess);
+		while(LCD_SendCommand(LCD_SHIFTDISPLEFT) != OperationSuccess);
+		break;
+		default:
+		break;
+	}
+}*/

@@ -1728,7 +1728,7 @@ ERROR_STATE_t LCD_Init()
 		break;
      cbc:	3a c0       	rjmp	.+116    	; 0xd32 <LCD_Init+0x2e6>
 		case Fifth_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE/LCD_SHIFTINCREMENTENTRYMODE
      cbe:	86 e0       	ldi	r24, 0x06	; 6
      cc0:	0e 94 22 03 	call	0x644	; 0x644 <LCD_SendCommand>
      cc4:	8b 83       	std	Y+3, r24	; 0x03
@@ -1847,7 +1847,7 @@ ERROR_STATE_t LCD_Init()
 		break;
      d32:	00 00       	nop
      d34:	07 c0       	rjmp	.+14     	; 0xd44 <LCD_Init+0x2f8>
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE/LCD_SHIFTINCREMENTENTRYMODE
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = Sixth_Cmd_In_Initialization_Sequence_Is_Sent;
@@ -4785,6 +4785,7 @@ void DISPLAY_MainFunction(void)
     1f5a:	08 95       	ret
 
 00001f5c <DISPLAY_ShiftAndDisplay>:
+#if 1
 void DISPLAY_ShiftAndDisplay(uint8_t StringLength, uint8_t* StringPTR)
 {
     1f5c:	cf 93       	push	r28
@@ -4990,6 +4991,7 @@ void DISPLAY_ShiftAndDisplay(uint8_t StringLength, uint8_t* StringPTR)
 		default:
 			break;
 	}
+}
     2098:	00 00       	nop
     209a:	0f 90       	pop	r0
     209c:	0f 90       	pop	r0

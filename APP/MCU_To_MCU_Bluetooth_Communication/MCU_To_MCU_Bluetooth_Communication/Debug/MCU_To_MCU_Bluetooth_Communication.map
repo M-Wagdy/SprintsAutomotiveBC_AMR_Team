@@ -548,17 +548,17 @@ Discarded input sections
  .text.EEPROM_ProxySaveToMemory
                 0x00000000       0x4a HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
  .text.EEPROM_ProxyLoadFromMemory
-                0x00000000       0x2c HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+                0x00000000       0x74 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
  .bss.array.1641
                 0x00000000       0xff HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
- .debug_info    0x00000000      0x162 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_info    0x00000000      0x17e HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
  .debug_abbrev  0x00000000       0x8e HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
- .debug_loc     0x00000000       0x90 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_loc     0x00000000       0x8f HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
  .debug_aranges
                 0x00000000       0x28 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
  .debug_ranges  0x00000000       0x18 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
- .debug_line    0x00000000       0xbf HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
- .debug_str     0x00000000      0x28e HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_line    0x00000000       0xef HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_str     0x00000000      0x2a4 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
  .comment       0x00000000       0x31 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
  .debug_frame   0x00000000       0x54 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
  .text          0x00000000        0x0 main.o

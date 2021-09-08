@@ -499,7 +499,7 @@ ERROR_STATE_t LCD_Init()
 		}
 		break;
 		case Fifth_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE/LCD_SHIFTINCREMENTENTRYMODE
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = Sixth_Cmd_In_Initialization_Sequence_Is_Sent;
