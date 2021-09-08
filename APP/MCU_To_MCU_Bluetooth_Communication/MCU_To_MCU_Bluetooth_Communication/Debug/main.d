@@ -11,16 +11,14 @@ main.d main.o: .././main.c \
  ../../../../FreeRTOS/FreeRTOS/Source/include/mpu_wrappers.h \
  ../../../../FreeRTOS/FreeRTOS/Source/include/task.h \
  ../../../../FreeRTOS/FreeRTOS/Source/include/list.h \
- ../../../../HAL/LCD/inc/LCD.h ../../../../LIB/LIB.h \
- ../../../../LIB/STD_TYPES.h ../../../../LIB/BIT_MATH.h \
- ../../../../LIB/UTILS.h ../../../../MCAL/Atmega32/DIO/inc/DIO.h \
+ ../APP/DISPLAY/inc/DISPLAY.h ../APP/DISPLAY/inc/DISPLAY_Interface.h \
+ ../../../../LIB/LIB.h ../../../../LIB/STD_TYPES.h \
+ ../../../../LIB/BIT_MATH.h ../../../../LIB/UTILS.h \
+ ../../../../HAL/LCD/inc/LCD.h ../../../../MCAL/Atmega32/DIO/inc/DIO.h \
  ../../../../LIB/STD_TYPES.h ../../../../LIB/BIT_MATH.h \
  ../../../../MCAL/Atmega32/TIMER/inc/TIMER.h \
  ../../../../MCAL/Atmega32/TIMER/inc/TIMER_Lcfg.h \
- ../../../../HAL/LCD/inc/LCD_Lcfg.h \
- ../../../../MCAL/Atmega32/EEPROM/inc/EEPROM.h \
- ../../../../LIB/MC_REGISTERS.h ../APP/DISPLAY/inc/DISPLAY.h \
- ../APP/DISPLAY/inc/DISPLAY_Interface.h
+ ../../../../HAL/LCD/inc/LCD_Lcfg.h
 
 ../../../../FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h:
 
@@ -46,7 +44,9 @@ c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\i
 
 ../../../../FreeRTOS/FreeRTOS/Source/include/list.h:
 
-../../../../HAL/LCD/inc/LCD.h:
+../APP/DISPLAY/inc/DISPLAY.h:
+
+../APP/DISPLAY/inc/DISPLAY_Interface.h:
 
 ../../../../LIB/LIB.h:
 
@@ -55,6 +55,8 @@ c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\i
 ../../../../LIB/BIT_MATH.h:
 
 ../../../../LIB/UTILS.h:
+
+../../../../HAL/LCD/inc/LCD.h:
 
 ../../../../MCAL/Atmega32/DIO/inc/DIO.h:
 
@@ -67,11 +69,3 @@ c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\i
 ../../../../MCAL/Atmega32/TIMER/inc/TIMER_Lcfg.h:
 
 ../../../../HAL/LCD/inc/LCD_Lcfg.h:
-
-../../../../MCAL/Atmega32/EEPROM/inc/EEPROM.h:
-
-../../../../LIB/MC_REGISTERS.h:
-
-../APP/DISPLAY/inc/DISPLAY.h:
-
-../APP/DISPLAY/inc/DISPLAY_Interface.h:

@@ -40,6 +40,8 @@ APP\DISPLAY\src\DISPLAY.c
 
 APP\DISPLAY\src\DISPLAY_Interface.c
 
+HAL\EEPROM_Proxy\src\EEPROM_Proxy.c
+
 main.c
 
 MCAL\EEPROM\src\EEPROM.c

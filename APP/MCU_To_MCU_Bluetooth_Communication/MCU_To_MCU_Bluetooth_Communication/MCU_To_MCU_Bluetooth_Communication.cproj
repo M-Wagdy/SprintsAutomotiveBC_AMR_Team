@@ -121,6 +121,7 @@
       <Value>../FreeRTOS/include_cfg</Value>
       <Value>../../../../MCAL/Atmega32/EEPROM/inc</Value>
       <Value>../APP/DISPLAY/inc</Value>
+      <Value>../../../../HAL/EEPROM_Proxy/inc</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
@@ -361,6 +362,12 @@
     <Compile Include="FreeRTOS\include_cfg\FreeRTOSConfig.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\EEPROM_Proxy\inc\EEPROM_Proxy.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\EEPROM_Proxy\src\EEPROM_Proxy.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
@@ -379,9 +386,12 @@
     <Folder Include="FreeRTOS\Source\portable\GCC" />
     <Folder Include="FreeRTOS\Source\portable\GCC\ATMega323" />
     <Folder Include="FreeRTOS\Source\portable\MemMang" />
+    <Folder Include="HAL\EEPROM_Proxy\inc" />
+    <Folder Include="HAL\EEPROM_Proxy\src" />
     <Folder Include="HAL\LCD" />
     <Folder Include="HAL\LCD\inc" />
     <Folder Include="HAL\LCD\src" />
+    <Folder Include="HAL\EEPROM_Proxy" />
     <Folder Include="MCAL" />
     <Folder Include="HAL" />
     <Folder Include="LIB" />

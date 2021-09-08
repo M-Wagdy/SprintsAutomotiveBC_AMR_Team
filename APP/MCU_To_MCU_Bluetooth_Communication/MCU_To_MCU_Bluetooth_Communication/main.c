@@ -2,15 +2,11 @@
  * MCU_To_MCU_Bluetooth_Communication.c
  *
  * Created: 9/5/2021 2:53:30 PM
- * Author : vetmo
+ * Author : Ahmed Adel
  */ 
 #include "FreeRTOS.h"
 #include "task.h"
-#include "LCD.h"
-#include "EEPROM.h"
 #include "DISPLAY.h"
-extern uint8_t State;
-extern uint8_t Number_of_Asteriks;
 /*TaskHandle_t myTaskHandle = NULL;*/
 /*
 void myTask1 (void *p)
@@ -27,7 +23,6 @@ int main(void)
 {
 	//DIO_SetPinDirection(PORT_D,PIN0,PIN_OUTPUT);
 	//EEPROM_Write('A',5);
-	Number_of_Asteriks =6;
 	//uint8_t iterator = 0;
 	while(LCD_Init()!= OperationSuccess);
 	DISPLAY_SetState(WrongPassword);
