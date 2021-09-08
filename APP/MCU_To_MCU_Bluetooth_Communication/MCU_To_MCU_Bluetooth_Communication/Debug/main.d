@@ -19,7 +19,8 @@ main.d main.o: .././main.c \
  ../../../../MCAL/Atmega32/TIMER/inc/TIMER_Lcfg.h \
  ../../../../HAL/LCD/inc/LCD_Lcfg.h \
  ../../../../MCAL/Atmega32/EEPROM/inc/EEPROM.h \
- ../../../../LIB/MC_REGISTERS.h ../APP/DISPLAY/inc/DISPLAY.h
+ ../../../../LIB/MC_REGISTERS.h ../APP/DISPLAY/inc/DISPLAY.h \
+ ../APP/DISPLAY/inc/DISPLAY_Interface.h
 
 ../../../../FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h:
 
@@ -72,3 +73,5 @@ c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\i
 ../../../../LIB/MC_REGISTERS.h:
 
 ../APP/DISPLAY/inc/DISPLAY.h:
+
+../APP/DISPLAY/inc/DISPLAY_Interface.h:

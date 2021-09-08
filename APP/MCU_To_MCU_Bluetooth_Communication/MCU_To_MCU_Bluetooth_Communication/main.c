@@ -27,7 +27,7 @@ int main(void)
 {
 	//DIO_SetPinDirection(PORT_D,PIN0,PIN_OUTPUT);
 	//EEPROM_Write('A',5);
-	Number_of_Asteriks =4;
+	Number_of_Asteriks =6;
 	uint8_t iterator = 0;
 	while(LCD_Init()!= OperationSuccess);
 	//xTaskCreate(myTask1,"Task1",200,NULL_PTR,1,&myTaskHandle);/*creates a task*/

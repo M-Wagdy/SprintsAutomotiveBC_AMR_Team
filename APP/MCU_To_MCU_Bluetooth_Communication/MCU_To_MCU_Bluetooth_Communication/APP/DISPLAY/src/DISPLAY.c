@@ -8,13 +8,16 @@
 #include "DISPLAY.h"
 
 uint8_t Position = 0;
+/*Moving to the interface files*/
 uint8_t Number_of_Asteriks = 0;
-uint8_t State = SystemLoading;//OperationStarted
+uint8_t State = OperationStarted;//OperationStarted
 uint8_t WrongPassEntries = 0;
 void DISPLAY_MainFunction(void)
 {
 	uint8_t static Last_state = OperationStarted;
 	uint8_t static Counter = 0;
+	DISPLAY_GetNumber_of_Asterisk(&Number_of_Asteriks);
+	DISPLAY_GetState(&State);
 	if(Last_state == CorrectPassword || Last_state == WrongPassword || Last_state == Waiting)
 	{
 		State = Last_state;
