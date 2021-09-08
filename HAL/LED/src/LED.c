@@ -11,6 +11,11 @@
 #include "PWM.h"
 #include "LED.h"
 
+/*- LOCAL MACROS
+------------------------------------------*/
+#define MAX_DUTY        (uint8_t)(100)
+#define MIN_DUTY        (uint8_t)(0)
+
 /*- GLOBAL STATIC VARIABLES
 -------------------------------*/
 static uint8_t gu8_IsLEDInit[LED_CH_NUMBERS] = {NOT_INIT};
@@ -31,20 +36,24 @@ extern const STR_LED_config_t gSTR_LEDConfig[LED_CH_NUMBERS];
 */
 extern ERROR_STATE_t LED_Init(uint8_t LED_ch)
 {
+   /* Variable to store function error state. */
    ERROR_STATE_t LED_ErrorState;
    
    /* Check valid channel */
    if(LED_INVALID_CH <= LED_ch)
    {
+      /* Set invalid channel error. */
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_INVALID_CH_NO);
    }
    /* check if init function was called before */
    else if(INIT == gu8_IsLEDInit[LED_ch])
    {
+      /* Set init before error. */
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_INIT_BEFORE);
    }
    else
    {
+      /* Normal LED Config */
       if(PWM_OFF == gSTR_LEDConfig[LED_ch].u8_PWM)
       {
          ERROR_STATE_t DIO_ErrorState;
@@ -58,25 +67,30 @@ extern ERROR_STATE_t LED_Init(uint8_t LED_ch)
          }
          else
          {
+            /* Set Channel to INIT */
             gu8_IsLEDInit[LED_ch] = INIT;
             LED_ErrorState = ERROR_OK;
          }
       }
+      /* PWM LED Config */
       else if(PWM_ON == gSTR_LEDConfig[LED_ch].u8_PWM)
       {
          ERROR_STATE_t ErrorState;
          
+         /* configure LED pin */
          ErrorState = PWM_Init(gSTR_LEDConfig[LED_ch].u8_PWMCh);
          ErrorState |= DIO_SetPinDirection(gSTR_LEDConfig[LED_ch].u8_LEDPort, gSTR_LEDConfig[LED_ch].u8_LEDPin, PIN_OUTPUT);
          /*START THE PWM WAVE*/
          ErrorState |= PWM_Start(gSTR_LEDConfig[LED_ch].u8_PWMCh);
          ErrorState |= PWM_Connect(gSTR_LEDConfig[LED_ch].u8_PWMCh);
+         /* make sure pin configuration is successful */
          if(ERROR_OK != ErrorState)
          {
             LED_ErrorState = ERROR_NOK;
          }  
          else
          {
+            /* Set Channel to INIT */
             gu8_IsLEDInit[LED_ch] = INIT;
             LED_ErrorState = ERROR_OK;
          }          
@@ -87,6 +101,7 @@ extern ERROR_STATE_t LED_Init(uint8_t LED_ch)
       }   
    }
    
+   /* return Error state. */
    return LED_ErrorState;
 }
 
@@ -99,20 +114,24 @@ extern ERROR_STATE_t LED_Init(uint8_t LED_ch)
 */
 extern ERROR_STATE_t LED_Off(uint8_t LED_ch)
 {
+   /* Variable to store function error state. */
    ERROR_STATE_t LED_ErrorState;
    
    /* Check valid channel */
    if(LED_INVALID_CH <= LED_ch)
    {
+      /* Set invalid channel error. */
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_INVALID_CH_NO);
    }
    /* check if init function wasn't called before */
    else if(INIT != gu8_IsLEDInit[LED_ch])
    {
+      /* Set Not init before error. */
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_NOT_INIT);
    }
    else
    {
+      /* Normal LED */
       if(PWM_OFF == gSTR_LEDConfig[LED_ch].u8_PWM)
       {
          ERROR_STATE_t DIO_ErrorState;
@@ -130,12 +149,15 @@ extern ERROR_STATE_t LED_Off(uint8_t LED_ch)
             LED_ErrorState = ERROR_OK;
          }
       }
+      /* PWM LED */
       else if(PWM_ON == gSTR_LEDConfig[LED_ch].u8_PWM)
       {
          ERROR_STATE_t PWM_ErrorState;
          
-         PWM_ErrorState = PWM_SetDuty(gSTR_LEDConfig[LED_ch].u8_PWMCh, 0);
+         /* set LED duty cycle to Minimum */
+         PWM_ErrorState = PWM_SetDuty(gSTR_LEDConfig[LED_ch].u8_PWMCh, MIN_DUTY);
          
+         /* make sure PWM function was successful */
          if(ERROR_OK != PWM_ErrorState)
          {
             LED_ErrorState = ERROR_NOK;
@@ -151,6 +173,7 @@ extern ERROR_STATE_t LED_Off(uint8_t LED_ch)
       }
    }
    
+   /* return Error state. */
    return LED_ErrorState;
 }
 
@@ -163,16 +186,19 @@ extern ERROR_STATE_t LED_Off(uint8_t LED_ch)
 */
 extern ERROR_STATE_t LED_On(uint8_t LED_ch)
 {
+   /* Variable to store function error state. */
    ERROR_STATE_t LED_ErrorState;
    
    /* Check valid channel */
    if(LED_INVALID_CH <= LED_ch)
    {
+      /* Set invalid channel error. */
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_INVALID_CH_NO);
    }
    /* check if init function wasn't called before */
    else if(INIT != gu8_IsLEDInit[LED_ch])
    {
+      /* Set Not init before error. */
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_NOT_INIT);
    }
    else
@@ -181,7 +207,7 @@ extern ERROR_STATE_t LED_On(uint8_t LED_ch)
       {
          ERROR_STATE_t DIO_ErrorState;
          
-         /* set LED pin to low */
+         /* set LED pin to high */
          DIO_ErrorState = DIO_WritePin(gSTR_LEDConfig[LED_ch].u8_LEDPort, gSTR_LEDConfig[LED_ch].u8_LEDPin, PIN_HIGH);
          
          /* make sure DIO function was successful */
@@ -198,8 +224,10 @@ extern ERROR_STATE_t LED_On(uint8_t LED_ch)
       {
          ERROR_STATE_t PWM_ErrorState;
          
-         PWM_ErrorState = PWM_SetDuty(gSTR_LEDConfig[LED_ch].u8_PWMCh, 100);
+         /* set LED duty cycle to maximum */
+         PWM_ErrorState = PWM_SetDuty(gSTR_LEDConfig[LED_ch].u8_PWMCh, MAX_DUTY);
          
+         /* make sure PWM function was successful */
          if(ERROR_OK != PWM_ErrorState)
          {
             LED_ErrorState = ERROR_NOK;
@@ -215,6 +243,7 @@ extern ERROR_STATE_t LED_On(uint8_t LED_ch)
       }
    }
    
+   /* return Error state. */
    return LED_ErrorState;
 }
 
@@ -228,23 +257,28 @@ extern ERROR_STATE_t LED_On(uint8_t LED_ch)
 */
 extern ERROR_STATE_t LED_Dim(uint8_t LED_ch, uint8_t Duty)
 {
+   /* Variable to store function error state. */
    ERROR_STATE_t LED_ErrorState;
    
    /* Check valid channel */
    if(LED_INVALID_CH <= LED_ch)
    {
+      /* Set invalid channel error. */
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_INVALID_CH_NO);
    }
    /* check if init function wasn't called before */
    else if(INIT != gu8_IsLEDInit[LED_ch])
    {
+      /* Set Not init before error. */
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_NOT_INIT);
    }
+   /* check if channel is not pwm pin. */
    else if(PWM_OFF == gSTR_LEDConfig[LED_ch].u8_PWM)
    {
       LED_ErrorState = ERROR_NOK;
    }
-   else if(100 < Duty)
+   /* check valid duty cycle. */
+   else if(MAX_DUTY < Duty)
    {
       LED_ErrorState = ERROR_NOK;
    }     
@@ -252,8 +286,10 @@ extern ERROR_STATE_t LED_Dim(uint8_t LED_ch, uint8_t Duty)
    {
       ERROR_STATE_t PWM_ErrorState;
          
+      /* set LED duty cycle */
       PWM_ErrorState = PWM_SetDuty(gSTR_LEDConfig[LED_ch].u8_PWMCh, Duty);
-         
+        
+      /* make sure PWM function was successful */ 
       if(ERROR_OK != PWM_ErrorState)
       {
          LED_ErrorState = ERROR_NOK;
@@ -264,6 +300,7 @@ extern ERROR_STATE_t LED_Dim(uint8_t LED_ch, uint8_t Duty)
       }
    }
    
+   /* return Error state. */
    return LED_ErrorState;
 }
    
@@ -276,18 +313,22 @@ extern ERROR_STATE_t LED_Dim(uint8_t LED_ch, uint8_t Duty)
 */
 extern ERROR_STATE_t LED_Toggle(uint8_t LED_ch)
 {
+   /* Variable to store function error state. */
    ERROR_STATE_t LED_ErrorState;
    
    /* Check valid channel */
    if(LED_INVALID_CH <= LED_ch)
    {
+      /* Set invalid channel error. */
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_INVALID_CH_NO);
    }
    /* check if init function wasn't called before */
    else if(INIT != gu8_IsLEDInit[LED_ch])
    {
+      /* Set Not init before error. */
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_NOT_INIT);
    }
+   /* Make sure it is not a PWM LED. */
    else if(PWM_ON == gSTR_LEDConfig[LED_ch].u8_PWM)
    {
       LED_ErrorState = ERROR_NOK;
@@ -296,7 +337,7 @@ extern ERROR_STATE_t LED_Toggle(uint8_t LED_ch)
    {
       ERROR_STATE_t DIO_ErrorState;
          
-      /* set LED pin to low */
+      /* Toggle pin. */
       DIO_ErrorState = DIO_TogglePin(gSTR_LEDConfig[LED_ch].u8_LEDPort, gSTR_LEDConfig[LED_ch].u8_LEDPin);
          
       /* make sure DIO function was successful */
@@ -310,6 +351,7 @@ extern ERROR_STATE_t LED_Toggle(uint8_t LED_ch)
       }    
    }
    
+   /* return Error state. */
    return LED_ErrorState;
 }
 
@@ -323,6 +365,7 @@ extern ERROR_STATE_t LED_Toggle(uint8_t LED_ch)
 */
 extern ERROR_STATE_t LED_Status(uint8_t LED_ch, uint8_t * state)
 {
+   /* Variable to store function error state. */
    ERROR_STATE_t LED_ErrorState;
    
    /* Check valid channel */
@@ -335,10 +378,12 @@ extern ERROR_STATE_t LED_Status(uint8_t LED_ch, uint8_t * state)
    {
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_NOT_INIT);
    }
+   /* Make sure it is not a PWM LED. */
    else if(PWM_ON == gSTR_LEDConfig[LED_ch].u8_PWM)
    {
       LED_ErrorState = ERROR_NOK;
    }
+   /* Make sure it is not a null pointer. */
    else if(NULL_PTR == state)
    {
       LED_ErrorState = (E_LED_MODULE_ID | E_LED_NULL_PTR);
@@ -347,7 +392,7 @@ extern ERROR_STATE_t LED_Status(uint8_t LED_ch, uint8_t * state)
    {
       ERROR_STATE_t DIO_ErrorState;
       
-      /* set LED pin to low */
+      /* Read the pin state. */
       DIO_ErrorState = DIO_ReadPin(gSTR_LEDConfig[LED_ch].u8_LEDPort, gSTR_LEDConfig[LED_ch].u8_LEDPin, state);
       
       /* make sure DIO function was successful */
@@ -361,5 +406,6 @@ extern ERROR_STATE_t LED_Status(uint8_t LED_ch, uint8_t * state)
       }
    }
    
+   /* return Error state. */
    return LED_ErrorState;
 }

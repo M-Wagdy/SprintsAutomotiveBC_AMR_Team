@@ -22,10 +22,12 @@ extern const STR_DISPLAY_SEGMENT_config_t STR_DisplaySegmentConfig;
 */
 extern void Display_MainFunction(void)
 {
+   /* Used Local variables */
    static uint8_t u8_Init = 0;  
    uint8_t u8_SevenSegmentNumber; 
    static Enu_DisplayStateMachine State = Display_FirstNumber;
    
+   /* Initialization sequence. */
    if (u8_Init == 0)
    {
       SevenSeg_Init(STR_DisplaySegmentConfig.u8_SegmentCh0);
@@ -33,15 +35,18 @@ extern void Display_MainFunction(void)
       u8_Init = 1;
    }
    
+   /* Get the number to display. */
    Display_GetSevenSegment(&u8_SevenSegmentNumber);
    
    switch(State)
    {
       case Display_FirstNumber:
+         /* Display the first number. */
          SevenSeg_Display(STR_DisplaySegmentConfig.u8_SegmentCh0, u8_SevenSegmentNumber%10);
          State = Display_SecondNumber;
          break;
       case Display_SecondNumber:
+         /* Display the second number. */
          SevenSeg_Display(STR_DisplaySegmentConfig.u8_SegmentCh1, u8_SevenSegmentNumber/10);
          State = Display_FirstNumber;
          break;

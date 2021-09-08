@@ -26,18 +26,23 @@ static uint8_t gu8_SevenSegmentValue = 0;
 */
 extern ERROR_STATE_t Display_GetSevenSegment(uint8_t * Value)
 {
+   /* Variable to store function error state. */
    ERROR_STATE_t Display_ErrorState;
    
+   /* Validate valid Parameters are passed. */
    if(NULL_PTR == Value)
    {
+      /* Set null pointer error. */
       Display_ErrorState = (E_DISPLAY_ID | E_DISPLAY_NULL_PTR);
    }
    else
    {
+      /* Return the segment value. */
       *Value = gu8_SevenSegmentValue;
       Display_ErrorState = ERROR_OK;
    }
    
+   /* return Error state. */
    return Display_ErrorState;
 }
 
@@ -50,17 +55,22 @@ extern ERROR_STATE_t Display_GetSevenSegment(uint8_t * Value)
 */
 extern ERROR_STATE_t Display_SetSevenSegment(uint8_t Value)
 {
+   /* Variable to store function error state. */
    ERROR_STATE_t Display_ErrorState;
    
+   /* Validate valid Parameters are passed. */
    if(INVALID_SEVEN_SEGMENT_VALUE <= Value)
    {
+      /* Set invalid Value error. */
       Display_ErrorState = (E_DISPLAY_ID | E_DISPLAY_INVALID_VAL);
    }
    else
    {
+      /* Set the segment value. */
       gu8_SevenSegmentValue = Value;
       Display_ErrorState = ERROR_OK;
    }
    
+   /* return Error state. */
    return Display_ErrorState;
 }

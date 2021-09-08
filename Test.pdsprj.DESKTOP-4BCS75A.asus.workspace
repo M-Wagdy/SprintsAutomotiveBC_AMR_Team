@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="0">
-  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff8300000009000000d3040000cf020000</PLACEMENT>
+  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffff8300000009000000d3040000cf020000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
@@ -95,29 +95,29 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="827" x="539" flags="0000802b" y="38" h="547" pid="1" iid="1">
+   <POPUP w="827" x="65" flags="0000802b" y="13" h="547" pid="1" iid="1">
     <PROPERTIES>
-     <ITEM name="Breakpoint 0">"Feedback_Task",1AC8,0000,2EA6,D5DD,1
+     <ITEM name="Breakpoint 0">"HMI_Task",1AB6,0000,AB5A,D5DD,1
 </ITEM>
-     <ITEM name="Breakpoint 1">"SEG_Task",1AE0,0012,C3E3,D5DD,-1
+     <ITEM name="Breakpoint 1">"HMI_Task",1AC8,0012,020F,D5DD,1
 </ITEM>
      <ITEM name="Breakpoint 10">"main",193E,001E,661A,D5DD,1
 </ITEM>
      <ITEM name="Breakpoint 11">"main",172A,001E,661A,D5DD,1
 </ITEM>
-     <ITEM name="Breakpoint 2">"SEG_Task",1AF8,002A,B09E,D5DD,1
+     <ITEM name="Breakpoint 2">"HMI_Task",1ACC,0016,641B,D5DD,1
 </ITEM>
-     <ITEM name="Breakpoint 3">"SEG_Task",1AF8,002A,FF8D,D5DD,-1
+     <ITEM name="Breakpoint 3">"Feedback_Task",1ADA,0000,2EA6,D5DD,1
 </ITEM>
-     <ITEM name="Breakpoint 4">"NumberIncrement_Task",1A9C,0012,3BE1,D5DD,1
+     <ITEM name="Breakpoint 4">"Display_Task",1AE0,0000,AB5A,D5DD,-1
 </ITEM>
-     <ITEM name="Breakpoint 5">"main",1B46,000A,661A,D5DD,-1
+     <ITEM name="Breakpoint 5">"Display_Task",1AF8,0018,359D,D5DD,-1
 </ITEM>
-     <ITEM name="Breakpoint 6">"main",1B48,000C,F5E4,D5DD,1
+     <ITEM name="Breakpoint 6">"main",1B54,000A,661A,D5DD,-1
 </ITEM>
-     <ITEM name="Breakpoint 7">"main",1B5A,001E,661A,D5DD,1
+     <ITEM name="Breakpoint 7">"main",1B56,000C,F5E4,D5DD,1
 </ITEM>
-     <ITEM name="Breakpoint 8">"main",192A,000A,661A,D5DD,-1
+     <ITEM name="Breakpoint 8">"main",1B68,001E,661A,D5DD,1
 </ITEM>
      <ITEM name="Breakpoint 9">"main",192C,000C,F5E4,D5DD,1
 </ITEM>
@@ -127,7 +127,7 @@
      <ITEM name="DISPOPCODES">No</ITEM>
      <ITEM name="FIXUPBPTS">Yes</ITEM>
      <ITEM name="WordsOnly">No</ITEM>
-     <ITEM name="nBreakpoints">8</ITEM>
+     <ITEM name="nBreakpoints">9</ITEM>
     </PROPERTIES>
    </POPUP>
    <POPUP w="353" x="206" flags="0000000b" y="16" h="300" pid="2" iid="1">
