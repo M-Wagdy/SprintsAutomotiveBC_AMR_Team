@@ -18,7 +18,7 @@ void DISPLAY_MainFunction(void)
 	uint8_t static Counter = 0;
 	DISPLAY_GetNumber_of_Asterisk(&Number_of_Asteriks);
 	DISPLAY_GetState(&State);
-	if(Last_state == CorrectPassword || Last_state == WrongPassword || Last_state == Waiting)
+	if((Last_state == CorrectPassword || Last_state == WrongPassword || Last_state == Waiting)&&(Counter!=0))
 	{
 		State = Last_state;
 	}
@@ -48,7 +48,8 @@ void DISPLAY_MainFunction(void)
 			{
 				WrongPassEntries = 0;
 				Counter = 0;
-				State = SevenSegments;
+				//State = SevenSegments;
+				DISPLAY_SetState(SevenSegments);
 				break;
 			}
 			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
@@ -58,29 +59,33 @@ void DISPLAY_MainFunction(void)
 			
 			/*Counter*/
 		case WrongPassword:
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
 			if(Counter == 40)
 			{
 				Counter = 0;
 				WrongPassEntries++;
 				if(WrongPassEntries==3)
-				State = Waiting;
+				DISPLAY_SetState(Waiting);
 				else
-				State = PassEntering;
+				DISPLAY_SetState(PassEntering);
 				break;
 			}
-			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
 			DISPLAY_ShiftAndDisplay(10,(uint8_t*)"Wrong Pass");
 			/*check the counter*/
+			Counter ++;
 			break;
 		case Waiting:
-			if(Counter == 200)
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			while (LCD_SendCommand(0xc0)!=OperationSuccess);
+			LCD_SendNumber((10000-(Counter*50))/1000);
+			if(Counter == 199)
 			{
 				WrongPassEntries = 0;
 				Counter = 0;
-				State = PassEntering;
+				//State = PassEntering;
+				DISPLAY_SetState(PassEntering);
 				break;
 			}
-			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
 			DISPLAY_ShiftAndDisplay(7,(uint8_t*)"Waiting");
 			/*seconds remaining in the second row*/
 			Counter ++;
@@ -92,6 +97,7 @@ void DISPLAY_MainFunction(void)
 			break;
 		case ChangePassword:
 			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			while (LCD_SendCommand(0xc0)!=OperationSuccess);
 			for(uint8_t iterator = 0; iterator<Number_of_Asteriks; iterator++)
 			{
 				if(iterator>6)
