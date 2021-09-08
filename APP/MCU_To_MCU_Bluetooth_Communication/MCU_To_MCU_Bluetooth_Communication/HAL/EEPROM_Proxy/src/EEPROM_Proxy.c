@@ -51,40 +51,58 @@ ERROR_STATE_t EEPROM_ProxySaveToMemory(uint8_t* CharArr, uint16_t Starting_posit
 	}
 	return ErrRetVal;
 }
-ERROR_STATE_t EEPROM_ProxyLoadFromMemory(uint16_t StartingPosition, uint8_t* CharArr)
+ERROR_STATE_t EEPROM_ProxyLoadFromMemory(uint16_t StartingPosition, uint16_t EndingPosition, uint8_t* CharArr)
 {
 	/*initialize the static data buffer to return data back to the calling function 'retains data'*/
 	static uint8_t array[255];
 	/*initializing the variable that will hold the CRC to be compared with the calculated one*/
+	uint16_t CyclicRedundancyCheckLoaded = 0;
 	uint16_t CyclicRedundancyCheck = 0;
+	uint8_t CRC_HalfBits = 0;
 	/*initialize iterator variable*/
 	uint8_t iterator = 0;
 	/*return value initializing*/
 	uint8_t ErrRetVal = OperationStarted;
+	/*initialize a variable that hold the current reading position*/
+	uint16_t CurrentReadingPosition = StartingPosition;
 	/*read the bytes with the calculated check sum to the memory*/
 	for(;;iterator++)
 	{
-		/*check if end of the data is reached*/
-		if(CharArr[iterator] == NULL_TERMINATOR)
+		if((CurrentReadingPosition<= EndingPosition) && (EndingPosition <= 1023))
 		{
-			/*Load from EEPROM*/
-			
-			/*load the calculated checksum bytes*/
-			
-			/*break from for LOOP*/
-			break;
+			/*load byte from the EEPROM*/
+			EEPROM_Read(*(array[iterator]), CurrentReadingPosition);
+			CurrentReadingPosition++;
+			/*check if end of the data is reached*/
+			if(CharArr[iterator] == NULL_TERMINATOR)
+			{
+				/*load the calculated checksum bytes*/
+				EEPROM_Read(CRC_HalfBits, CurrentReadingPosition);
+				CyclicRedundancyCheckLoaded |= CRC_HalfBits;
+				CyclicRedundancyCheckLoaded << 8;
+				CurrentReadingPosition++;
+				EEPROM_Read(CRC_HalfBits, CurrentReadingPosition);
+				CyclicRedundancyCheckLoaded |= CRC_HalfBits;
+				ErrRetVal = OperationSuccess;
+				/*break from for LOOP*/
+				break;
+			}
+			else if (CharArr[iterator] == 0xFF)
+			{
+				/*the memory is empty*/
+				ErrRetVal = MemoryEmpty;
+				break;
+			}
 		}
-		else if(CharArr[iterator] == 0xFF)
+		else
 		{
-			/*the memory is empty*/
-			break;
-		}
-		/*load byte from the EEPROM*/
+			ErrRetVal = OperationFail;
+		}	
 	}
 	/*calculate the CRC bytes*/
-	
+	/*/CRC_16_Calc(ChatArr,&CyclicRedundancyCheck)/*///==> Line of un-implemented code
 	/*compare calculated to to the Loaded CRC*/
-	
+	/*/CRC_16_Check(ChatArr,&CyclicRedundancyCheck)/*///==> Line of un-implemented code
 	/*return the error value*/
 	return ErrRetVal;
 }
