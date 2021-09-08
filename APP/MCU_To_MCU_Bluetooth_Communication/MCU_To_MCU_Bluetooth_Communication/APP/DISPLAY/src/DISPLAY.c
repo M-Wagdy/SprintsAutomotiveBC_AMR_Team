@@ -6,12 +6,103 @@
  *  Author: Ahmed Adel
  */ 
 #include "DISPLAY.h"
-#define ShiftingLeft 1
-#define ShiftingRight 2
+
 uint8_t Position = 0;
+uint8_t Number_of_Asteriks = 0;
+uint8_t State = SystemLoading;//OperationStarted
+uint8_t WrongPassEntries = 0;
 void DISPLAY_MainFunction(void)
 {
-	
+	uint8_t static Last_state = OperationStarted;
+	uint8_t static Counter = 0;
+	if(Last_state == CorrectPassword || Last_state == WrongPassword || Last_state == Waiting)
+	{
+		State = Last_state;
+	}
+	switch(State)
+	{
+		case SystemLoading:
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			DISPLAY_ShiftAndDisplay(14, (uint8_t*)"System Loading");
+			break;
+		case Welcome:
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			DISPLAY_ShiftAndDisplay(7, (uint8_t*)"Welcome");
+			break;
+		case PassEntering:
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			while (LCD_SendCommand(0xc0)!=OperationSuccess);
+			for(uint8_t iterator = 0; iterator<Number_of_Asteriks; iterator++)
+			{
+				if(iterator>6)
+				break;
+				while(LCD_SendData('*')!=OperationSuccess);
+			}
+			DISPLAY_ShiftAndDisplay(10,(uint8_t*)"Enter Pass");
+			break;
+		case CorrectPassword:
+			if(Counter == 40)
+			{
+				WrongPassEntries = 0;
+				Counter = 0;
+				State = SevenSegments;
+				break;
+			}
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			DISPLAY_ShiftAndDisplay(10,(uint8_t*)"Pass OK");
+			Counter ++;
+			break;
+			
+			/*Counter*/
+		case WrongPassword:
+			if(Counter == 40)
+			{
+				Counter = 0;
+				WrongPassEntries++;
+				if(WrongPassEntries==3)
+				State = Waiting;
+				else
+				State = PassEntering;
+				break;
+			}
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			DISPLAY_ShiftAndDisplay(10,(uint8_t*)"Wrong Pass");
+			/*check the counter*/
+			break;
+		case Waiting:
+			if(Counter == 200)
+			{
+				WrongPassEntries = 0;
+				Counter = 0;
+				State = PassEntering;
+				break;
+			}
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			DISPLAY_ShiftAndDisplay(7,(uint8_t*)"Waiting");
+			/*seconds remaining in the second row*/
+			Counter ++;
+			break;
+		case SevenSegments: 
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			DISPLAY_ShiftAndDisplay(12,(uint8_t*)"System is ON");
+			/*task of seven segment*/
+			break;
+		case ChangePassword:
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			for(uint8_t iterator = 0; iterator<Number_of_Asteriks; iterator++)
+			{
+				if(iterator>6)
+				break;
+				while(LCD_SendData('*')!=OperationSuccess);
+			}
+			DISPLAY_ShiftAndDisplay(13,(uint8_t*)"Changing Pass");
+			/*Stars on the second ROW*/
+			break;
+		default:
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			break;
+	}
+	Last_state = State;
 }
 void DISPLAY_ShiftAndDisplay(uint8_t StringLength, uint8_t* StringPTR)
 {
@@ -59,9 +150,3 @@ void DISPLAY_ShiftAndDisplay(uint8_t StringLength, uint8_t* StringPTR)
 			break;
 	}
 }
-/*
-while(LCD_SendCommand(0x80|Position) != OperationSuccess);
-while(LCD_SendString(StringPTR) != OperationSuccess);
-while(LCD_SendCommand(0x80|Position) != OperationSuccess);
-while(LCD_SendData(' ')!= OperationSuccess);
-Position++;*/
