@@ -34,6 +34,7 @@ extern void HMI_MainFunction(void)
    static uint8_t u8_Init = 0;
    uint32_t u32_Key;
    static uint32_t u32_OldKey = 0;
+   static uint32_t u32_LastSetKey = 0;
    
    /* Initialization sequence. */
    if (u8_Init == 0)
@@ -46,9 +47,9 @@ extern void HMI_MainFunction(void)
    /* Get KEypad pressed keys. */
    KP_GetPressedValue(KP_UsedChannel, &u32_Key);
    
-   if(u32_OldKey != u32_Key)
+   if(u32_OldKey == u32_Key && u32_LastSetKey != u32_Key)
    {
-      u32_OldKey = u32_Key;
+      u32_LastSetKey = u32_Key;
       /* If multi buttons are pressed. */
       if(MULTI_PRESS_BIT & u32_Key)
       {
@@ -93,4 +94,6 @@ extern void HMI_MainFunction(void)
          PORTB &= ~(0xF0);
       }
    }
+   u32_OldKey = u32_Key;
+      
 }

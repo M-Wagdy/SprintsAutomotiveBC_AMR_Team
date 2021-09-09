@@ -3,9 +3,9 @@
  *
  * Created: 9/5/2021 6:39:36 PM
  * Author: Mohamed Wagdy
- */ 
+ */
 
-/*INCLUDES-------------------------------*/
+ /*INCLUDES-------------------------------*/
 #include "STUB_Keypad.h"
 #include "HMI.h"
 #include "HMI_Interface.h"
@@ -32,31 +32,32 @@ extern void HMI_MainFunction(void)
    static uint8_t u8_Init = 0;
    uint32_t u32_Key;
    static uint32_t u32_OldKey = 0;
-   
+   static uint32_t u32_LastSetKey = 0;
+
    /* Initialization sequence. */
    if (u8_Init == 0)
    {
       KP_Init(KP_UsedChannel);
       u8_Init = 1;
    }
-   
+
    /* Get KEypad pressed keys. */
    KP_GetPressedValue(KP_UsedChannel, &u32_Key);
-   
-   if(u32_OldKey != u32_Key)
+
+   if (u32_OldKey == u32_Key && u32_LastSetKey != u32_Key)
    {
-      u32_OldKey = u32_Key;
+      u32_LastSetKey = u32_Key;
       /* If multi buttons are pressed. */
-      if(MULTI_PRESS_BIT & u32_Key)
+      if (MULTI_PRESS_BIT & u32_Key)
       {
          /* Device erase pattern keys are pressed */
-         if(DEVICE_ERASE_VALUE == u32_Key)
+         if (DEVICE_ERASE_VALUE == u32_Key)
          {
             /* Set device erase flag. */
             HMI_SetDeviceEraseFlag();
          }
          /* password change pattern keys are pressed */
-         else if(PASSWORD_CHANGE_VALUE == u32_Key)
+         else if (PASSWORD_CHANGE_VALUE == u32_Key)
          {
             /* Set password change flag. */
             HMI_SetPasswordChangeFlag();
@@ -66,12 +67,12 @@ extern void HMI_MainFunction(void)
          }
       }
       /* If a single key is pressed. */
-      else if(u32_Key != 0)
+      else if (u32_Key != 0)
       {
          /* Determine the single pressed key. */
-         for(uint8_t u8_KeyCounter = 1; u8_KeyCounter<= 12; u8_KeyCounter++)
+         for (uint8_t u8_KeyCounter = 1; u8_KeyCounter <= 12; u8_KeyCounter++)
          {
-            if((u32_Key >> u8_KeyCounter) & 1 )
+            if ((u32_Key >> u8_KeyCounter) & 1)
             {
                HMI_SetKeyPressed(u8_KeyCounter);
                break;
@@ -82,5 +83,6 @@ extern void HMI_MainFunction(void)
       {
       }
    }
-   
+   u32_OldKey = u32_Key;
+
 }

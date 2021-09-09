@@ -528,7 +528,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1fbc
+.text           0x00000000     0x1ff0
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -743,96 +743,96 @@ END GROUP
                 0x000017d8       0x10 App/Display/src/Display_Interface.o
                 0x000017d8                Display_SetSevenSegment
  .text.HMI_MainFunction
-                0x000017e8      0x122 App/HMI/src/HMI.o
+                0x000017e8      0x156 App/HMI/src/HMI.o
                 0x000017e8                HMI_MainFunction
  .text.HMI_SetDeviceEraseFlag
-                0x0000190a        0xa App/HMI/src/HMI_Interface.o
-                0x0000190a                HMI_SetDeviceEraseFlag
+                0x0000193e        0xa App/HMI/src/HMI_Interface.o
+                0x0000193e                HMI_SetDeviceEraseFlag
  .text.HMI_SetPasswordChangeFlag
-                0x00001914        0xa App/HMI/src/HMI_Interface.o
-                0x00001914                HMI_SetPasswordChangeFlag
+                0x00001948        0xa App/HMI/src/HMI_Interface.o
+                0x00001948                HMI_SetPasswordChangeFlag
  .text.HMI_SetKeyPressed
-                0x0000191e       0x10 App/HMI/src/HMI_Interface.o
-                0x0000191e                HMI_SetKeyPressed
+                0x00001952       0x10 App/HMI/src/HMI_Interface.o
+                0x00001952                HMI_SetKeyPressed
  .text.Indicator_MainFunction
-                0x0000192e      0x164 App/Indicator/src/Indicator.o
-                0x0000192e                Indicator_MainFunction
+                0x00001962      0x164 App/Indicator/src/Indicator.o
+                0x00001962                Indicator_MainFunction
  .text.Indicator_GetPattern
-                0x00001a92       0x14 App/Indicator/src/Indicator_interface.o
-                0x00001a92                Indicator_GetPattern
+                0x00001ac6       0x14 App/Indicator/src/Indicator_interface.o
+                0x00001ac6                Indicator_GetPattern
  .text.Indicator_SetPattern
-                0x00001aa6       0x10 App/Indicator/src/Indicator_interface.o
-                0x00001aa6                Indicator_SetPattern
+                0x00001ada       0x10 App/Indicator/src/Indicator_interface.o
+                0x00001ada                Indicator_SetPattern
  .text.HMI_Task
-                0x00001ab6       0x24 main.o
-                0x00001ab6                HMI_Task
+                0x00001aea       0x24 main.o
+                0x00001aea                HMI_Task
  .text.Feedback_Task
-                0x00001ada        0x6 main.o
-                0x00001ada                Feedback_Task
+                0x00001b0e        0x6 main.o
+                0x00001b0e                Feedback_Task
  .text.Display_Task
-                0x00001ae0       0x24 main.o
-                0x00001ae0                Display_Task
+                0x00001b14       0x24 main.o
+                0x00001b14                Display_Task
  .text.NumberChange_Task
-                0x00001b04       0x46 main.o
-                0x00001b04                NumberChange_Task
- .text.main     0x00001b4a       0x5c main.o
-                0x00001b4a                main
+                0x00001b38       0x46 main.o
+                0x00001b38                NumberChange_Task
+ .text.main     0x00001b7e       0x5c main.o
+                0x00001b7e                main
  .text.avr-libc.fplib
-                0x00001ba6        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
-                0x00001ba6                __subsf3
-                0x00001ba8                __addsf3
+                0x00001bda        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
+                0x00001bda                __subsf3
+                0x00001bdc                __addsf3
  .text.avr-libc.fplib
-                0x00001bb4       0xcc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3x.o)
-                0x00001bd6                __addsf3x
+                0x00001be8       0xcc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+                0x00001c0a                __addsf3x
  .text.avr-libc.fplib
-                0x00001c80        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3.o)
-                0x00001c80                __divsf3
+                0x00001cb4        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3.o)
+                0x00001cb4                __divsf3
  .text.avr-libc.fplib
-                0x00001c88       0xdc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3x.o)
-                0x00001ca8                __divsf3x
-                0x00001cae                __divsf3_pse
+                0x00001cbc       0xdc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3x.o)
+                0x00001cdc                __divsf3x
+                0x00001ce2                __divsf3_pse
  .text.avr-libc.fplib
-                0x00001d64       0x5e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
-                0x00001d64                __fixunssfsi
+                0x00001d98       0x5e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+                0x00001d98                __fixunssfsi
  .text.avr-libc.fplib
-                0x00001dc2       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
-                0x00001dc2                __floatunsisf
-                0x00001dc6                __floatsisf
+                0x00001df6       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                0x00001df6                __floatunsisf
+                0x00001dfa                __floatsisf
  .text.avr-libc.fplib
-                0x00001e3c        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_inf.o)
-                0x00001e3c                __fp_inf
+                0x00001e70        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+                0x00001e70                __fp_inf
  .text.avr-libc.fplib
-                0x00001e48        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_nan.o)
-                0x00001e48                __fp_nan
+                0x00001e7c        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+                0x00001e7c                __fp_nan
  .text.avr-libc.fplib
-                0x00001e4e        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
-                0x00001e4e                __fp_pscA
+                0x00001e82        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+                0x00001e82                __fp_pscA
  .text.avr-libc.fplib
-                0x00001e5c        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
-                0x00001e5c                __fp_pscB
+                0x00001e90        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+                0x00001e90                __fp_pscB
  .text.avr-libc.fplib
-                0x00001e6a       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_round.o)
-                0x00001e6a                __fp_round
+                0x00001e9e       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_round.o)
+                0x00001e9e                __fp_round
  .text.avr-libc.fplib
-                0x00001e8c       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_split3.o)
-                0x00001e8c                __fp_split3
-                0x00001e9c                __fp_splitA
+                0x00001ec0       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+                0x00001ec0                __fp_split3
+                0x00001ed0                __fp_splitA
  .text.avr-libc.fplib
-                0x00001ed0        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_zero.o)
-                0x00001ed0                __fp_zero
-                0x00001ed2                __fp_szero
+                0x00001f04        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+                0x00001f04                __fp_zero
+                0x00001f06                __fp_szero
  .text.avr-libc.fplib
-                0x00001ede        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3.o)
-                0x00001ede                __mulsf3
+                0x00001f12        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3.o)
+                0x00001f12                __mulsf3
  .text.avr-libc.fplib
-                0x00001ee6       0xd2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
-                0x00001f04                __mulsf3x
-                0x00001f0a                __mulsf3_pse
-                0x00001fb8                . = ALIGN (0x2)
+                0x00001f1a       0xd2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
+                0x00001f38                __mulsf3x
+                0x00001f3e                __mulsf3_pse
+                0x00001fec                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001fb8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00001fb8                _exit
-                0x00001fb8                exit
+ .fini9         0x00001fec        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00001fec                _exit
+                0x00001fec                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -851,11 +851,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001fb8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001fec        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001fbc                _etext = .
+                0x00001ff0                _etext = .
 
-.data           0x00800060       0xb0 load address 0x00001fbc
+.data           0x00800060       0xb0 load address 0x00001ff0
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -904,7 +904,7 @@ END GROUP
                 0x00800110                _edata = .
                 0x00800110                PROVIDE (__data_end, .)
 
-.bss            0x00800110      0x64c
+.bss            0x00800110      0x650
                 0x00800110                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
@@ -964,32 +964,34 @@ END GROUP
                 0x0080074f        0x1 App/Display/src/Display.o
  .bss.gu8_SevenSegmentValue
                 0x00800750        0x1 App/Display/src/Display_Interface.o
- .bss.u32_OldKey.1753
+ .bss.u32_LastSetKey.1754
                 0x00800751        0x4 App/HMI/src/HMI.o
+ .bss.u32_OldKey.1753
+                0x00800755        0x4 App/HMI/src/HMI.o
  .bss.u8_Init.1751
-                0x00800755        0x1 App/HMI/src/HMI.o
+                0x00800759        0x1 App/HMI/src/HMI.o
  .bss.gu8_KeyPressedValue
-                0x00800756        0x1 App/HMI/src/HMI_Interface.o
+                0x0080075a        0x1 App/HMI/src/HMI_Interface.o
  .bss.gu8_PasswordChangeFlag
-                0x00800757        0x1 App/HMI/src/HMI_Interface.o
+                0x0080075b        0x1 App/HMI/src/HMI_Interface.o
  .bss.gu8_DeviceEraseFlag
-                0x00800758        0x1 App/HMI/src/HMI_Interface.o
+                0x0080075c        0x1 App/HMI/src/HMI_Interface.o
  .bss.u8_Duty.1974
-                0x00800759        0x1 App/Indicator/src/Indicator.o
+                0x0080075d        0x1 App/Indicator/src/Indicator.o
  .bss.State.1973
-                0x0080075a        0x1 App/Indicator/src/Indicator.o
+                0x0080075e        0x1 App/Indicator/src/Indicator.o
  .bss.u8_Init.1970
-                0x0080075b        0x1 App/Indicator/src/Indicator.o
+                0x0080075f        0x1 App/Indicator/src/Indicator.o
  *(COMMON)
-                0x0080075c                PROVIDE (__bss_end, .)
-                0x00001fbc                __data_load_start = LOADADDR (.data)
-                0x0000206c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800760                PROVIDE (__bss_end, .)
+                0x00001ff0                __data_load_start = LOADADDR (.data)
+                0x000020a0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080075c        0x0
+.noinit         0x00800760        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080075c                _end = .
+                0x00800760                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -1128,7 +1130,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x4b69
+.debug_info     0x00000000     0x4b7a
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x000004e6      0x2cd FreeRTOS/list.o
@@ -1143,17 +1145,17 @@ END GROUP
  .debug_info    0x000034d6      0x1a0 App/Display/src/Display.o
  .debug_info    0x00003676      0x109 App/Display/src/Display_Interface.o
  .debug_info    0x0000377f       0xac App/Display/src/Display_Lcfg.o
- .debug_info    0x0000382b      0x184 App/HMI/src/HMI.o
- .debug_info    0x000039af      0x1d9 App/HMI/src/HMI_Interface.o
- .debug_info    0x00003b88       0x78 App/HMI/src/HMI_Lcfg.o
- .debug_info    0x00003c00      0x334 App/Indicator/src/Indicator.o
- .debug_info    0x00003f34      0x109 App/Indicator/src/Indicator_interface.o
- .debug_info    0x0000403d      0x130 App/Indicator/src/Indicator_Lcfg.o
- .debug_info    0x0000416d      0x19c HAL/Keypad/src/Keypad_Lcfg.o
- .debug_info    0x00004309      0x177 HAL/LED/src/LED_Lcfg.o
- .debug_info    0x00004480      0x14e HAL/SevenSeg/src/SevenSeg_Lcfg.o
- .debug_info    0x000045ce      0x424 main.o
- .debug_info    0x000049f2      0x177 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
+ .debug_info    0x0000382b      0x195 App/HMI/src/HMI.o
+ .debug_info    0x000039c0      0x1d9 App/HMI/src/HMI_Interface.o
+ .debug_info    0x00003b99       0x78 App/HMI/src/HMI_Lcfg.o
+ .debug_info    0x00003c11      0x334 App/Indicator/src/Indicator.o
+ .debug_info    0x00003f45      0x109 App/Indicator/src/Indicator_interface.o
+ .debug_info    0x0000404e      0x130 App/Indicator/src/Indicator_Lcfg.o
+ .debug_info    0x0000417e      0x19c HAL/Keypad/src/Keypad_Lcfg.o
+ .debug_info    0x0000431a      0x177 HAL/LED/src/LED_Lcfg.o
+ .debug_info    0x00004491      0x14e HAL/SevenSeg/src/SevenSeg_Lcfg.o
+ .debug_info    0x000045df      0x424 main.o
+ .debug_info    0x00004a03      0x177 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
 
 .debug_abbrev   0x00000000     0x19d3
  *(.debug_abbrev)
@@ -1182,7 +1184,7 @@ END GROUP
  .debug_abbrev  0x00001837      0x119 main.o
  .debug_abbrev  0x00001950       0x83 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
 
-.debug_line     0x00000000     0x3197
+.debug_line     0x00000000     0x31a9
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_line    0x00000116      0x239 FreeRTOS/list.o
@@ -1197,17 +1199,17 @@ END GROUP
  .debug_line    0x000022f2      0x129 App/Display/src/Display.o
  .debug_line    0x0000241b       0xc3 App/Display/src/Display_Interface.o
  .debug_line    0x000024de       0x87 App/Display/src/Display_Lcfg.o
- .debug_line    0x00002565      0x15a App/HMI/src/HMI.o
- .debug_line    0x000026bf      0x165 App/HMI/src/HMI_Interface.o
- .debug_line    0x00002824       0x5a App/HMI/src/HMI_Lcfg.o
- .debug_line    0x0000287e      0x275 App/Indicator/src/Indicator.o
- .debug_line    0x00002af3       0xc7 App/Indicator/src/Indicator_interface.o
- .debug_line    0x00002bba       0x8f App/Indicator/src/Indicator_Lcfg.o
- .debug_line    0x00002c49       0xb7 HAL/Keypad/src/Keypad_Lcfg.o
- .debug_line    0x00002d00       0xd6 HAL/LED/src/LED_Lcfg.o
- .debug_line    0x00002dd6       0xbf HAL/SevenSeg/src/SevenSeg_Lcfg.o
- .debug_line    0x00002e95      0x26e main.o
- .debug_line    0x00003103       0x94 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
+ .debug_line    0x00002565      0x16c App/HMI/src/HMI.o
+ .debug_line    0x000026d1      0x165 App/HMI/src/HMI_Interface.o
+ .debug_line    0x00002836       0x5a App/HMI/src/HMI_Lcfg.o
+ .debug_line    0x00002890      0x275 App/Indicator/src/Indicator.o
+ .debug_line    0x00002b05       0xc7 App/Indicator/src/Indicator_interface.o
+ .debug_line    0x00002bcc       0x8f App/Indicator/src/Indicator_Lcfg.o
+ .debug_line    0x00002c5b       0xb7 HAL/Keypad/src/Keypad_Lcfg.o
+ .debug_line    0x00002d12       0xd6 HAL/LED/src/LED_Lcfg.o
+ .debug_line    0x00002de8       0xbf HAL/SevenSeg/src/SevenSeg_Lcfg.o
+ .debug_line    0x00002ea7      0x26e main.o
+ .debug_line    0x00003115       0x94 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
 
 .debug_frame    0x00000000      0xac0
  *(.debug_frame)
@@ -1228,7 +1230,7 @@ END GROUP
  .debug_frame   0x000009f8       0x34 App/Indicator/src/Indicator_interface.o
  .debug_frame   0x00000a2c       0x94 main.o
 
-.debug_str      0x00000000     0x1b48
+.debug_str      0x00000000     0x1b57
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_str     0x00000196      0x2c7 FreeRTOS/list.o
@@ -1255,27 +1257,27 @@ END GROUP
                                 0x22e (size before relaxing)
  .debug_str     0x00001640       0x22 App/Display/src/Display_Lcfg.o
                                 0x20e (size before relaxing)
- .debug_str     0x00001662       0x99 App/HMI/src/HMI.o
-                                0x26b (size before relaxing)
- .debug_str     0x000016fb       0xb0 App/HMI/src/HMI_Interface.o
+ .debug_str     0x00001662       0xa8 App/HMI/src/HMI.o
+                                0x27a (size before relaxing)
+ .debug_str     0x0000170a       0xb0 App/HMI/src/HMI_Interface.o
                                 0x2a6 (size before relaxing)
- .debug_str     0x000017ab       0x1a App/HMI/src/HMI_Lcfg.o
+ .debug_str     0x000017ba       0x1a App/HMI/src/HMI_Lcfg.o
                                 0x1c3 (size before relaxing)
- .debug_str     0x000017c5      0x191 App/Indicator/src/Indicator.o
+ .debug_str     0x000017d4      0x191 App/Indicator/src/Indicator.o
                                 0x3b3 (size before relaxing)
- .debug_str     0x00001956       0x55 App/Indicator/src/Indicator_interface.o
+ .debug_str     0x00001965       0x55 App/Indicator/src/Indicator_interface.o
                                 0x22d (size before relaxing)
- .debug_str     0x000019ab       0x26 App/Indicator/src/Indicator_Lcfg.o
+ .debug_str     0x000019ba       0x26 App/Indicator/src/Indicator_Lcfg.o
                                 0x26d (size before relaxing)
- .debug_str     0x000019d1       0x20 HAL/Keypad/src/Keypad_Lcfg.o
+ .debug_str     0x000019e0       0x20 HAL/Keypad/src/Keypad_Lcfg.o
                                 0x2a0 (size before relaxing)
- .debug_str     0x000019f1       0x1a HAL/LED/src/LED_Lcfg.o
+ .debug_str     0x00001a00       0x1a HAL/LED/src/LED_Lcfg.o
                                 0x2be (size before relaxing)
- .debug_str     0x00001a0b       0x24 HAL/SevenSeg/src/SevenSeg_Lcfg.o
+ .debug_str     0x00001a1a       0x24 HAL/SevenSeg/src/SevenSeg_Lcfg.o
                                 0x286 (size before relaxing)
- .debug_str     0x00001a2f       0x47 main.o
+ .debug_str     0x00001a3e       0x47 main.o
                                 0x2c9 (size before relaxing)
- .debug_str     0x00001a76       0xd2 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
+ .debug_str     0x00001a85       0xd2 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
                                 0x336 (size before relaxing)
 
 .debug_loc      0x00000000     0x3573
