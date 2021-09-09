@@ -16,9 +16,9 @@
 
 /*- GLOBAL STATIC VARIABLES
 -------------------------------*/
-static uint8_t gu8_DeviceEraseFlag = 0;
-static uint8_t gu8_PasswordChangeFlag = 0;
-static uint8_t gu8_KeyPressedValue = 0;
+uint8_t gu8_DeviceEraseFlag = 0;
+uint8_t gu8_PasswordChangeFlag = 0;
+uint8_t gu8_KeyPressedValue = 0;
 
 /*APIs IMPLEMENTATION------------------------*/
 /**
