@@ -162,6 +162,7 @@ void DISPLAY_ShiftAndDisplay(uint8_t StringLength, uint8_t* StringPTR)
 }
 #endif
 /*
+
 void DISPLAY_ShiftAndDisplay(uint8_t StringLength, uint8_t* StringPTR)
 {
 	uint8_t static State = OperationStarted;

@@ -18,7 +18,10 @@ main.d main.o: .././main.c \
  ../../../../LIB/STD_TYPES.h ../../../../LIB/BIT_MATH.h \
  ../../../../MCAL/Atmega32/TIMER/inc/TIMER.h \
  ../../../../MCAL/Atmega32/TIMER/inc/TIMER_Lcfg.h \
- ../../../../HAL/LCD/inc/LCD_Lcfg.h
+ ../../../../HAL/LCD/inc/LCD_Lcfg.h ../APP/STORAGE/inc/STORAGE.h \
+ ../../../../HAL/EEPROM_Proxy/inc/EEPROM_Proxy.h \
+ ../../../../MCAL/Atmega32/EEPROM/inc/EEPROM.h \
+ ../../../../LIB/MC_REGISTERS.h
 
 ../../../../FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h:
 
@@ -69,3 +72,11 @@ c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\i
 ../../../../MCAL/Atmega32/TIMER/inc/TIMER_Lcfg.h:
 
 ../../../../HAL/LCD/inc/LCD_Lcfg.h:
+
+../APP/STORAGE/inc/STORAGE.h:
+
+../../../../HAL/EEPROM_Proxy/inc/EEPROM_Proxy.h:
+
+../../../../MCAL/Atmega32/EEPROM/inc/EEPROM.h:
+
+../../../../LIB/MC_REGISTERS.h:

@@ -122,8 +122,10 @@
       <Value>../../../../MCAL/Atmega32/EEPROM/inc</Value>
       <Value>../APP/DISPLAY/inc</Value>
       <Value>../../../../HAL/EEPROM_Proxy/inc</Value>
+      <Value>../APP/STORAGE/inc</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
   <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
   <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
   <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
@@ -359,6 +361,12 @@
     <Compile Include="APP\DISPLAY\src\DISPLAY_Interface.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="APP\STORAGE\inc\STORAGE.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\STORAGE\src\STORAGE.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="FreeRTOS\include_cfg\FreeRTOSConfig.h">
       <SubType>compile</SubType>
     </Compile>
@@ -379,6 +387,9 @@
     <Folder Include="APP\DISPLAY" />
     <Folder Include="APP\DISPLAY\inc" />
     <Folder Include="APP\DISPLAY\src" />
+    <Folder Include="APP\STORAGE" />
+    <Folder Include="APP\STORAGE\inc" />
+    <Folder Include="APP\STORAGE\src" />
     <Folder Include="FreeRTOS\Source" />
     <Folder Include="FreeRTOS\Source\include" />
     <Folder Include="FreeRTOS\Source\portable" />

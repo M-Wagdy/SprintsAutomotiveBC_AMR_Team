@@ -5,7 +5,7 @@
  *  Author: Ahmed Adel
  */ 
 #include "EEPROM_Proxy.h"
-static uint8_t Last_Accessed_Position = 0; /*holds index of the last accessed position*/
+//static uint8_t Last_Accessed_Position = 0; /*holds index of the last accessed position*/
 
 ERROR_STATE_t EEPROM_ProxySaveToMemory(uint8_t* CharArr, uint16_t Starting_position, uint16_t* EndingPosition)
 {
@@ -17,30 +17,39 @@ ERROR_STATE_t EEPROM_ProxySaveToMemory(uint8_t* CharArr, uint16_t Starting_posit
 	uint16_t CyclicRedundancyCheck = 0;
 	/*calculate the checksum bytes*/
 	/*/CRC_16_Calc(ChatArr,&CyclicRedundancyCheck)/*///==> Line of un-implemented code
+	CRC_16_Calc(CharArr, &CyclicRedundancyCheck);
 	/*Initialize the value of EndingPosition*/
-	*EndingPosition = Starting_position;
+	uint8_t CurrentPosition = Starting_position;
 	/*write the bytes with the calculated check sum to the memory*/
-	for(;;iterator++)
+	for(;;)
 	{
 		/*check if Ending position is in range*/
-		if(*EndingPosition < 1024)
+		if(CurrentPosition < 1024)
 		{
-			/*save byte to the EEPROM*/
-			EEPROM_Write(CharArr[iterator], *EndingPosition);
-			*EndingPosition++;
 			/*check if end of the array is reached*/
 			if(CharArr[iterator] == NULL_TERMINATOR)
 			{
 				/*save to EEPROM*/
-				EEPROM_Write(CharArr[iterator],*EndingPosition);
-				*EndingPosition++;
+				EEPROM_Write(CharArr[iterator],CurrentPosition);
+				CurrentPosition++;
+				iterator++;
 				/*save calculated CRC bytes*/
-				EEPROM_Write(CyclicRedundancyCheck>>8, *EndingPosition);
-				*EndingPosition++;
-				EEPROM_Write((uint8_t)(CyclicRedundancyCheck|0x00FF), *EndingPosition);
+				EEPROM_Write(CyclicRedundancyCheck>>8, CurrentPosition);
+				CurrentPosition++;
+				iterator++;
+				EEPROM_Write((uint8_t)(CyclicRedundancyCheck&0x00FF), CurrentPosition);
+				*EndingPosition = CurrentPosition;
+				iterator++;
 				ErrRetVal = OperationSuccess;
 				/*break from for LOOP*/
 				break;
+			}
+			else
+			{
+				/*save byte to the EEPROM*/
+				EEPROM_Write(CharArr[iterator], CurrentPosition);
+				CurrentPosition++;
+				iterator++;
 			}
 		}
 		else
@@ -54,7 +63,7 @@ ERROR_STATE_t EEPROM_ProxySaveToMemory(uint8_t* CharArr, uint16_t Starting_posit
 ERROR_STATE_t EEPROM_ProxyLoadFromMemory(uint16_t StartingPosition, uint16_t EndingPosition, uint8_t* CharArr)
 {
 	/*initialize the static data buffer to return data back to the calling function 'retains data'*/
-	static uint8_t array[255];
+	//static uint8_t array[255];
 	/*initializing the variable that will hold the CRC to be compared with the calculated one*/
 	uint16_t CyclicRedundancyCheckLoaded = 0;
 	uint16_t CyclicRedundancyCheck = 0;
@@ -66,25 +75,30 @@ ERROR_STATE_t EEPROM_ProxyLoadFromMemory(uint16_t StartingPosition, uint16_t End
 	/*initialize a variable that hold the current reading position*/
 	uint16_t CurrentReadingPosition = StartingPosition;
 	/*read the bytes with the calculated check sum to the memory*/
-	for(;;iterator++)
+	for(;;)
 	{
 		if((CurrentReadingPosition<= EndingPosition) && (EndingPosition <= 1023))
 		{
 			/*load byte from the EEPROM*/
-			EEPROM_Read(*(array[iterator]), CurrentReadingPosition);
+			EEPROM_Read(&(CharArr[iterator]), CurrentReadingPosition);
 			CurrentReadingPosition++;
 			/*check if end of the data is reached*/
 			if(CharArr[iterator] == NULL_TERMINATOR)
 			{
 				/*load the calculated checksum bytes*/
-				EEPROM_Read(CRC_HalfBits, CurrentReadingPosition);
-				CyclicRedundancyCheckLoaded |= CRC_HalfBits;
-				CyclicRedundancyCheckLoaded << 8;
+				EEPROM_Read(&CRC_HalfBits, CurrentReadingPosition);
 				CurrentReadingPosition++;
-				EEPROM_Read(CRC_HalfBits, CurrentReadingPosition);
+				iterator++;
+				CyclicRedundancyCheckLoaded |= CRC_HalfBits;
+				CyclicRedundancyCheckLoaded <<= 8;
+				CurrentReadingPosition++;
+				EEPROM_Read(&CRC_HalfBits, CurrentReadingPosition);
+				CurrentReadingPosition++;
+				iterator++;
 				CyclicRedundancyCheckLoaded |= CRC_HalfBits;
 				ErrRetVal = OperationSuccess;
 				/*break from for LOOP*/
+				//CharArr = array;
 				break;
 			}
 			else if (CharArr[iterator] == 0xFF)
@@ -93,6 +107,7 @@ ERROR_STATE_t EEPROM_ProxyLoadFromMemory(uint16_t StartingPosition, uint16_t End
 				ErrRetVal = MemoryEmpty;
 				break;
 			}
+			iterator++;
 		}
 		else
 		{
@@ -104,5 +119,11 @@ ERROR_STATE_t EEPROM_ProxyLoadFromMemory(uint16_t StartingPosition, uint16_t End
 	/*compare calculated to to the Loaded CRC*/
 	/*/CRC_16_Check(ChatArr,&CyclicRedundancyCheck)/*///==> Line of un-implemented code
 	/*return the error value*/
+	return ErrRetVal;
+}
+ERROR_STATE_t EEPROM_EraseSection(uint16_t StartingPosition)
+{
+	uint8_t ErrRetVal = OperationStarted;
+	ErrRetVal = EEPROM_Write(0xff,StartingPosition);
 	return ErrRetVal;
 }
