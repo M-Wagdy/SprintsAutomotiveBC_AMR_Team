@@ -35,6 +35,7 @@ int main(void)
 	//STORAGE_MAC_Save(MAC);
 	//STORAGE_MAC_Load(Load);
 	CRC_16_Calc(Load,&low);
+	CRC_16_Chk(Load,&low);
 	//xTaskCreate(myTask1,"Task1",200,NULL_PTR,1,&myTaskHandle);/*creates a task*/
 	//while(LCD_SendData('A')!=OperationSuccess);
 	//while(LCD_SendString("AHMED")!=OperationSuccess);

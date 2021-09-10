@@ -521,8 +521,6 @@ Discarded input sections
                 0x00000000       0x26 LIB/UTILS.o
  .text.STR_Number2String
                 0x00000000       0x54 LIB/UTILS.o
- .text.CRC_16_Chk
-                0x00000000      0x640 LIB/UTILS.o
  .text          0x00000000        0x0 MCAL/DIO/src/DIO.o
  .data          0x00000000        0x0 MCAL/DIO/src/DIO.o
  .bss           0x00000000        0x0 MCAL/DIO/src/DIO.o
@@ -1143,7 +1141,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xb2a
+.text           0x00000000     0x1172
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Users/vetmo/Downloads/Ahmed/Atmel/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -1242,15 +1240,18 @@ END GROUP
                 0x00000464       0x26 LIB/UTILS.o
                 0x00000464                STR_Length
  .text.CRC_16_Calc
-                0x0000048a      0x650 LIB/UTILS.o
+                0x0000048a      0x662 LIB/UTILS.o
                 0x0000048a                CRC_16_Calc
- .text.main     0x00000ada       0x4c main.o
-                0x00000ada                main
-                0x00000b26                . = ALIGN (0x2)
+ .text.CRC_16_Chk
+                0x00000aec      0x62a LIB/UTILS.o
+                0x00000aec                CRC_16_Chk
+ .text.main     0x00001116       0x58 main.o
+                0x00001116                main
+                0x0000116e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000b26        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000b26                _exit
-                0x00000b26                exit
+ .fini9         0x0000116e        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000116e                _exit
+                0x0000116e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1269,11 +1270,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000b26        0x4 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000116e        0x4 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000b2a                _etext = .
+                0x00001172                _etext = .
 
-.data           0x00800060      0x100 load address 0x00000b2a
+.data           0x00800060      0x100 load address 0x00001172
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1319,8 +1320,8 @@ END GROUP
  COMMON         0x00800194        0x2 main.o
                 0x00800194                low
                 0x00800196                PROVIDE (__bss_end, .)
-                0x00000b2a                __data_load_start = LOADADDR (.data)
-                0x00000c2a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001172                __data_load_start = LOADADDR (.data)
+                0x00001272                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800196        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -1408,55 +1409,55 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x27e2
+.debug_info     0x00000000     0x2829
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Users/vetmo/Downloads/Ahmed/Atmel/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x000004e6      0x24e FreeRTOS/Source/portable/GCC/ATMega323/port.o
  .debug_info    0x00000734     0x1991 FreeRTOS/Source/tasks.o
- .debug_info    0x000020c5      0x5b6 LIB/UTILS.o
- .debug_info    0x0000267b      0x167 main.o
+ .debug_info    0x000020c5      0x5c6 LIB/UTILS.o
+ .debug_info    0x0000268b      0x19e main.o
 
-.debug_abbrev   0x00000000      0xaf0
+.debug_abbrev   0x00000000      0xb0c
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Users/vetmo/Downloads/Ahmed/Atmel/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3      0x143 FreeRTOS/Source/portable/GCC/ATMega323/port.o
  .debug_abbrev  0x000005e6      0x294 FreeRTOS/Source/tasks.o
- .debug_abbrev  0x0000087a      0x1a0 LIB/UTILS.o
- .debug_abbrev  0x00000a1a       0xd6 main.o
+ .debug_abbrev  0x0000087a      0x1af LIB/UTILS.o
+ .debug_abbrev  0x00000a29       0xe3 main.o
 
-.debug_line     0x00000000     0x1b9d
+.debug_line     0x00000000     0x1bb1
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Users/vetmo/Downloads/Ahmed/Atmel/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_line    0x00000116      0x302 FreeRTOS/Source/portable/GCC/ATMega323/port.o
  .debug_line    0x00000418     0x1006 FreeRTOS/Source/tasks.o
- .debug_line    0x0000141e      0x6a7 LIB/UTILS.o
- .debug_line    0x00001ac5       0xd8 main.o
+ .debug_line    0x0000141e      0x6b5 LIB/UTILS.o
+ .debug_line    0x00001ad3       0xde main.o
 
-.debug_frame    0x00000000      0x734
+.debug_frame    0x00000000      0x740
  *(.debug_frame)
  .debug_frame   0x00000000       0x84 FreeRTOS/Source/portable/GCC/ATMega323/port.o
  .debug_frame   0x00000084      0x50c FreeRTOS/Source/tasks.o
- .debug_frame   0x00000590      0x170 LIB/UTILS.o
- .debug_frame   0x00000700       0x34 main.o
+ .debug_frame   0x00000590      0x17c LIB/UTILS.o
+ .debug_frame   0x0000070c       0x34 main.o
 
-.debug_str      0x00000000     0x1046
+.debug_str      0x00000000     0x1050
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Users/vetmo/Downloads/Ahmed/Atmel/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_str     0x00000196      0x2ec FreeRTOS/Source/portable/GCC/ATMega323/port.o
                                 0x330 (size before relaxing)
  .debug_str     0x00000482      0x9ec FreeRTOS/Source/tasks.o
                                 0xca9 (size before relaxing)
- .debug_str     0x00000e6e      0x1c2 LIB/UTILS.o
-                                0x3a2 (size before relaxing)
- .debug_str     0x00001030       0x16 main.o
-                                0x1fa (size before relaxing)
+ .debug_str     0x00000e6e      0x1cc LIB/UTILS.o
+                                0x3ac (size before relaxing)
+ .debug_str     0x0000103a       0x16 main.o
+                                0x205 (size before relaxing)
 
-.debug_loc      0x00000000     0x2779
+.debug_loc      0x00000000     0x27c4
  *(.debug_loc)
  .debug_loc     0x00000000      0x2a0 FreeRTOS/Source/portable/GCC/ATMega323/port.o
  .debug_loc     0x000002a0     0x1d44 FreeRTOS/Source/tasks.o
- .debug_loc     0x00001fe4      0x74d LIB/UTILS.o
- .debug_loc     0x00002731       0x48 main.o
+ .debug_loc     0x00001fe4      0x798 LIB/UTILS.o
+ .debug_loc     0x0000277c       0x48 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
