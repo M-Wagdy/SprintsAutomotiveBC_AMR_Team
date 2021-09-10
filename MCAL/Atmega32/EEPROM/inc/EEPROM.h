@@ -13,17 +13,10 @@
 #include "LIB.h"
 
 /*Need to be added to the MC_REGISTERS.h*/
+/*
 #define SPMCR *((volatile ptr_uint8_t)(0X57))
-#define SPMEN BIT0
-
-#define OperationStarted (255)
-#define OperationSuccess (0)
-#define OperationFail	 (1)
-
-uint8_t EEPROM_Init(void);
+#define SPMEN BIT0*/
 uint8_t EEPROM_Read(uint8_t * Data,uint16_t Address);
 uint8_t EEPROM_Write(uint8_t Data,uint16_t Address);
-
-
 
 #endif /* EEPROM_H_ */

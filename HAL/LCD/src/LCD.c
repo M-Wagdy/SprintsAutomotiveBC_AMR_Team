@@ -1,12 +1,13 @@
 /*Include*/
 #include "LCD.h"
+
 /*LCD_Cfg.h*/
-//#define LCD_8_BIT	(8)
-#define LCD_4_BIT	(0)
-//#define LCD_Mode	LCD_8_BIT
+#define LCD_4_BIT	(1)
 /*Cfg_End*/
+
 /*set the value to 1 if you are not using RTOS*/
 #define Timer_Usage 0 
+
 /*Local Macros*/
 /*functions states*/
 #define Sending_First_Nibble								(1)
@@ -34,6 +35,7 @@
 /*Externed global variables*/
 extern const STR_LCD_config_t gastr_LCD_Config[LCD_NUMBER];
 extern const STR_LCD_8_config_t gastr_LCD_8_Config[LCD_NUMBER];
+
 /*functions Implementations*/
 ERROR_STATE_t LCD_SendCommand(uint8_t CMD)
 {
@@ -393,7 +395,7 @@ ERROR_STATE_t LCD_Init()
 		}
 		break;
 	case Sixth_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_SHIFTINCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE/LCD_SHIFTINCREMENTENTRYMODE
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE/LCD_SHIFTINCREMENTENTRYMODE
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = Seventh_Cmd_In_Initialization_Sequence_Is_Sent;
@@ -418,7 +420,7 @@ ERROR_STATE_t LCD_Init()
 		ErrRetVal = OperationFail;
 	}
 	/************************************************************************/
-	/*                                                                      */
+	/*                 8_Bit Mode initialization Function                   */
 	/************************************************************************/
 	#else
 	/*Starting the initialization sequence*/
@@ -485,7 +487,7 @@ ERROR_STATE_t LCD_Init()
 		}
 		break;
 		case Third_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_FUNCSET_3);//LCD_HOME
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_FUNCSET_3);
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = Fourth_Cmd_In_Initialization_Sequence_Is_Sent;
@@ -499,14 +501,14 @@ ERROR_STATE_t LCD_Init()
 		}
 		break;
 		case Fifth_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);//LCD_INCREMENTENTRYMODE/LCD_SHIFTINCREMENTENTRYMODE
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_CLR);
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = Sixth_Cmd_In_Initialization_Sequence_Is_Sent;
 		}
 		break;
 		case Sixth_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_HOME);
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_INCREMENTENTRYMODE);
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = Seventh_Cmd_In_Initialization_Sequence_Is_Sent;
@@ -520,7 +522,7 @@ ERROR_STATE_t LCD_Init()
 		}
 		break;
 		case Final_Cmd_In_Initialization_Sequence_Is_Sent:
-		LCD_SendCommandRetVal = LCD_SendCommand(LCD_CURS_Position0);
+		LCD_SendCommandRetVal = LCD_SendCommand(LCD_HOME);
 		if(LCD_SendCommandRetVal == OperationSuccess)
 		{
 			State = OperationStarted;
@@ -676,78 +678,4 @@ ERROR_STATE_t LCD_ReadDispLoc(uint8_t Location, uint8_t* Data)
 	return ErrRetVal;
 }
 
-
-/*
-static void LCD_SetPinsValue(uint8_t PinsVal)
-{
-	
-	DIO_WritePin(gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_DATA_Port,gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_D0,READ_BIT(PinsVal,BIT_0));
-	DIO_WritePin(gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_DATA_Port,gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_D1,READ_BIT(PinsVal,BIT_1));
-	DIO_WritePin(gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_DATA_Port,gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_D2,READ_BIT(PinsVal,BIT_2));
-	DIO_WritePin(gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_DATA_Port,gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_D3,READ_BIT(PinsVal,BIT_3));
-	DIO_WritePin(gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_DATA_Port,gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_D4,READ_BIT(PinsVal,BIT_4));
-	DIO_WritePin(gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_DATA_Port,gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_D5,READ_BIT(PinsVal,BIT_5));
-	DIO_WritePin(gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_DATA_Port,gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_D6,READ_BIT(PinsVal,BIT_6));
-	DIO_WritePin(gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_DATA_Port,gastr_LCD_8_Config[LCD_Channel_0].u8_LCD_D7,READ_BIT(PinsVal,BIT_7));
-	
-}*/
-
-/*
-ERROR_STATE_t LCD_SendCommand(uint8_t CMD)
-{
-	/ *function starting* /
-	uint8_t ErrRetVal = OperationStarted;
-	uint8_t static State = OperationStarted;
-	/ *declaring a variable for the timer return* /
-	uint8_t TimerRetVal = 1;*/
-/*
-	switch ()
-	{
-		case OperationStarted:
-			/ *sending control signals with configurations of selection of control reg. and write process* /
-			DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_Rs, PIN_LOW);
-			DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_Rw, PIN_LOW);
-			/ *Setting the lcd pins* /
-			LCD_SetPinsValue(CMD);
-			/ *writing data to the register by pulling the enable pin high for 1 Us* /
-			DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_HIGH);
-			State = CMD_Sending;
-			break;
-		case CMD_Sending:
-			/ *start timer delay in background* /
-			if(TIMER_E_DELAY_EMPTY == TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand))
-			{
-				TIM_DelayUs(TIMER_2, 1,(void (*)(void)) LCD_SendCommand);
-				while(ERROR_OK != TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand));
-				/ *if timer delay function finished correctly pull enable pin low* /
-				DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_LOW);
-				/ *update the function's state* /
-				State = CMD_Sent;
-			}
-			break;
-		case CMD_Sent:
-			/ *start timer delay in background* /
-			TimerRetVal = TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand);
-			if(TIMER_E_DELAY_EMPTY == TimerRetVal)
-			{
-				TIM_DelayMs(TIMER_2,2, (void (*)(void))LCD_SendCommand);
-			}
-			if(TimerRetVal == ((uint8_t)ERROR_OK))
-			{
-				ErrRetVal = OperationSuccess;
-				State = OperationStarted
-			}
-			break;
-		default:
-			ErrRetVal = OperationFail;
-			break;*/
-	//}
-/*
-	return ErrRetVal;
-}
-
-#endif			*/									
-													
-													
-													
-													
+			

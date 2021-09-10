@@ -12,17 +12,11 @@
 #include "TIMER.h"
 #include "LCD_Lcfg.h"
 
-/*functions return*/
-#define OperationSuccess 											(0)
-#define OperationFail 												(1)
-#define OperationRunning											(2)
-#define OperationStarted 											(255)
-
 /*Macros*/
 #define LCD_CLR           		    0x01		/*Clear Screen 0x00000001*/
 #define LCD_HOME          		    0x02        /*return cursor to first position on first line 0x0000001X*/
 /*Entry modes*/
-#define LCD_INCREMENTENTRYMODE     	0x06		/*Increment Entry Mode and display shifting is off 0x000000 I/D S*/
+#define LCD_INCREMENTENTRYMODE     	0x06		/*Increment Entry Mode and display shifting is off 0x000001 I/D S*/
 #define LCD_SHIFTINCREMENTENTRYMODE 0x07		/*Display Shift + Increment Entry Mode*/
 #define LCD_DECREMENTENTRYMODE  	0x04		/*Decrement Entry Mode*/
 #define LCD_SHIFTDECREMENTENTRYMODE 0x05		/*Display Shift + Decrement Entry Mode*/

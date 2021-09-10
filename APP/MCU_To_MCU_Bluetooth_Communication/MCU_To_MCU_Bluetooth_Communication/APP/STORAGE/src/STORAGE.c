@@ -12,7 +12,7 @@ ERROR_STATE_t STORAGE_MAC_Save(uint8_t* CharArr)
 		uint16_t EndingPosition = 0;
 		ErrRetVal = EEPROM_ProxySaveToMemory(CharArr,STARTING_ADD_MAC, &EndingPosition);
 		if(EndingPosition > ENDING_ADD_MAC)
-		ErrRetVal = OperationFail;
+			ErrRetVal = OperationFail;
 		return ErrRetVal;
 }
 ERROR_STATE_t STORAGE_MAC_Load(uint8_t* CharArr)
@@ -42,7 +42,7 @@ ERROR_STATE_t STORAGE_Password_Save(uint8_t* CharArr)
 	uint16_t EndingPosition = 0;
 	ErrRetVal = EEPROM_ProxySaveToMemory(CharArr,STARTING_ADD_Password, &EndingPosition);
 	if(EndingPosition > ENDING_ADD_Password)
-	ErrRetVal = OperationFail;
+		ErrRetVal = OperationFail;
 	return ErrRetVal;
 }
 ERROR_STATE_t STORAGE_Password_Load(uint8_t* CharArr)

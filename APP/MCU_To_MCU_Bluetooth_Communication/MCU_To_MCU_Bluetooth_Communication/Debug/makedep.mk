@@ -20,6 +20,8 @@
 
 ..\..\..\FreeRTOS\FreeRTOS\Source\timers.c
 
+..\..\..\HAL\EEPROM_Proxy\src\EEPROM_Proxy.c
+
 ..\..\..\HAL\LCD\src\LCD.c
 
 ..\..\..\HAL\LCD\src\LCD_Lcfg.c
@@ -27,6 +29,8 @@
 ..\..\..\LIB\UTILS.c
 
 ..\..\..\MCAL\Atmega32\DIO\src\DIO.c
+
+..\..\..\MCAL\Atmega32\EEPROM\src\EEPROM.c
 
 ..\..\..\MCAL\Atmega32\PWM\src\PWM.c
 
@@ -42,9 +46,5 @@ APP\DISPLAY\src\DISPLAY_Interface.c
 
 APP\STORAGE\src\STORAGE.c
 
-HAL\EEPROM_Proxy\src\EEPROM_Proxy.c
-
 main.c
-
-MCAL\EEPROM\src\EEPROM.c
 

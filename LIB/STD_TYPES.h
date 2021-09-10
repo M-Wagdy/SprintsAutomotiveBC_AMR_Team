@@ -39,16 +39,20 @@ typedef void (*Ptr_VoidFuncVoid_t)(void);
 /*ERROR STATE*/
 typedef uint8_t ERROR_STATE_t;
 /*----------------COMMON MACRROS----------------------*/
-#define ERROR_OK        (uint8_t)0
-#define ERROR_NOK       (uint8_t)1
-#define INIT			(uint8_t)1
-#define NOT_INIT		(uint8_t)0
+#define ERROR_OK			(uint8_t)0
+#define ERROR_NOK			(uint8_t)1
+#define INIT				(uint8_t)1
+#define NOT_INIT			(uint8_t)0
+#define OperationStarted	(uint8_t)(255)
+#define OperationSuccess	(uint8_t)(0)
+#define OperationFail		(uint8_t)(1)
+#define OperationRunning	(uint8_t)(2)
 
-#define NULL_PTR        ((void*)(0))
-#define NULL_TERMINATOR (uint8_t)('\0')
-#define END_OF_STRING   (uint8_t)('\0')
-#define NEW_LINE        (uint8_t)('\r')
-#define BACKSPACE       (uint8_t)('\b')
+#define NULL_PTR			((void*)(0))
+#define NULL_TERMINATOR		(uint8_t)('\0')
+#define END_OF_STRING		(uint8_t)('\0')
+#define NEW_LINE			(uint8_t)('\r')
+#define BACKSPACE			(uint8_t)('\b')
 
 
 

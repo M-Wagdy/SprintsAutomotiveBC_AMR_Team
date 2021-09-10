@@ -125,7 +125,6 @@
       <Value>../APP/STORAGE/inc</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
-  <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
   <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
   <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
   <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
@@ -257,6 +256,14 @@
       <SubType>compile</SubType>
       <Link>FreeRTOS\Source\timers.c</Link>
     </Compile>
+    <Compile Include="..\..\..\HAL\EEPROM_Proxy\inc\EEPROM_Proxy.h">
+      <SubType>compile</SubType>
+      <Link>HAL\EEPROM_Proxy\inc\EEPROM_Proxy.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\HAL\EEPROM_Proxy\src\EEPROM_Proxy.c">
+      <SubType>compile</SubType>
+      <Link>HAL\EEPROM_Proxy\src\EEPROM_Proxy.c</Link>
+    </Compile>
     <Compile Include="..\..\..\HAL\LCD\inc\LCD.h">
       <SubType>compile</SubType>
       <Link>HAL\LCD\inc\LCD.h</Link>
@@ -312,6 +319,10 @@
     <Compile Include="..\..\..\MCAL\Atmega32\EEPROM\inc\EEPROM.h">
       <SubType>compile</SubType>
       <Link>MCAL\EEPROM\inc\EEPROM.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\MCAL\Atmega32\EEPROM\src\EEPROM.c">
+      <SubType>compile</SubType>
+      <Link>MCAL\EEPROM\src\EEPROM.c</Link>
     </Compile>
     <Compile Include="..\..\..\MCAL\Atmega32\PWM\inc\PWM.h">
       <SubType>compile</SubType>
@@ -370,16 +381,7 @@
     <Compile Include="FreeRTOS\include_cfg\FreeRTOSConfig.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="HAL\EEPROM_Proxy\inc\EEPROM_Proxy.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="HAL\EEPROM_Proxy\src\EEPROM_Proxy.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="MCAL\EEPROM\src\EEPROM.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

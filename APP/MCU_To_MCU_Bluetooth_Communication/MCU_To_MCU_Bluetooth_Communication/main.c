@@ -8,58 +8,46 @@
 #include "task.h"
 #include "DISPLAY.h"
 #include "STORAGE.h"
-/*TaskHandle_t myTaskHandle = NULL;*/
-/*
-void myTask1 (void *p)
-{
-	while(1)
-	{
-		//LCD_SendData('A');
-		LCD_SendCommand(0x1C);
-		vTaskDelay(2);
-	}
-}*/
 
-uint8_t Load[255] = "ALI";
-//Load={'A','L','I','\0'};
-//uint8_t *MAC = (uint8_t*)"ALI";
-uint8_t MAC[6] = {0x41,0x4C,0x49,0x00,0x27,0xEB};
-uint16_t low;
 int main(void)
 {
-	//DIO_SetPinDirection(PORT_D,PIN0,PIN_OUTPUT);
-	//EEPROM_Write('A',5);
-	//uint8_t iterator = 0;
-	//while(LCD_Init()!= OperationSuccess);
-	//DISPLAY_SetState(SystemLoading);
-	//STORAGE_MAC_Save(MAC);
-	//STORAGE_MAC_Load(Load);
-	CRC_16_Calc(Load,&low);
-	CRC_16_Chk(Load,&low);
-	//xTaskCreate(myTask1,"Task1",200,NULL_PTR,1,&myTaskHandle);/*creates a task*/
-	//while(LCD_SendData('A')!=OperationSuccess);
-	//while(LCD_SendString("AHMED")!=OperationSuccess);
-	//vTaskStartScheduler();/*Start Scheduler*/
-	//uint8_t x =0;EEPROM_Read(&x,5);
-    //LCD_ReadDispLoc(1,&x);
-	//EEPROM_write(5, 'A');
-	//x=EEPROM_read(5);
+	/*
+	variables:
+		password length
+		WordLength
+	*/
+	//while( != OperationSuccess);
+	uint8_t passworLength = 4;
+	uint8_t const wordLength = 9;
+	uint8_t positionaftefirstlineword = 0xc0;
+	while(LCD_Init() != OperationSuccess);
+	while(LCD_SendCommand(0X80|7)!= OperationSuccess);
+	while(LCD_SendString((uint8_t*)"AhmedAdel") != OperationSuccess);
+	while(LCD_SendCommand(positionaftefirstlineword)!= OperationSuccess);
+	for(uint8_t i = 0; i< passworLength; i++)
+	{
+		while(LCD_SendData('*')!= OperationSuccess);
+	}
+	uint8_t l = (passworLength+(16-wordLength));
 	while (1) 
     {
-		//DISPLAY_ShiftAndDisplay(5,(uint8_t*)"AHMED");
-		//DISPLAY_MainFunction();
-		//iterator ++;
-		//if(x=='A')
-		//DIO_WritePin(PORT_D,PIN0,PIN_HIGH);
-		//LCD_SendCommand(0x1C);
-		for(volatile uint32_t i = 0; i<25000;i++);
-		
-		//if(iterator == 20)
-			//State = PassEntering;
-		//DISPLAY_ShiftAndDisplay(5,(uint8_t*)"ADEL");
-		//for(volatile uint32_t i = 0; i<100000;i++);
-		//LCD_ReadDispLoc(LCD_CURS_Position0,&x);
-		
+		for(uint8_t y = 0; y<(16-wordLength); y++)
+		{
+			while(LCD_SendCommand(LCD_SHIFTDISPLEFT)!= OperationSuccess);
+			while(LCD_SendData('*')!= OperationSuccess);
+			for(uint32_t volatile x = 0; x < 50000; x++);
+		}
+		for(uint8_t y = 0; y<(16-wordLength);y++)
+		{
+			
+			while(LCD_SendCommand(LCD_SHIFTDISPRIGHT)!= OperationSuccess);
+			while(LCD_SendCommand(0xc0|l)!= OperationSuccess);
+			while(LCD_SendData(' ')!= OperationSuccess);
+			while(LCD_SendCommand((0xc0|l)-1)!= OperationSuccess);
+			for(uint32_t volatile x = 0; x < 2000; x++);
+			l--;
+		}
+		l = (passworLength+(16-wordLength));
     }
 }
 

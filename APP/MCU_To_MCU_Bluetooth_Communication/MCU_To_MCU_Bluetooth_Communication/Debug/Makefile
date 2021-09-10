@@ -82,10 +82,12 @@ C_SRCS +=  \
 ../../../../FreeRTOS/FreeRTOS/Source/stream_buffer.c \
 ../../../../FreeRTOS/FreeRTOS/Source/tasks.c \
 ../../../../FreeRTOS/FreeRTOS/Source/timers.c \
+../../../../HAL/EEPROM_Proxy/src/EEPROM_Proxy.c \
 ../../../../HAL/LCD/src/LCD.c \
 ../../../../HAL/LCD/src/LCD_Lcfg.c \
 ../../../../LIB/UTILS.c \
 ../../../../MCAL/Atmega32/DIO/src/DIO.c \
+../../../../MCAL/Atmega32/EEPROM/src/EEPROM.c \
 ../../../../MCAL/Atmega32/PWM/src/PWM.c \
 ../../../../MCAL/Atmega32/PWM/src/PWM_Lcfg.c \
 ../../../../MCAL/Atmega32/TIMER/src/TIMER.c \
@@ -93,9 +95,7 @@ C_SRCS +=  \
 ../APP/DISPLAY/src/DISPLAY.c \
 ../APP/DISPLAY/src/DISPLAY_Interface.c \
 ../APP/STORAGE/src/STORAGE.c \
-../HAL/EEPROM_Proxy/src/EEPROM_Proxy.c \
-../main.c \
-../MCAL/EEPROM/src/EEPROM.c
+../main.c
 
 
 PREPROCESSING_SRCS += 
@@ -114,10 +114,12 @@ FreeRTOS/Source/queue.o \
 FreeRTOS/Source/stream_buffer.o \
 FreeRTOS/Source/tasks.o \
 FreeRTOS/Source/timers.o \
+HAL/EEPROM_Proxy/src/EEPROM_Proxy.o \
 HAL/LCD/src/LCD.o \
 HAL/LCD/src/LCD_Lcfg.o \
 LIB/UTILS.o \
 MCAL/DIO/src/DIO.o \
+MCAL/EEPROM/src/EEPROM.o \
 MCAL/PWM/src/PWM.o \
 MCAL/PWM/src/PWM_Lcfg.o \
 MCAL/TIMER/src/TIMER.o \
@@ -125,9 +127,7 @@ MCAL/TIMER/src/TIMER_Lcfg.o \
 APP/DISPLAY/src/DISPLAY.o \
 APP/DISPLAY/src/DISPLAY_Interface.o \
 APP/STORAGE/src/STORAGE.o \
-HAL/EEPROM_Proxy/src/EEPROM_Proxy.o \
-main.o \
-MCAL/EEPROM/src/EEPROM.o
+main.o
 
 OBJS_AS_ARGS +=  \
 FreeRTOS/Source/croutine.o \
@@ -139,10 +139,12 @@ FreeRTOS/Source/queue.o \
 FreeRTOS/Source/stream_buffer.o \
 FreeRTOS/Source/tasks.o \
 FreeRTOS/Source/timers.o \
+HAL/EEPROM_Proxy/src/EEPROM_Proxy.o \
 HAL/LCD/src/LCD.o \
 HAL/LCD/src/LCD_Lcfg.o \
 LIB/UTILS.o \
 MCAL/DIO/src/DIO.o \
+MCAL/EEPROM/src/EEPROM.o \
 MCAL/PWM/src/PWM.o \
 MCAL/PWM/src/PWM_Lcfg.o \
 MCAL/TIMER/src/TIMER.o \
@@ -150,9 +152,7 @@ MCAL/TIMER/src/TIMER_Lcfg.o \
 APP/DISPLAY/src/DISPLAY.o \
 APP/DISPLAY/src/DISPLAY_Interface.o \
 APP/STORAGE/src/STORAGE.o \
-HAL/EEPROM_Proxy/src/EEPROM_Proxy.o \
-main.o \
-MCAL/EEPROM/src/EEPROM.o
+main.o
 
 C_DEPS +=  \
 FreeRTOS/Source/croutine.d \
@@ -164,10 +164,12 @@ FreeRTOS/Source/queue.d \
 FreeRTOS/Source/stream_buffer.d \
 FreeRTOS/Source/tasks.d \
 FreeRTOS/Source/timers.d \
+HAL/EEPROM_Proxy/src/EEPROM_Proxy.d \
 HAL/LCD/src/LCD.d \
 HAL/LCD/src/LCD_Lcfg.d \
 LIB/UTILS.d \
 MCAL/DIO/src/DIO.d \
+MCAL/EEPROM/src/EEPROM.d \
 MCAL/PWM/src/PWM.d \
 MCAL/PWM/src/PWM_Lcfg.d \
 MCAL/TIMER/src/TIMER.d \
@@ -175,9 +177,7 @@ MCAL/TIMER/src/TIMER_Lcfg.d \
 APP/DISPLAY/src/DISPLAY.d \
 APP/DISPLAY/src/DISPLAY_Interface.d \
 APP/STORAGE/src/STORAGE.d \
-HAL/EEPROM_Proxy/src/EEPROM_Proxy.d \
-main.d \
-MCAL/EEPROM/src/EEPROM.d
+main.d
 
 C_DEPS_AS_ARGS +=  \
 FreeRTOS/Source/croutine.d \
@@ -189,10 +189,12 @@ FreeRTOS/Source/queue.d \
 FreeRTOS/Source/stream_buffer.d \
 FreeRTOS/Source/tasks.d \
 FreeRTOS/Source/timers.d \
+HAL/EEPROM_Proxy/src/EEPROM_Proxy.d \
 HAL/LCD/src/LCD.d \
 HAL/LCD/src/LCD_Lcfg.d \
 LIB/UTILS.d \
 MCAL/DIO/src/DIO.d \
+MCAL/EEPROM/src/EEPROM.d \
 MCAL/PWM/src/PWM.d \
 MCAL/PWM/src/PWM_Lcfg.d \
 MCAL/TIMER/src/TIMER.d \
@@ -200,9 +202,7 @@ MCAL/TIMER/src/TIMER_Lcfg.d \
 APP/DISPLAY/src/DISPLAY.d \
 APP/DISPLAY/src/DISPLAY_Interface.d \
 APP/STORAGE/src/STORAGE.d \
-HAL/EEPROM_Proxy/src/EEPROM_Proxy.d \
-main.d \
-MCAL/EEPROM/src/EEPROM.d
+main.d
 
 OUTPUT_FILE_PATH +=MCU_To_MCU_Bluetooth_Communication.elf
 
@@ -221,161 +221,161 @@ LINKER_SCRIPT_DEP+=
 FreeRTOS/Source/croutine.o: ../../../../FreeRTOS/FreeRTOS/Source/croutine.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/Source/event_groups.o: ../../../../FreeRTOS/FreeRTOS/Source/event_groups.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/Source/list.o: ../../../../FreeRTOS/FreeRTOS/Source/list.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/Source/portable/GCC/ATMega323/port.o: ../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323/port.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/Source/portable/MemMang/heap_4.o: ../../../../FreeRTOS/FreeRTOS/Source/portable/MemMang/heap_4.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/Source/queue.o: ../../../../FreeRTOS/FreeRTOS/Source/queue.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/Source/stream_buffer.o: ../../../../FreeRTOS/FreeRTOS/Source/stream_buffer.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/Source/tasks.o: ../../../../FreeRTOS/FreeRTOS/Source/tasks.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 FreeRTOS/Source/timers.o: ../../../../FreeRTOS/FreeRTOS/Source/timers.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/EEPROM_Proxy/src/EEPROM_Proxy.o: ../../../../HAL/EEPROM_Proxy/src/EEPROM_Proxy.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/LCD/src/LCD.o: ../../../../HAL/LCD/src/LCD.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 HAL/LCD/src/LCD_Lcfg.o: ../../../../HAL/LCD/src/LCD_Lcfg.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 LIB/UTILS.o: ../../../../LIB/UTILS.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/DIO/src/DIO.o: ../../../../MCAL/Atmega32/DIO/src/DIO.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/EEPROM/src/EEPROM.o: ../../../../MCAL/Atmega32/EEPROM/src/EEPROM.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/PWM/src/PWM.o: ../../../../MCAL/Atmega32/PWM/src/PWM.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/PWM/src/PWM_Lcfg.o: ../../../../MCAL/Atmega32/PWM/src/PWM_Lcfg.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/TIMER/src/TIMER.o: ../../../../MCAL/Atmega32/TIMER/src/TIMER.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 MCAL/TIMER/src/TIMER_Lcfg.o: ../../../../MCAL/Atmega32/TIMER/src/TIMER_Lcfg.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 APP/DISPLAY/src/DISPLAY.o: ../APP/DISPLAY/src/DISPLAY.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 APP/DISPLAY/src/DISPLAY_Interface.o: ../APP/DISPLAY/src/DISPLAY_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 APP/STORAGE/src/STORAGE.o: ../APP/STORAGE/src/STORAGE.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-HAL/EEPROM_Proxy/src/EEPROM_Proxy.o: ../HAL/EEPROM_Proxy/src/EEPROM_Proxy.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-MCAL/EEPROM/src/EEPROM.o: ../MCAL/EEPROM/src/EEPROM.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Users\vetmo\Downloads\Ahmed\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
