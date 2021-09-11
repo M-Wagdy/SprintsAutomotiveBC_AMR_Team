@@ -291,7 +291,7 @@ uint8_t CRC_16_Chk (uint8_t* STRING)
 	/*the value of the used polynomial for CRC_16*/
 	const uint32_t polynomial = 0b00000000000000011000000000000101;
 	/*variable that holds the value to be XORED and SHIFTED*/
-	uint32_t Window_16_Element =0;
+	uint32_t volatile Window_16_Element =0;
 	/*initialize the variable that holds the number of characters to which CRC is calculated*/
 	/*number of characters in the inserted string*/
 	uint16_t StrLength =0;
@@ -339,24 +339,17 @@ uint8_t CRC_16_Chk (uint8_t* STRING)
 		Window_16_Element |= ((uint32_t)BitArr[iterator_of_BitArr+i]<<(16-i));
 	}
 	/*Start the modulo Operation continues until the polynomial doesn't fit into the reminder*/
-	while(iterator_of_BitArr < BitArr_Size-15)
+	while(iterator_of_BitArr < BitArr_Size-16)
 	{
 		/*Xoring operation between the Window and the polynomial*/
 		Window_16_Element ^= polynomial;
-		if(iterator_of_BitArr < BitArr_Size-16)
+		do
 		{
-			do
-			{
-				Window_16_Element <<= 1;
-				iterator_of_BitArr++;
-				/*Adding new element from the array of bits to the window*/
-				Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
-			} while ((Get_Bit(Window_16_Element,16) == 0));
-		}
-		else
-		{
+			Window_16_Element <<= 1;
 			iterator_of_BitArr++;
-		}
+			/*Adding new element from the array of bits to the window*/
+			Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
+		} while ((Get_Bit(Window_16_Element,16) == 0)&&(iterator_of_BitArr < BitArr_Size-16));
 	}
 	if((uint16_t)Window_16_Element != 0)
 		ErrRetVal = ERROR_NOK;

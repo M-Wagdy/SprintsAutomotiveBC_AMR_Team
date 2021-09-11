@@ -9,7 +9,8 @@
 #include "DISPLAY.h"
 #include "STORAGE.h"
 
-uint8_t Name[255] = "ALI NABIL";
+uint8_t Name[255] = "Ahmed Wagdy Rehab";
+uint8_t retValofChk = 1;
 int main(void)
 {
 	/*
@@ -34,6 +35,7 @@ int main(void)
 	/*DISPLAY_SetNumber_of_Asterisk(6);//<======setsNumberofasteriks*/
 	/*DISPLAY_SetState(Waiting);//<====setsthestate of the system*/
 	CRC_16_Calc(Name);
+	retValofChk = CRC_16_Chk(Name);
 	while (1) 
     {
 		//for(uint8_t y = 0; y<(16-wordLength); y++)
