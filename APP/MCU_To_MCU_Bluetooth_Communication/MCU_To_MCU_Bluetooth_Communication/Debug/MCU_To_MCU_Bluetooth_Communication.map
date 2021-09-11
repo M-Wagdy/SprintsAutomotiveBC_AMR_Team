@@ -36,6 +36,8 @@ c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/.
                               c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3.o) (__mulsf3x)
 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
                               FreeRTOS/Source/queue.o (__udivmodhi4)
+c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+                              APP/DISPLAY/src/DISPLAY.o (__divmodhi4)
 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
                               LIB/UTILS.o (__udivmodsi4)
 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -673,7 +675,7 @@ Discarded input sections
  .rodata.str1.1
                 0x00000000       0x58 APP/DISPLAY/src/DISPLAY.o
  .text.DISPLAY_MainFunction
-                0x00000000      0x316 APP/DISPLAY/src/DISPLAY.o
+                0x00000000      0x33a APP/DISPLAY/src/DISPLAY.o
  .progmem.gcc_sw_table.DISPLAY_MainFunction
                 0x00000000       0x10 APP/DISPLAY/src/DISPLAY.o
  .bss.Counter.1752
@@ -687,14 +689,14 @@ Discarded input sections
  .bss.Number_of_Asteriks
                 0x00000000        0x1 APP/DISPLAY/src/DISPLAY.o
  .bss.Position  0x00000000        0x1 APP/DISPLAY/src/DISPLAY.o
- .debug_info    0x00000000      0x645 APP/DISPLAY/src/DISPLAY.o
+ .debug_info    0x00000000      0x65b APP/DISPLAY/src/DISPLAY.o
  .debug_abbrev  0x00000000       0xe4 APP/DISPLAY/src/DISPLAY.o
  .debug_loc     0x00000000      0x11e APP/DISPLAY/src/DISPLAY.o
  .debug_aranges
                 0x00000000       0x28 APP/DISPLAY/src/DISPLAY.o
  .debug_ranges  0x00000000       0x18 APP/DISPLAY/src/DISPLAY.o
- .debug_line    0x00000000      0x441 APP/DISPLAY/src/DISPLAY.o
- .debug_str     0x00000000      0x30e APP/DISPLAY/src/DISPLAY.o
+ .debug_line    0x00000000      0x447 APP/DISPLAY/src/DISPLAY.o
+ .debug_str     0x00000000      0x31d APP/DISPLAY/src/DISPLAY.o
  .comment       0x00000000       0x31 APP/DISPLAY/src/DISPLAY.o
  .debug_frame   0x00000000       0x5c APP/DISPLAY/src/DISPLAY.o
  .text          0x00000000        0x0 APP/DISPLAY/src/DISPLAY_Interface.o
@@ -851,6 +853,22 @@ Discarded input sections
                 0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
+ .text          0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+ .data          0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+ .bss           0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+ .text.libgcc.div
+                0x00000000       0x28 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+ .text.libgcc   0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .text          0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .data          0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .bss           0x00000000        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)

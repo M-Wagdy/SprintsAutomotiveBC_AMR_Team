@@ -134,8 +134,9 @@ void DISPLAY_MainFunction(void)
 				while (LCD_SendCommand(LCD_HOME)!=OperationSuccess);
 				while (LCD_SendString((uint8_t*)"Waiting") != OperationSuccess);
 				Shifting_State = ShiftingLeft;
-				while (LCD_SendCommand(LCD_CURS_LINE2)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_CURS_LINE2|4)!=OperationSuccess);
 			}
+			LCD_SendNumber((10000-(Counter*50))/1000);
 			DISPLAY_START_SHIFTING(Waiting_StringWidth,0);
 /*			if(Shifting_State == ShiftingLeft)
 			{
