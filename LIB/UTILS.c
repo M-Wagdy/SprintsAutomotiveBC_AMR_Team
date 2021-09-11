@@ -257,7 +257,9 @@ uint8_t CRC_16_Calc (uint8_t* STRING)
 	while(iterator_of_BitArr < BitArr_Size-15)
 	{
 		/*Xoring operation between the Window and the polynomial*/
-		Window_16_Element ^= polynomial;
+			Window_16_Element ^= polynomial;
+			if(!Window_16_Element)
+				break;
 		if(iterator_of_BitArr < BitArr_Size-16)
 		{
 			do 
@@ -343,13 +345,18 @@ uint8_t CRC_16_Chk (uint8_t* STRING)
 	{
 		/*Xoring operation between the Window and the polynomial*/
 		Window_16_Element ^= polynomial;
-		do
+		if(!Window_16_Element)
+			break;
+		if((iterator_of_BitArr < BitArr_Size-16))
 		{
-			Window_16_Element <<= 1;
-			iterator_of_BitArr++;
-			/*Adding new element from the array of bits to the window*/
-			Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
-		} while ((Get_Bit(Window_16_Element,16) == 0)&&(iterator_of_BitArr < BitArr_Size-16));
+			do
+			{
+				Window_16_Element <<= 1;
+				iterator_of_BitArr++;
+				/*Adding new element from the array of bits to the window*/
+				Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
+			} while ((Get_Bit(Window_16_Element,16) == 0));
+		}
 	}
 	if((uint16_t)Window_16_Element != 0)
 		ErrRetVal = ERROR_NOK;

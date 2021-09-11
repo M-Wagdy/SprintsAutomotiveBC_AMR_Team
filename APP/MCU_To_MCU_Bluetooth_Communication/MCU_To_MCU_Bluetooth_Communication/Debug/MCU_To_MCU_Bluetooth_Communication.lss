@@ -3,31 +3,31 @@ MCU_To_MCU_Bluetooth_Communication.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000ade  00000000  00000000  00000094  2**1
+  0 .text         000007b0  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000100  00800060  00000ade  00000b72  2**0
+  1 .data         00000100  00800060  000007b0  00000844  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000034  00800160  00800160  00000c72  2**0
+  2 .bss          00000034  00800160  00800160  00000944  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000c72  2**0
+  3 .comment      00000030  00000000  00000000  00000944  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000ca4  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000974  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000230  00000000  00000000  00000ce0  2**0
+  5 .debug_aranges 00000230  00000000  00000000  000009b0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00002770  00000000  00000000  00000f10  2**0
+  6 .debug_info   00002747  00000000  00000000  00000be0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000ad8  00000000  00000000  00003680  2**0
+  7 .debug_abbrev 00000acb  00000000  00000000  00003327  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00001b04  00000000  00000000  00004158  2**0
+  8 .debug_line   00001b04  00000000  00000000  00003df2  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000738  00000000  00000000  00005c5c  2**2
+  9 .debug_frame  00000738  00000000  00000000  000058f8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00001044  00000000  00000000  00006394  2**0
+ 10 .debug_str    00001044  00000000  00000000  00006030  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00002975  00000000  00000000  000073d8  2**0
+ 11 .debug_loc    00002954  00000000  00000000  00007074  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000230  00000000  00000000  00009d4d  2**0
+ 12 .debug_ranges 00000230  00000000  00000000  000099c8  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -67,8 +67,8 @@ Disassembly of section .text:
   60:	11 e0       	ldi	r17, 0x01	; 1
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	ee ed       	ldi	r30, 0xDE	; 222
-  68:	fa e0       	ldi	r31, 0x0A	; 10
+  66:	e0 eb       	ldi	r30, 0xB0	; 176
+  68:	f7 e0       	ldi	r31, 0x07	; 7
   6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
   6c:	05 90       	lpm	r0, Z+
   6e:	0d 92       	st	X+, r0
@@ -89,8 +89,8 @@ Disassembly of section .text:
   80:	a4 39       	cpi	r26, 0x94	; 148
   82:	b2 07       	cpc	r27, r18
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
-  86:	0e 94 62 05 	call	0xac4	; 0xac4 <main>
-  8a:	0c 94 6d 05 	jmp	0xada	; 0xada <_exit>
+  86:	0e 94 cf 03 	call	0x79e	; 0x79e <main>
+  8a:	0c 94 d6 03 	jmp	0x7ac	; 0x7ac <_exit>
 
 0000008e <__bad_interrupt>:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -582,11 +582,11 @@ void vTaskSwitchContext( void )
  462:	08 95       	ret
 
 00000464 <STR_Length>:
-		}while(Number);
-		*String = NULL_TERMINATOR;
-	}
-	STR_StringReverse(SringCpy);
-	return 0;
+	STRING[StrLength] = (uint8_t)(Window_16_Element>>8);
+	STRING[StrLength+1] = (uint8_t)(Window_16_Element&0x000000FF);
+	STRING[StrLength+2] = NULL_TERMINATOR;
+	/*return zero*/
+	return OperationSuccess;
 }
  464:	fc 01       	movw	r30, r24
  466:	db 01       	movw	r26, r22
@@ -608,137 +608,136 @@ void vTaskSwitchContext( void )
  486:	f4 cf       	rjmp	.-24     	; 0x470 <STR_Length+0xc>
  488:	08 95       	ret
 
-0000048a <CRC_16_Calc>:
-https://rndtool.info/CRC-step-by-step-calculator/
-https://www.lammertbies.nl/comm/info/crc-calculation
-https://www.youtube.com/watch?v=izG7qT0EpBw
-*/
-uint8_t CRC_16_Calc (uint8_t* STRING)
+0000048a <CRC_16_Chk>:
+
+uint8_t CRC_16_Chk (uint8_t* STRING)
 {
  48a:	cf 92       	push	r12
  48c:	df 92       	push	r13
  48e:	ef 92       	push	r14
  490:	ff 92       	push	r15
- 492:	0f 93       	push	r16
- 494:	1f 93       	push	r17
- 496:	cf 93       	push	r28
- 498:	df 93       	push	r29
- 49a:	cd b7       	in	r28, 0x3d	; 61
- 49c:	de b7       	in	r29, 0x3e	; 62
- 49e:	c5 50       	subi	r28, 0x05	; 5
- 4a0:	d1 40       	sbci	r29, 0x01	; 1
- 4a2:	0f b6       	in	r0, 0x3f	; 63
- 4a4:	f8 94       	cli
- 4a6:	de bf       	out	0x3e, r29	; 62
- 4a8:	0f be       	out	0x3f, r0	; 63
- 4aa:	cd bf       	out	0x3d, r28	; 61
- 4ac:	8c 01       	movw	r16, r24
+ 492:	cf 93       	push	r28
+ 494:	df 93       	push	r29
+ 496:	cd b7       	in	r28, 0x3d	; 61
+ 498:	de b7       	in	r29, 0x3e	; 62
+ 49a:	c5 50       	subi	r28, 0x05	; 5
+ 49c:	d1 40       	sbci	r29, 0x01	; 1
+ 49e:	0f b6       	in	r0, 0x3f	; 63
+ 4a0:	f8 94       	cli
+ 4a2:	de bf       	out	0x3e, r29	; 62
+ 4a4:	0f be       	out	0x3f, r0	; 63
+ 4a6:	cd bf       	out	0x3d, r28	; 61
+ 4a8:	7c 01       	movw	r14, r24
 	/*change array of character to array of bits*/
 	/*initialize the array of bits*/
 	uint8_t BitArr[255] = {0};
- 4ae:	fe 01       	movw	r30, r28
- 4b0:	31 96       	adiw	r30, 0x01	; 1
- 4b2:	8f ef       	ldi	r24, 0xFF	; 255
- 4b4:	df 01       	movw	r26, r30
- 4b6:	1d 92       	st	X+, r1
- 4b8:	8a 95       	dec	r24
- 4ba:	e9 f7       	brne	.-6      	; 0x4b6 <CRC_16_Calc+0x2c>
+ 4aa:	fe 01       	movw	r30, r28
+ 4ac:	31 96       	adiw	r30, 0x01	; 1
+ 4ae:	8f ef       	ldi	r24, 0xFF	; 255
+ 4b0:	df 01       	movw	r26, r30
+ 4b2:	1d 92       	st	X+, r1
+ 4b4:	8a 95       	dec	r24
+ 4b6:	e9 f7       	brne	.-6      	; 0x4b2 <CRC_16_Chk+0x28>
+	/*Error Return value*/
+	uint8_t ErrRetVal = ERROR_OK;
 	/*the value of the used polynomial for CRC_16*/
 	const uint32_t polynomial = 0b00000000000000011000000000000101;
 	/*variable that holds the value to be XORED and SHIFTED*/
 	uint32_t volatile Window_16_Element =0;
- 4bc:	c0 50       	subi	r28, 0x00	; 0
- 4be:	df 4f       	sbci	r29, 0xFF	; 255
- 4c0:	18 82       	st	Y, r1
- 4c2:	19 82       	std	Y+1, r1	; 0x01
- 4c4:	1a 82       	std	Y+2, r1	; 0x02
- 4c6:	1b 82       	std	Y+3, r1	; 0x03
- 4c8:	c0 50       	subi	r28, 0x00	; 0
- 4ca:	d1 40       	sbci	r29, 0x01	; 1
+ 4b8:	c0 50       	subi	r28, 0x00	; 0
+ 4ba:	df 4f       	sbci	r29, 0xFF	; 255
+ 4bc:	18 82       	st	Y, r1
+ 4be:	19 82       	std	Y+1, r1	; 0x01
+ 4c0:	1a 82       	std	Y+2, r1	; 0x02
+ 4c2:	1b 82       	std	Y+3, r1	; 0x03
+ 4c4:	c0 50       	subi	r28, 0x00	; 0
+ 4c6:	d1 40       	sbci	r29, 0x01	; 1
 	/*initialize the variable that holds the number of characters to which CRC is calculated*/
 	/*number of characters in the inserted string*/
 	uint16_t StrLength =0;
- 4cc:	cc 5f       	subi	r28, 0xFC	; 252
- 4ce:	de 4f       	sbci	r29, 0xFE	; 254
- 4d0:	19 82       	std	Y+1, r1	; 0x01
- 4d2:	18 82       	st	Y, r1
- 4d4:	c4 50       	subi	r28, 0x04	; 4
- 4d6:	d1 40       	sbci	r29, 0x01	; 1
+ 4c8:	cc 5f       	subi	r28, 0xFC	; 252
+ 4ca:	de 4f       	sbci	r29, 0xFE	; 254
+ 4cc:	19 82       	std	Y+1, r1	; 0x01
+ 4ce:	18 82       	st	Y, r1
+ 4d0:	c4 50       	subi	r28, 0x04	; 4
+ 4d2:	d1 40       	sbci	r29, 0x01	; 1
 	/*initialize the variable that holds the number of bits in the inserted string*/
 	uint8_t BitArr_Size = 0;
 	/*using STR_Length() function to calculate Number of characters in the inserted String*/
 	STR_Length(STRING, &StrLength);
- 4d8:	be 01       	movw	r22, r28
- 4da:	6c 5f       	subi	r22, 0xFC	; 252
- 4dc:	7e 4f       	sbci	r23, 0xFE	; 254
- 4de:	c8 01       	movw	r24, r16
- 4e0:	0e 94 32 02 	call	0x464	; 0x464 <STR_Length>
+ 4d4:	be 01       	movw	r22, r28
+ 4d6:	6c 5f       	subi	r22, 0xFC	; 252
+ 4d8:	7e 4f       	sbci	r23, 0xFE	; 254
+ 4da:	c7 01       	movw	r24, r14
+ 4dc:	0e 94 32 02 	call	0x464	; 0x464 <STR_Length>
 	uint8_t iterator_of_BitArr = 0;
 	/*initializing the iterator for the array of the inserted Characters in the string*/
 	uint8_t iterator_of_characters = 0;
 	/*assigning the bits of the character in the passed string to the array of bits*/
 	/*bits are arranged in the array the form of an extra long number"Index 0:MSB,..,..,..,. . .,Index N:LSB"*/
 	for(iterator_of_characters = 0; iterator_of_characters < StrLength; iterator_of_characters++)
- 4e4:	90 e0       	ldi	r25, 0x00	; 0
+ 4e0:	40 e0       	ldi	r20, 0x00	; 0
 	/*initialize the variable that holds the number of bits in the inserted string*/
 	uint8_t BitArr_Size = 0;
 	/*using STR_Length() function to calculate Number of characters in the inserted String*/
 	STR_Length(STRING, &StrLength);
 	/*initializing the iterator for the array of bits of the inserted Character string*/
 	uint8_t iterator_of_BitArr = 0;
- 4e6:	50 e0       	ldi	r21, 0x00	; 0
+ 4e2:	90 e0       	ldi	r25, 0x00	; 0
 	/*initializing the iterator for the array of the inserted Characters in the string*/
 	uint8_t iterator_of_characters = 0;
 	/*assigning the bits of the character in the passed string to the array of bits*/
 	/*bits are arranged in the array the form of an extra long number"Index 0:MSB,..,..,..,. . .,Index N:LSB"*/
 	for(iterator_of_characters = 0; iterator_of_characters < StrLength; iterator_of_characters++)
- 4e8:	89 c0       	rjmp	.+274    	; 0x5fc <CRC_16_Calc+0x172>
+ 4e4:	89 c0       	rjmp	.+274    	; 0x5f8 <CRC_16_Chk+0x16e>
 	{
 		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_7);
- 4ea:	f8 01       	movw	r30, r16
- 4ec:	e6 0f       	add	r30, r22
- 4ee:	f7 1f       	adc	r31, r23
- 4f0:	80 81       	ld	r24, Z
- 4f2:	28 2f       	mov	r18, r24
+ 4e6:	f7 01       	movw	r30, r14
+ 4e8:	e2 0f       	add	r30, r18
+ 4ea:	f3 1f       	adc	r31, r19
+ 4ec:	80 81       	ld	r24, Z
+ 4ee:	28 2f       	mov	r18, r24
+ 4f0:	22 1f       	adc	r18, r18
+ 4f2:	22 27       	eor	r18, r18
  4f4:	22 1f       	adc	r18, r18
- 4f6:	22 27       	eor	r18, r18
- 4f8:	22 1f       	adc	r18, r18
- 4fa:	e1 e0       	ldi	r30, 0x01	; 1
- 4fc:	f0 e0       	ldi	r31, 0x00	; 0
- 4fe:	ec 0f       	add	r30, r28
- 500:	fd 1f       	adc	r31, r29
- 502:	e5 0f       	add	r30, r21
- 504:	f1 1d       	adc	r31, r1
- 506:	20 83       	st	Z, r18
+ 4f6:	e1 e0       	ldi	r30, 0x01	; 1
+ 4f8:	f0 e0       	ldi	r31, 0x00	; 0
+ 4fa:	ec 0f       	add	r30, r28
+ 4fc:	fd 1f       	adc	r31, r29
+ 4fe:	e9 0f       	add	r30, r25
+ 500:	f1 1d       	adc	r31, r1
+ 502:	20 83       	st	Z, r18
 		iterator_of_BitArr++;
- 508:	41 e0       	ldi	r20, 0x01	; 1
- 50a:	45 0f       	add	r20, r21
+ 504:	51 e0       	ldi	r21, 0x01	; 1
+ 506:	59 0f       	add	r21, r25
 		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_6);
- 50c:	28 2f       	mov	r18, r24
- 50e:	20 74       	andi	r18, 0x40	; 64
- 510:	30 e0       	ldi	r19, 0x00	; 0
- 512:	02 2e       	mov	r0, r18
- 514:	23 2f       	mov	r18, r19
- 516:	00 0c       	add	r0, r0
- 518:	22 1f       	adc	r18, r18
- 51a:	33 0b       	sbc	r19, r19
- 51c:	00 0c       	add	r0, r0
- 51e:	22 1f       	adc	r18, r18
- 520:	33 1f       	adc	r19, r19
- 522:	e1 e0       	ldi	r30, 0x01	; 1
- 524:	f0 e0       	ldi	r31, 0x00	; 0
- 526:	ec 0f       	add	r30, r28
- 528:	fd 1f       	adc	r31, r29
- 52a:	e4 0f       	add	r30, r20
- 52c:	f1 1d       	adc	r31, r1
- 52e:	20 83       	st	Z, r18
+ 508:	28 2f       	mov	r18, r24
+ 50a:	20 74       	andi	r18, 0x40	; 64
+ 50c:	30 e0       	ldi	r19, 0x00	; 0
+ 50e:	02 2e       	mov	r0, r18
+ 510:	23 2f       	mov	r18, r19
+ 512:	00 0c       	add	r0, r0
+ 514:	22 1f       	adc	r18, r18
+ 516:	33 0b       	sbc	r19, r19
+ 518:	00 0c       	add	r0, r0
+ 51a:	22 1f       	adc	r18, r18
+ 51c:	33 1f       	adc	r19, r19
+ 51e:	e1 e0       	ldi	r30, 0x01	; 1
+ 520:	f0 e0       	ldi	r31, 0x00	; 0
+ 522:	ec 0f       	add	r30, r28
+ 524:	fd 1f       	adc	r31, r29
+ 526:	e5 0f       	add	r30, r21
+ 528:	f1 1d       	adc	r31, r1
+ 52a:	20 83       	st	Z, r18
 		iterator_of_BitArr++;
- 530:	42 e0       	ldi	r20, 0x02	; 2
- 532:	45 0f       	add	r20, r21
+ 52c:	52 e0       	ldi	r21, 0x02	; 2
+ 52e:	59 0f       	add	r21, r25
 		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_5);
- 534:	28 2f       	mov	r18, r24
- 536:	20 72       	andi	r18, 0x20	; 32
- 538:	30 e0       	ldi	r19, 0x00	; 0
+ 530:	28 2f       	mov	r18, r24
+ 532:	20 72       	andi	r18, 0x20	; 32
+ 534:	30 e0       	ldi	r19, 0x00	; 0
+ 536:	35 95       	asr	r19
+ 538:	27 95       	ror	r18
  53a:	35 95       	asr	r19
  53c:	27 95       	ror	r18
  53e:	35 95       	asr	r19
@@ -747,932 +746,402 @@ uint8_t CRC_16_Calc (uint8_t* STRING)
  544:	27 95       	ror	r18
  546:	35 95       	asr	r19
  548:	27 95       	ror	r18
- 54a:	35 95       	asr	r19
- 54c:	27 95       	ror	r18
- 54e:	e1 e0       	ldi	r30, 0x01	; 1
- 550:	f0 e0       	ldi	r31, 0x00	; 0
- 552:	ec 0f       	add	r30, r28
- 554:	fd 1f       	adc	r31, r29
- 556:	e4 0f       	add	r30, r20
- 558:	f1 1d       	adc	r31, r1
- 55a:	20 83       	st	Z, r18
+ 54a:	e1 e0       	ldi	r30, 0x01	; 1
+ 54c:	f0 e0       	ldi	r31, 0x00	; 0
+ 54e:	ec 0f       	add	r30, r28
+ 550:	fd 1f       	adc	r31, r29
+ 552:	e5 0f       	add	r30, r21
+ 554:	f1 1d       	adc	r31, r1
+ 556:	20 83       	st	Z, r18
 		iterator_of_BitArr++;
- 55c:	43 e0       	ldi	r20, 0x03	; 3
- 55e:	45 0f       	add	r20, r21
+ 558:	53 e0       	ldi	r21, 0x03	; 3
+ 55a:	59 0f       	add	r21, r25
 		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_4);
- 560:	28 2f       	mov	r18, r24
- 562:	20 71       	andi	r18, 0x10	; 16
- 564:	30 e0       	ldi	r19, 0x00	; 0
+ 55c:	28 2f       	mov	r18, r24
+ 55e:	20 71       	andi	r18, 0x10	; 16
+ 560:	30 e0       	ldi	r19, 0x00	; 0
+ 562:	35 95       	asr	r19
+ 564:	27 95       	ror	r18
  566:	35 95       	asr	r19
  568:	27 95       	ror	r18
  56a:	35 95       	asr	r19
  56c:	27 95       	ror	r18
  56e:	35 95       	asr	r19
  570:	27 95       	ror	r18
- 572:	35 95       	asr	r19
- 574:	27 95       	ror	r18
- 576:	e1 e0       	ldi	r30, 0x01	; 1
- 578:	f0 e0       	ldi	r31, 0x00	; 0
- 57a:	ec 0f       	add	r30, r28
- 57c:	fd 1f       	adc	r31, r29
- 57e:	e4 0f       	add	r30, r20
- 580:	f1 1d       	adc	r31, r1
- 582:	20 83       	st	Z, r18
+ 572:	e1 e0       	ldi	r30, 0x01	; 1
+ 574:	f0 e0       	ldi	r31, 0x00	; 0
+ 576:	ec 0f       	add	r30, r28
+ 578:	fd 1f       	adc	r31, r29
+ 57a:	e5 0f       	add	r30, r21
+ 57c:	f1 1d       	adc	r31, r1
+ 57e:	20 83       	st	Z, r18
 		iterator_of_BitArr++;
- 584:	44 e0       	ldi	r20, 0x04	; 4
- 586:	45 0f       	add	r20, r21
+ 580:	54 e0       	ldi	r21, 0x04	; 4
+ 582:	59 0f       	add	r21, r25
 		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_3);
- 588:	28 2f       	mov	r18, r24
- 58a:	28 70       	andi	r18, 0x08	; 8
- 58c:	30 e0       	ldi	r19, 0x00	; 0
+ 584:	28 2f       	mov	r18, r24
+ 586:	28 70       	andi	r18, 0x08	; 8
+ 588:	30 e0       	ldi	r19, 0x00	; 0
+ 58a:	35 95       	asr	r19
+ 58c:	27 95       	ror	r18
  58e:	35 95       	asr	r19
  590:	27 95       	ror	r18
  592:	35 95       	asr	r19
  594:	27 95       	ror	r18
- 596:	35 95       	asr	r19
- 598:	27 95       	ror	r18
- 59a:	e1 e0       	ldi	r30, 0x01	; 1
- 59c:	f0 e0       	ldi	r31, 0x00	; 0
- 59e:	ec 0f       	add	r30, r28
- 5a0:	fd 1f       	adc	r31, r29
- 5a2:	e4 0f       	add	r30, r20
- 5a4:	f1 1d       	adc	r31, r1
- 5a6:	20 83       	st	Z, r18
+ 596:	e1 e0       	ldi	r30, 0x01	; 1
+ 598:	f0 e0       	ldi	r31, 0x00	; 0
+ 59a:	ec 0f       	add	r30, r28
+ 59c:	fd 1f       	adc	r31, r29
+ 59e:	e5 0f       	add	r30, r21
+ 5a0:	f1 1d       	adc	r31, r1
+ 5a2:	20 83       	st	Z, r18
 		iterator_of_BitArr++;
- 5a8:	45 e0       	ldi	r20, 0x05	; 5
- 5aa:	45 0f       	add	r20, r21
+ 5a4:	55 e0       	ldi	r21, 0x05	; 5
+ 5a6:	59 0f       	add	r21, r25
 		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_2);
- 5ac:	28 2f       	mov	r18, r24
- 5ae:	24 70       	andi	r18, 0x04	; 4
- 5b0:	30 e0       	ldi	r19, 0x00	; 0
+ 5a8:	28 2f       	mov	r18, r24
+ 5aa:	24 70       	andi	r18, 0x04	; 4
+ 5ac:	30 e0       	ldi	r19, 0x00	; 0
+ 5ae:	35 95       	asr	r19
+ 5b0:	27 95       	ror	r18
  5b2:	35 95       	asr	r19
  5b4:	27 95       	ror	r18
- 5b6:	35 95       	asr	r19
- 5b8:	27 95       	ror	r18
- 5ba:	e1 e0       	ldi	r30, 0x01	; 1
- 5bc:	f0 e0       	ldi	r31, 0x00	; 0
- 5be:	ec 0f       	add	r30, r28
- 5c0:	fd 1f       	adc	r31, r29
- 5c2:	e4 0f       	add	r30, r20
- 5c4:	f1 1d       	adc	r31, r1
- 5c6:	20 83       	st	Z, r18
+ 5b6:	e1 e0       	ldi	r30, 0x01	; 1
+ 5b8:	f0 e0       	ldi	r31, 0x00	; 0
+ 5ba:	ec 0f       	add	r30, r28
+ 5bc:	fd 1f       	adc	r31, r29
+ 5be:	e5 0f       	add	r30, r21
+ 5c0:	f1 1d       	adc	r31, r1
+ 5c2:	20 83       	st	Z, r18
 		iterator_of_BitArr++;
- 5c8:	46 e0       	ldi	r20, 0x06	; 6
- 5ca:	45 0f       	add	r20, r21
+ 5c4:	56 e0       	ldi	r21, 0x06	; 6
+ 5c6:	59 0f       	add	r21, r25
 		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_1);
- 5cc:	28 2f       	mov	r18, r24
- 5ce:	22 70       	andi	r18, 0x02	; 2
- 5d0:	30 e0       	ldi	r19, 0x00	; 0
- 5d2:	35 95       	asr	r19
- 5d4:	27 95       	ror	r18
- 5d6:	e1 e0       	ldi	r30, 0x01	; 1
- 5d8:	f0 e0       	ldi	r31, 0x00	; 0
- 5da:	ec 0f       	add	r30, r28
- 5dc:	fd 1f       	adc	r31, r29
- 5de:	e4 0f       	add	r30, r20
- 5e0:	f1 1d       	adc	r31, r1
- 5e2:	20 83       	st	Z, r18
+ 5c8:	28 2f       	mov	r18, r24
+ 5ca:	22 70       	andi	r18, 0x02	; 2
+ 5cc:	30 e0       	ldi	r19, 0x00	; 0
+ 5ce:	35 95       	asr	r19
+ 5d0:	27 95       	ror	r18
+ 5d2:	e1 e0       	ldi	r30, 0x01	; 1
+ 5d4:	f0 e0       	ldi	r31, 0x00	; 0
+ 5d6:	ec 0f       	add	r30, r28
+ 5d8:	fd 1f       	adc	r31, r29
+ 5da:	e5 0f       	add	r30, r21
+ 5dc:	f1 1d       	adc	r31, r1
+ 5de:	20 83       	st	Z, r18
 		iterator_of_BitArr++;
- 5e4:	27 e0       	ldi	r18, 0x07	; 7
- 5e6:	25 0f       	add	r18, r21
+ 5e0:	27 e0       	ldi	r18, 0x07	; 7
+ 5e2:	29 0f       	add	r18, r25
 		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_0);
- 5e8:	e1 e0       	ldi	r30, 0x01	; 1
- 5ea:	f0 e0       	ldi	r31, 0x00	; 0
- 5ec:	ec 0f       	add	r30, r28
- 5ee:	fd 1f       	adc	r31, r29
- 5f0:	e2 0f       	add	r30, r18
- 5f2:	f1 1d       	adc	r31, r1
- 5f4:	81 70       	andi	r24, 0x01	; 1
- 5f6:	80 83       	st	Z, r24
+ 5e4:	e1 e0       	ldi	r30, 0x01	; 1
+ 5e6:	f0 e0       	ldi	r31, 0x00	; 0
+ 5e8:	ec 0f       	add	r30, r28
+ 5ea:	fd 1f       	adc	r31, r29
+ 5ec:	e2 0f       	add	r30, r18
+ 5ee:	f1 1d       	adc	r31, r1
+ 5f0:	81 70       	andi	r24, 0x01	; 1
+ 5f2:	80 83       	st	Z, r24
 		iterator_of_BitArr++;
- 5f8:	58 5f       	subi	r21, 0xF8	; 248
+ 5f4:	98 5f       	subi	r25, 0xF8	; 248
 	uint8_t iterator_of_BitArr = 0;
 	/*initializing the iterator for the array of the inserted Characters in the string*/
 	uint8_t iterator_of_characters = 0;
 	/*assigning the bits of the character in the passed string to the array of bits*/
 	/*bits are arranged in the array the form of an extra long number"Index 0:MSB,..,..,..,. . .,Index N:LSB"*/
 	for(iterator_of_characters = 0; iterator_of_characters < StrLength; iterator_of_characters++)
- 5fa:	9f 5f       	subi	r25, 0xFF	; 255
- 5fc:	69 2f       	mov	r22, r25
- 5fe:	70 e0       	ldi	r23, 0x00	; 0
- 600:	cc 5f       	subi	r28, 0xFC	; 252
- 602:	de 4f       	sbci	r29, 0xFE	; 254
- 604:	28 81       	ld	r18, Y
- 606:	39 81       	ldd	r19, Y+1	; 0x01
- 608:	c4 50       	subi	r28, 0x04	; 4
- 60a:	d1 40       	sbci	r29, 0x01	; 1
- 60c:	62 17       	cp	r22, r18
- 60e:	73 07       	cpc	r23, r19
- 610:	08 f4       	brcc	.+2      	; 0x614 <CRC_16_Calc+0x18a>
- 612:	6b cf       	rjmp	.-298    	; 0x4ea <CRC_16_Calc+0x60>
+ 5f6:	4f 5f       	subi	r20, 0xFF	; 255
+ 5f8:	24 2f       	mov	r18, r20
+ 5fa:	30 e0       	ldi	r19, 0x00	; 0
+ 5fc:	cc 5f       	subi	r28, 0xFC	; 252
+ 5fe:	de 4f       	sbci	r29, 0xFE	; 254
+ 600:	68 81       	ld	r22, Y
+ 602:	79 81       	ldd	r23, Y+1	; 0x01
+ 604:	c4 50       	subi	r28, 0x04	; 4
+ 606:	d1 40       	sbci	r29, 0x01	; 1
+ 608:	26 17       	cp	r18, r22
+ 60a:	37 07       	cpc	r19, r23
+ 60c:	08 f4       	brcc	.+2      	; 0x610 <CRC_16_Chk+0x186>
+ 60e:	6b cf       	rjmp	.-298    	; 0x4e6 <CRC_16_Chk+0x5c>
 		iterator_of_BitArr++;
 		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_0);
 		iterator_of_BitArr++;
 	}
 	/*calculating the size of the array of bits taking into consideration the size of the 16 bits of CRC_16*/
 	BitArr_Size = iterator_of_BitArr + 15;
- 614:	51 5f       	subi	r21, 0xF1	; 241
+ 610:	91 5f       	subi	r25, 0xF1	; 241
 	/*reset the iterator of the Bits Array to zero to iterate through the array*/
 	iterator_of_BitArr = 0;
- 616:	40 e0       	ldi	r20, 0x00	; 0
+ 612:	a0 e0       	ldi	r26, 0x00	; 0
 	/*Moving to the first occurance of high bit to start our CRC calculation*/
 	while(BitArr[iterator_of_BitArr]!=1)
- 618:	01 c0       	rjmp	.+2      	; 0x61c <CRC_16_Calc+0x192>
+ 614:	01 c0       	rjmp	.+2      	; 0x618 <CRC_16_Chk+0x18e>
 	{
 		/*increment the iterator to the first occurance of High bit*/
 		iterator_of_BitArr++;
- 61a:	4f 5f       	subi	r20, 0xFF	; 255
+ 616:	af 5f       	subi	r26, 0xFF	; 255
 	/*calculating the size of the array of bits taking into consideration the size of the 16 bits of CRC_16*/
 	BitArr_Size = iterator_of_BitArr + 15;
 	/*reset the iterator of the Bits Array to zero to iterate through the array*/
 	iterator_of_BitArr = 0;
 	/*Moving to the first occurance of high bit to start our CRC calculation*/
 	while(BitArr[iterator_of_BitArr]!=1)
- 61c:	64 2f       	mov	r22, r20
- 61e:	70 e0       	ldi	r23, 0x00	; 0
- 620:	e1 e0       	ldi	r30, 0x01	; 1
- 622:	f0 e0       	ldi	r31, 0x00	; 0
- 624:	ec 0f       	add	r30, r28
- 626:	fd 1f       	adc	r31, r29
- 628:	e6 0f       	add	r30, r22
- 62a:	f7 1f       	adc	r31, r23
- 62c:	80 81       	ld	r24, Z
- 62e:	81 30       	cpi	r24, 0x01	; 1
- 630:	a1 f7       	brne	.-24     	; 0x61a <CRC_16_Calc+0x190>
- 632:	e0 e0       	ldi	r30, 0x00	; 0
- 634:	31 c0       	rjmp	.+98     	; 0x698 <CRC_16_Calc+0x20e>
+ 618:	2a 2f       	mov	r18, r26
+ 61a:	30 e0       	ldi	r19, 0x00	; 0
+ 61c:	e1 e0       	ldi	r30, 0x01	; 1
+ 61e:	f0 e0       	ldi	r31, 0x00	; 0
+ 620:	ec 0f       	add	r30, r28
+ 622:	fd 1f       	adc	r31, r29
+ 624:	e2 0f       	add	r30, r18
+ 626:	f3 1f       	adc	r31, r19
+ 628:	80 81       	ld	r24, Z
+ 62a:	81 30       	cpi	r24, 0x01	; 1
+ 62c:	a1 f7       	brne	.-24     	; 0x616 <CRC_16_Chk+0x18c>
+ 62e:	80 e0       	ldi	r24, 0x00	; 0
+ 630:	2f c0       	rjmp	.+94     	; 0x690 <CRC_16_Chk+0x206>
 		/*increment the iterator to the first occurance of High bit*/
 		iterator_of_BitArr++;
 	}
 	for (uint8_t i = 0; i<=16; i++)
 	{
 		Window_16_Element |= ((uint32_t)BitArr[iterator_of_BitArr+i]<<(16-i));
- 636:	ce 2e       	mov	r12, r30
- 638:	d1 2c       	mov	r13, r1
- 63a:	db 01       	movw	r26, r22
- 63c:	ac 0d       	add	r26, r12
- 63e:	bd 1d       	adc	r27, r13
- 640:	81 e0       	ldi	r24, 0x01	; 1
- 642:	90 e0       	ldi	r25, 0x00	; 0
- 644:	8c 0f       	add	r24, r28
- 646:	9d 1f       	adc	r25, r29
- 648:	a8 0f       	add	r26, r24
- 64a:	b9 1f       	adc	r27, r25
- 64c:	8c 91       	ld	r24, X
- 64e:	90 e0       	ldi	r25, 0x00	; 0
- 650:	a0 e0       	ldi	r26, 0x00	; 0
- 652:	b0 e0       	ldi	r27, 0x00	; 0
- 654:	68 94       	set
- 656:	ee 24       	eor	r14, r14
- 658:	e4 f8       	bld	r14, 4
- 65a:	f1 2c       	mov	r15, r1
- 65c:	ec 18       	sub	r14, r12
- 65e:	fd 08       	sbc	r15, r13
- 660:	04 c0       	rjmp	.+8      	; 0x66a <CRC_16_Calc+0x1e0>
- 662:	88 0f       	add	r24, r24
- 664:	99 1f       	adc	r25, r25
- 666:	aa 1f       	adc	r26, r26
- 668:	bb 1f       	adc	r27, r27
- 66a:	ea 94       	dec	r14
- 66c:	d2 f7       	brpl	.-12     	; 0x662 <CRC_16_Calc+0x1d8>
- 66e:	c0 50       	subi	r28, 0x00	; 0
- 670:	df 4f       	sbci	r29, 0xFF	; 255
- 672:	c8 80       	ld	r12, Y
- 674:	d9 80       	ldd	r13, Y+1	; 0x01
- 676:	ea 80       	ldd	r14, Y+2	; 0x02
- 678:	fb 80       	ldd	r15, Y+3	; 0x03
- 67a:	c0 50       	subi	r28, 0x00	; 0
- 67c:	d1 40       	sbci	r29, 0x01	; 1
- 67e:	8c 29       	or	r24, r12
- 680:	9d 29       	or	r25, r13
- 682:	ae 29       	or	r26, r14
- 684:	bf 29       	or	r27, r15
- 686:	c0 50       	subi	r28, 0x00	; 0
- 688:	df 4f       	sbci	r29, 0xFF	; 255
- 68a:	88 83       	st	Y, r24
- 68c:	99 83       	std	Y+1, r25	; 0x01
- 68e:	aa 83       	std	Y+2, r26	; 0x02
- 690:	bb 83       	std	Y+3, r27	; 0x03
- 692:	c0 50       	subi	r28, 0x00	; 0
- 694:	d1 40       	sbci	r29, 0x01	; 1
+ 632:	e8 2e       	mov	r14, r24
+ 634:	f1 2c       	mov	r15, r1
+ 636:	f9 01       	movw	r30, r18
+ 638:	ee 0d       	add	r30, r14
+ 63a:	ff 1d       	adc	r31, r15
+ 63c:	41 e0       	ldi	r20, 0x01	; 1
+ 63e:	50 e0       	ldi	r21, 0x00	; 0
+ 640:	4c 0f       	add	r20, r28
+ 642:	5d 1f       	adc	r21, r29
+ 644:	e4 0f       	add	r30, r20
+ 646:	f5 1f       	adc	r31, r21
+ 648:	40 81       	ld	r20, Z
+ 64a:	50 e0       	ldi	r21, 0x00	; 0
+ 64c:	60 e0       	ldi	r22, 0x00	; 0
+ 64e:	70 e0       	ldi	r23, 0x00	; 0
+ 650:	e0 e1       	ldi	r30, 0x10	; 16
+ 652:	f0 e0       	ldi	r31, 0x00	; 0
+ 654:	ee 19       	sub	r30, r14
+ 656:	ff 09       	sbc	r31, r15
+ 658:	04 c0       	rjmp	.+8      	; 0x662 <CRC_16_Chk+0x1d8>
+ 65a:	44 0f       	add	r20, r20
+ 65c:	55 1f       	adc	r21, r21
+ 65e:	66 1f       	adc	r22, r22
+ 660:	77 1f       	adc	r23, r23
+ 662:	ea 95       	dec	r30
+ 664:	d2 f7       	brpl	.-12     	; 0x65a <CRC_16_Chk+0x1d0>
+ 666:	c0 50       	subi	r28, 0x00	; 0
+ 668:	df 4f       	sbci	r29, 0xFF	; 255
+ 66a:	c8 80       	ld	r12, Y
+ 66c:	d9 80       	ldd	r13, Y+1	; 0x01
+ 66e:	ea 80       	ldd	r14, Y+2	; 0x02
+ 670:	fb 80       	ldd	r15, Y+3	; 0x03
+ 672:	c0 50       	subi	r28, 0x00	; 0
+ 674:	d1 40       	sbci	r29, 0x01	; 1
+ 676:	4c 29       	or	r20, r12
+ 678:	5d 29       	or	r21, r13
+ 67a:	6e 29       	or	r22, r14
+ 67c:	7f 29       	or	r23, r15
+ 67e:	c0 50       	subi	r28, 0x00	; 0
+ 680:	df 4f       	sbci	r29, 0xFF	; 255
+ 682:	48 83       	st	Y, r20
+ 684:	59 83       	std	Y+1, r21	; 0x01
+ 686:	6a 83       	std	Y+2, r22	; 0x02
+ 688:	7b 83       	std	Y+3, r23	; 0x03
+ 68a:	c0 50       	subi	r28, 0x00	; 0
+ 68c:	d1 40       	sbci	r29, 0x01	; 1
 	while(BitArr[iterator_of_BitArr]!=1)
 	{
 		/*increment the iterator to the first occurance of High bit*/
 		iterator_of_BitArr++;
 	}
 	for (uint8_t i = 0; i<=16; i++)
- 696:	ef 5f       	subi	r30, 0xFF	; 255
- 698:	e1 31       	cpi	r30, 0x11	; 17
- 69a:	68 f2       	brcs	.-102    	; 0x636 <CRC_16_Calc+0x1ac>
- 69c:	56 c0       	rjmp	.+172    	; 0x74a <CRC_16_Calc+0x2c0>
+ 68e:	8f 5f       	subi	r24, 0xFF	; 255
+ 690:	81 31       	cpi	r24, 0x11	; 17
+ 692:	78 f2       	brcs	.-98     	; 0x632 <CRC_16_Chk+0x1a8>
+ 694:	5f c0       	rjmp	.+190    	; 0x754 <CRC_16_Chk+0x2ca>
 	}
 	/*Start the modulo Operation continues until the polynomial doesn't fit into the reminder*/
-	while(iterator_of_BitArr < BitArr_Size-15)
+	while(iterator_of_BitArr < BitArr_Size-16)
 	{
 		/*Xoring operation between the Window and the polynomial*/
 		Window_16_Element ^= polynomial;
- 69e:	c0 50       	subi	r28, 0x00	; 0
- 6a0:	df 4f       	sbci	r29, 0xFF	; 255
- 6a2:	c8 80       	ld	r12, Y
- 6a4:	d9 80       	ldd	r13, Y+1	; 0x01
- 6a6:	ea 80       	ldd	r14, Y+2	; 0x02
- 6a8:	fb 80       	ldd	r15, Y+3	; 0x03
- 6aa:	c0 50       	subi	r28, 0x00	; 0
- 6ac:	d1 40       	sbci	r29, 0x01	; 1
- 6ae:	a5 e0       	ldi	r26, 0x05	; 5
- 6b0:	ca 26       	eor	r12, r26
- 6b2:	a0 e8       	ldi	r26, 0x80	; 128
- 6b4:	da 26       	eor	r13, r26
- 6b6:	a1 e0       	ldi	r26, 0x01	; 1
- 6b8:	ea 26       	eor	r14, r26
- 6ba:	c0 50       	subi	r28, 0x00	; 0
- 6bc:	df 4f       	sbci	r29, 0xFF	; 255
- 6be:	c8 82       	st	Y, r12
- 6c0:	d9 82       	std	Y+1, r13	; 0x01
- 6c2:	ea 82       	std	Y+2, r14	; 0x02
- 6c4:	fb 82       	std	Y+3, r15	; 0x03
- 6c6:	c0 50       	subi	r28, 0x00	; 0
- 6c8:	d1 40       	sbci	r29, 0x01	; 1
-		if(iterator_of_BitArr < BitArr_Size-16)
- 6ca:	40 97       	sbiw	r24, 0x10	; 16
- 6cc:	68 17       	cp	r22, r24
- 6ce:	79 07       	cpc	r23, r25
- 6d0:	dc f5       	brge	.+118    	; 0x748 <CRC_16_Calc+0x2be>
+ 696:	c0 50       	subi	r28, 0x00	; 0
+ 698:	df 4f       	sbci	r29, 0xFF	; 255
+ 69a:	48 81       	ld	r20, Y
+ 69c:	59 81       	ldd	r21, Y+1	; 0x01
+ 69e:	6a 81       	ldd	r22, Y+2	; 0x02
+ 6a0:	7b 81       	ldd	r23, Y+3	; 0x03
+ 6a2:	c0 50       	subi	r28, 0x00	; 0
+ 6a4:	d1 40       	sbci	r29, 0x01	; 1
+ 6a6:	85 e0       	ldi	r24, 0x05	; 5
+ 6a8:	48 27       	eor	r20, r24
+ 6aa:	50 58       	subi	r21, 0x80	; 128
+ 6ac:	81 e0       	ldi	r24, 0x01	; 1
+ 6ae:	68 27       	eor	r22, r24
+ 6b0:	c0 50       	subi	r28, 0x00	; 0
+ 6b2:	df 4f       	sbci	r29, 0xFF	; 255
+ 6b4:	48 83       	st	Y, r20
+ 6b6:	59 83       	std	Y+1, r21	; 0x01
+ 6b8:	6a 83       	std	Y+2, r22	; 0x02
+ 6ba:	7b 83       	std	Y+3, r23	; 0x03
+ 6bc:	c0 50       	subi	r28, 0x00	; 0
+ 6be:	d1 40       	sbci	r29, 0x01	; 1
+		if(!Window_16_Element)
+ 6c0:	c0 50       	subi	r28, 0x00	; 0
+ 6c2:	df 4f       	sbci	r29, 0xFF	; 255
+ 6c4:	48 81       	ld	r20, Y
+ 6c6:	59 81       	ldd	r21, Y+1	; 0x01
+ 6c8:	6a 81       	ldd	r22, Y+2	; 0x02
+ 6ca:	7b 81       	ldd	r23, Y+3	; 0x03
+ 6cc:	c0 50       	subi	r28, 0x00	; 0
+ 6ce:	d1 40       	sbci	r29, 0x01	; 1
+ 6d0:	45 2b       	or	r20, r21
+ 6d2:	46 2b       	or	r20, r22
+ 6d4:	47 2b       	or	r20, r23
+ 6d6:	09 f4       	brne	.+2      	; 0x6da <CRC_16_Chk+0x250>
+ 6d8:	47 c0       	rjmp	.+142    	; 0x768 <CRC_16_Chk+0x2de>
+			break;
+		if((iterator_of_BitArr < BitArr_Size-16))
+ 6da:	e2 17       	cp	r30, r18
+ 6dc:	f3 07       	cpc	r31, r19
+ 6de:	d4 f5       	brge	.+116    	; 0x754 <CRC_16_Chk+0x2ca>
 		{
-			do 
+			do
 			{
-			Window_16_Element <<= 1;
- 6d2:	c0 50       	subi	r28, 0x00	; 0
- 6d4:	df 4f       	sbci	r29, 0xFF	; 255
- 6d6:	88 81       	ld	r24, Y
- 6d8:	99 81       	ldd	r25, Y+1	; 0x01
- 6da:	aa 81       	ldd	r26, Y+2	; 0x02
- 6dc:	bb 81       	ldd	r27, Y+3	; 0x03
- 6de:	c0 50       	subi	r28, 0x00	; 0
- 6e0:	d1 40       	sbci	r29, 0x01	; 1
- 6e2:	88 0f       	add	r24, r24
- 6e4:	99 1f       	adc	r25, r25
- 6e6:	aa 1f       	adc	r26, r26
- 6e8:	bb 1f       	adc	r27, r27
- 6ea:	c0 50       	subi	r28, 0x00	; 0
- 6ec:	df 4f       	sbci	r29, 0xFF	; 255
- 6ee:	88 83       	st	Y, r24
- 6f0:	99 83       	std	Y+1, r25	; 0x01
- 6f2:	aa 83       	std	Y+2, r26	; 0x02
- 6f4:	bb 83       	std	Y+3, r27	; 0x03
- 6f6:	c0 50       	subi	r28, 0x00	; 0
- 6f8:	d1 40       	sbci	r29, 0x01	; 1
-			iterator_of_BitArr++;
- 6fa:	4f 5f       	subi	r20, 0xFF	; 255
-			/*Adding new element from the array of bits to the window*/
-			Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
- 6fc:	e4 2f       	mov	r30, r20
- 6fe:	f0 e0       	ldi	r31, 0x00	; 0
- 700:	70 96       	adiw	r30, 0x10	; 16
- 702:	81 e0       	ldi	r24, 0x01	; 1
- 704:	90 e0       	ldi	r25, 0x00	; 0
- 706:	8c 0f       	add	r24, r28
- 708:	9d 1f       	adc	r25, r29
- 70a:	e8 0f       	add	r30, r24
- 70c:	f9 1f       	adc	r31, r25
- 70e:	60 81       	ld	r22, Z
- 710:	c0 50       	subi	r28, 0x00	; 0
- 712:	df 4f       	sbci	r29, 0xFF	; 255
- 714:	88 81       	ld	r24, Y
- 716:	99 81       	ldd	r25, Y+1	; 0x01
- 718:	aa 81       	ldd	r26, Y+2	; 0x02
- 71a:	bb 81       	ldd	r27, Y+3	; 0x03
- 71c:	c0 50       	subi	r28, 0x00	; 0
- 71e:	d1 40       	sbci	r29, 0x01	; 1
- 720:	86 2b       	or	r24, r22
- 722:	c0 50       	subi	r28, 0x00	; 0
- 724:	df 4f       	sbci	r29, 0xFF	; 255
- 726:	88 83       	st	Y, r24
- 728:	99 83       	std	Y+1, r25	; 0x01
- 72a:	aa 83       	std	Y+2, r26	; 0x02
- 72c:	bb 83       	std	Y+3, r27	; 0x03
- 72e:	c0 50       	subi	r28, 0x00	; 0
- 730:	d1 40       	sbci	r29, 0x01	; 1
+				Window_16_Element <<= 1;
+ 6e0:	c0 50       	subi	r28, 0x00	; 0
+ 6e2:	df 4f       	sbci	r29, 0xFF	; 255
+ 6e4:	48 81       	ld	r20, Y
+ 6e6:	59 81       	ldd	r21, Y+1	; 0x01
+ 6e8:	6a 81       	ldd	r22, Y+2	; 0x02
+ 6ea:	7b 81       	ldd	r23, Y+3	; 0x03
+ 6ec:	c0 50       	subi	r28, 0x00	; 0
+ 6ee:	d1 40       	sbci	r29, 0x01	; 1
+ 6f0:	44 0f       	add	r20, r20
+ 6f2:	55 1f       	adc	r21, r21
+ 6f4:	66 1f       	adc	r22, r22
+ 6f6:	77 1f       	adc	r23, r23
+ 6f8:	c0 50       	subi	r28, 0x00	; 0
+ 6fa:	df 4f       	sbci	r29, 0xFF	; 255
+ 6fc:	48 83       	st	Y, r20
+ 6fe:	59 83       	std	Y+1, r21	; 0x01
+ 700:	6a 83       	std	Y+2, r22	; 0x02
+ 702:	7b 83       	std	Y+3, r23	; 0x03
+ 704:	c0 50       	subi	r28, 0x00	; 0
+ 706:	d1 40       	sbci	r29, 0x01	; 1
+				iterator_of_BitArr++;
+ 708:	af 5f       	subi	r26, 0xFF	; 255
+				/*Adding new element from the array of bits to the window*/
+				Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
+ 70a:	ea 2f       	mov	r30, r26
+ 70c:	f0 e0       	ldi	r31, 0x00	; 0
+ 70e:	70 96       	adiw	r30, 0x10	; 16
+ 710:	21 e0       	ldi	r18, 0x01	; 1
+ 712:	30 e0       	ldi	r19, 0x00	; 0
+ 714:	2c 0f       	add	r18, r28
+ 716:	3d 1f       	adc	r19, r29
+ 718:	e2 0f       	add	r30, r18
+ 71a:	f3 1f       	adc	r31, r19
+ 71c:	80 81       	ld	r24, Z
+ 71e:	c0 50       	subi	r28, 0x00	; 0
+ 720:	df 4f       	sbci	r29, 0xFF	; 255
+ 722:	48 81       	ld	r20, Y
+ 724:	59 81       	ldd	r21, Y+1	; 0x01
+ 726:	6a 81       	ldd	r22, Y+2	; 0x02
+ 728:	7b 81       	ldd	r23, Y+3	; 0x03
+ 72a:	c0 50       	subi	r28, 0x00	; 0
+ 72c:	d1 40       	sbci	r29, 0x01	; 1
+ 72e:	48 2b       	or	r20, r24
+ 730:	c0 50       	subi	r28, 0x00	; 0
+ 732:	df 4f       	sbci	r29, 0xFF	; 255
+ 734:	48 83       	st	Y, r20
+ 736:	59 83       	std	Y+1, r21	; 0x01
+ 738:	6a 83       	std	Y+2, r22	; 0x02
+ 73a:	7b 83       	std	Y+3, r23	; 0x03
+ 73c:	c0 50       	subi	r28, 0x00	; 0
+ 73e:	d1 40       	sbci	r29, 0x01	; 1
 			} while ((Get_Bit(Window_16_Element,16) == 0));
- 732:	c0 50       	subi	r28, 0x00	; 0
- 734:	df 4f       	sbci	r29, 0xFF	; 255
- 736:	88 81       	ld	r24, Y
- 738:	99 81       	ldd	r25, Y+1	; 0x01
- 73a:	aa 81       	ldd	r26, Y+2	; 0x02
- 73c:	bb 81       	ldd	r27, Y+3	; 0x03
- 73e:	c0 50       	subi	r28, 0x00	; 0
- 740:	d1 40       	sbci	r29, 0x01	; 1
- 742:	a0 ff       	sbrs	r26, 0
- 744:	c6 cf       	rjmp	.-116    	; 0x6d2 <CRC_16_Calc+0x248>
- 746:	01 c0       	rjmp	.+2      	; 0x74a <CRC_16_Calc+0x2c0>
-		}
-		else
-		{
-			iterator_of_BitArr++;
- 748:	4f 5f       	subi	r20, 0xFF	; 255
-	for (uint8_t i = 0; i<=16; i++)
-	{
-		Window_16_Element |= ((uint32_t)BitArr[iterator_of_BitArr+i]<<(16-i));
-	}
-	/*Start the modulo Operation continues until the polynomial doesn't fit into the reminder*/
-	while(iterator_of_BitArr < BitArr_Size-15)
- 74a:	64 2f       	mov	r22, r20
- 74c:	70 e0       	ldi	r23, 0x00	; 0
- 74e:	85 2f       	mov	r24, r21
- 750:	90 e0       	ldi	r25, 0x00	; 0
- 752:	fc 01       	movw	r30, r24
- 754:	3f 97       	sbiw	r30, 0x0f	; 15
- 756:	6e 17       	cp	r22, r30
- 758:	7f 07       	cpc	r23, r31
- 75a:	0c f4       	brge	.+2      	; 0x75e <CRC_16_Calc+0x2d4>
- 75c:	a0 cf       	rjmp	.-192    	; 0x69e <CRC_16_Calc+0x214>
-		{
-			iterator_of_BitArr++;
-		}
-	}
-	/*Add the calculated CRC to the End of the Passed String*/
-	STRING[StrLength] = (uint8_t)(Window_16_Element>>8);
- 75e:	f8 01       	movw	r30, r16
- 760:	e2 0f       	add	r30, r18
- 762:	f3 1f       	adc	r31, r19
- 764:	c0 50       	subi	r28, 0x00	; 0
- 766:	df 4f       	sbci	r29, 0xFF	; 255
- 768:	88 81       	ld	r24, Y
- 76a:	99 81       	ldd	r25, Y+1	; 0x01
- 76c:	aa 81       	ldd	r26, Y+2	; 0x02
- 76e:	bb 81       	ldd	r27, Y+3	; 0x03
- 770:	c0 50       	subi	r28, 0x00	; 0
- 772:	d1 40       	sbci	r29, 0x01	; 1
- 774:	90 83       	st	Z, r25
-	STRING[StrLength+1] = (uint8_t)(Window_16_Element&0x000000FF);
- 776:	cc 5f       	subi	r28, 0xFC	; 252
- 778:	de 4f       	sbci	r29, 0xFE	; 254
- 77a:	88 81       	ld	r24, Y
- 77c:	99 81       	ldd	r25, Y+1	; 0x01
- 77e:	c4 50       	subi	r28, 0x04	; 4
- 780:	d1 40       	sbci	r29, 0x01	; 1
- 782:	fc 01       	movw	r30, r24
- 784:	31 96       	adiw	r30, 0x01	; 1
- 786:	e0 0f       	add	r30, r16
- 788:	f1 1f       	adc	r31, r17
- 78a:	c0 50       	subi	r28, 0x00	; 0
- 78c:	df 4f       	sbci	r29, 0xFF	; 255
- 78e:	48 81       	ld	r20, Y
- 790:	59 81       	ldd	r21, Y+1	; 0x01
- 792:	6a 81       	ldd	r22, Y+2	; 0x02
- 794:	7b 81       	ldd	r23, Y+3	; 0x03
- 796:	c0 50       	subi	r28, 0x00	; 0
- 798:	d1 40       	sbci	r29, 0x01	; 1
- 79a:	40 83       	st	Z, r20
-	STRING[StrLength+2] = NULL_TERMINATOR;
- 79c:	02 96       	adiw	r24, 0x02	; 2
- 79e:	f8 01       	movw	r30, r16
- 7a0:	e8 0f       	add	r30, r24
- 7a2:	f9 1f       	adc	r31, r25
- 7a4:	10 82       	st	Z, r1
-	/*return zero*/
-	return OperationSuccess;
-}
- 7a6:	80 e0       	ldi	r24, 0x00	; 0
- 7a8:	cb 5f       	subi	r28, 0xFB	; 251
- 7aa:	de 4f       	sbci	r29, 0xFE	; 254
- 7ac:	0f b6       	in	r0, 0x3f	; 63
- 7ae:	f8 94       	cli
- 7b0:	de bf       	out	0x3e, r29	; 62
- 7b2:	0f be       	out	0x3f, r0	; 63
- 7b4:	cd bf       	out	0x3d, r28	; 61
- 7b6:	df 91       	pop	r29
- 7b8:	cf 91       	pop	r28
- 7ba:	1f 91       	pop	r17
- 7bc:	0f 91       	pop	r16
- 7be:	ff 90       	pop	r15
- 7c0:	ef 90       	pop	r14
- 7c2:	df 90       	pop	r13
- 7c4:	cf 90       	pop	r12
- 7c6:	08 95       	ret
-
-000007c8 <CRC_16_Chk>:
-
-uint8_t CRC_16_Chk (uint8_t* STRING)
-{
- 7c8:	cf 92       	push	r12
- 7ca:	df 92       	push	r13
- 7cc:	ef 92       	push	r14
- 7ce:	ff 92       	push	r15
- 7d0:	cf 93       	push	r28
- 7d2:	df 93       	push	r29
- 7d4:	cd b7       	in	r28, 0x3d	; 61
- 7d6:	de b7       	in	r29, 0x3e	; 62
- 7d8:	c5 50       	subi	r28, 0x05	; 5
- 7da:	d1 40       	sbci	r29, 0x01	; 1
- 7dc:	0f b6       	in	r0, 0x3f	; 63
- 7de:	f8 94       	cli
- 7e0:	de bf       	out	0x3e, r29	; 62
- 7e2:	0f be       	out	0x3f, r0	; 63
- 7e4:	cd bf       	out	0x3d, r28	; 61
- 7e6:	7c 01       	movw	r14, r24
-	/*change array of character to array of bits*/
-	/*initialize the array of bits*/
-	uint8_t BitArr[255] = {0};
- 7e8:	fe 01       	movw	r30, r28
- 7ea:	31 96       	adiw	r30, 0x01	; 1
- 7ec:	8f ef       	ldi	r24, 0xFF	; 255
- 7ee:	df 01       	movw	r26, r30
- 7f0:	1d 92       	st	X+, r1
- 7f2:	8a 95       	dec	r24
- 7f4:	e9 f7       	brne	.-6      	; 0x7f0 <CRC_16_Chk+0x28>
-	/*Error Return value*/
-	uint8_t ErrRetVal = ERROR_OK;
-	/*the value of the used polynomial for CRC_16*/
-	const uint32_t polynomial = 0b00000000000000011000000000000101;
-	/*variable that holds the value to be XORED and SHIFTED*/
-	uint32_t volatile Window_16_Element =0;
- 7f6:	c0 50       	subi	r28, 0x00	; 0
- 7f8:	df 4f       	sbci	r29, 0xFF	; 255
- 7fa:	18 82       	st	Y, r1
- 7fc:	19 82       	std	Y+1, r1	; 0x01
- 7fe:	1a 82       	std	Y+2, r1	; 0x02
- 800:	1b 82       	std	Y+3, r1	; 0x03
- 802:	c0 50       	subi	r28, 0x00	; 0
- 804:	d1 40       	sbci	r29, 0x01	; 1
-	/*initialize the variable that holds the number of characters to which CRC is calculated*/
-	/*number of characters in the inserted string*/
-	uint16_t StrLength =0;
- 806:	cc 5f       	subi	r28, 0xFC	; 252
- 808:	de 4f       	sbci	r29, 0xFE	; 254
- 80a:	19 82       	std	Y+1, r1	; 0x01
- 80c:	18 82       	st	Y, r1
- 80e:	c4 50       	subi	r28, 0x04	; 4
- 810:	d1 40       	sbci	r29, 0x01	; 1
-	/*initialize the variable that holds the number of bits in the inserted string*/
-	uint8_t BitArr_Size = 0;
-	/*using STR_Length() function to calculate Number of characters in the inserted String*/
-	STR_Length(STRING, &StrLength);
- 812:	be 01       	movw	r22, r28
- 814:	6c 5f       	subi	r22, 0xFC	; 252
- 816:	7e 4f       	sbci	r23, 0xFE	; 254
- 818:	c7 01       	movw	r24, r14
- 81a:	0e 94 32 02 	call	0x464	; 0x464 <STR_Length>
-	uint8_t iterator_of_BitArr = 0;
-	/*initializing the iterator for the array of the inserted Characters in the string*/
-	uint8_t iterator_of_characters = 0;
-	/*assigning the bits of the character in the passed string to the array of bits*/
-	/*bits are arranged in the array the form of an extra long number"Index 0:MSB,..,..,..,. . .,Index N:LSB"*/
-	for(iterator_of_characters = 0; iterator_of_characters < StrLength; iterator_of_characters++)
- 81e:	90 e0       	ldi	r25, 0x00	; 0
-	/*initialize the variable that holds the number of bits in the inserted string*/
-	uint8_t BitArr_Size = 0;
-	/*using STR_Length() function to calculate Number of characters in the inserted String*/
-	STR_Length(STRING, &StrLength);
-	/*initializing the iterator for the array of bits of the inserted Character string*/
-	uint8_t iterator_of_BitArr = 0;
- 820:	70 e0       	ldi	r23, 0x00	; 0
-	/*initializing the iterator for the array of the inserted Characters in the string*/
-	uint8_t iterator_of_characters = 0;
-	/*assigning the bits of the character in the passed string to the array of bits*/
-	/*bits are arranged in the array the form of an extra long number"Index 0:MSB,..,..,..,. . .,Index N:LSB"*/
-	for(iterator_of_characters = 0; iterator_of_characters < StrLength; iterator_of_characters++)
- 822:	89 c0       	rjmp	.+274    	; 0x936 <__stack+0xd7>
-	{
-		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_7);
- 824:	f7 01       	movw	r30, r14
- 826:	e2 0f       	add	r30, r18
- 828:	f3 1f       	adc	r31, r19
- 82a:	80 81       	ld	r24, Z
- 82c:	28 2f       	mov	r18, r24
- 82e:	22 1f       	adc	r18, r18
- 830:	22 27       	eor	r18, r18
- 832:	22 1f       	adc	r18, r18
- 834:	e1 e0       	ldi	r30, 0x01	; 1
- 836:	f0 e0       	ldi	r31, 0x00	; 0
- 838:	ec 0f       	add	r30, r28
- 83a:	fd 1f       	adc	r31, r29
- 83c:	e7 0f       	add	r30, r23
- 83e:	f1 1d       	adc	r31, r1
- 840:	20 83       	st	Z, r18
-		iterator_of_BitArr++;
- 842:	41 e0       	ldi	r20, 0x01	; 1
- 844:	47 0f       	add	r20, r23
-		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_6);
- 846:	28 2f       	mov	r18, r24
- 848:	20 74       	andi	r18, 0x40	; 64
- 84a:	30 e0       	ldi	r19, 0x00	; 0
- 84c:	02 2e       	mov	r0, r18
- 84e:	23 2f       	mov	r18, r19
- 850:	00 0c       	add	r0, r0
- 852:	22 1f       	adc	r18, r18
- 854:	33 0b       	sbc	r19, r19
- 856:	00 0c       	add	r0, r0
- 858:	22 1f       	adc	r18, r18
- 85a:	33 1f       	adc	r19, r19
- 85c:	e1 e0       	ldi	r30, 0x01	; 1
- 85e:	f0 e0       	ldi	r31, 0x00	; 0
- 860:	ec 0f       	add	r30, r28
- 862:	fd 1f       	adc	r31, r29
- 864:	e4 0f       	add	r30, r20
- 866:	f1 1d       	adc	r31, r1
- 868:	20 83       	st	Z, r18
-		iterator_of_BitArr++;
- 86a:	42 e0       	ldi	r20, 0x02	; 2
- 86c:	47 0f       	add	r20, r23
-		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_5);
- 86e:	28 2f       	mov	r18, r24
- 870:	20 72       	andi	r18, 0x20	; 32
- 872:	30 e0       	ldi	r19, 0x00	; 0
- 874:	35 95       	asr	r19
- 876:	27 95       	ror	r18
- 878:	35 95       	asr	r19
- 87a:	27 95       	ror	r18
- 87c:	35 95       	asr	r19
- 87e:	27 95       	ror	r18
- 880:	35 95       	asr	r19
- 882:	27 95       	ror	r18
- 884:	35 95       	asr	r19
- 886:	27 95       	ror	r18
- 888:	e1 e0       	ldi	r30, 0x01	; 1
- 88a:	f0 e0       	ldi	r31, 0x00	; 0
- 88c:	ec 0f       	add	r30, r28
- 88e:	fd 1f       	adc	r31, r29
- 890:	e4 0f       	add	r30, r20
- 892:	f1 1d       	adc	r31, r1
- 894:	20 83       	st	Z, r18
-		iterator_of_BitArr++;
- 896:	43 e0       	ldi	r20, 0x03	; 3
- 898:	47 0f       	add	r20, r23
-		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_4);
- 89a:	28 2f       	mov	r18, r24
- 89c:	20 71       	andi	r18, 0x10	; 16
- 89e:	30 e0       	ldi	r19, 0x00	; 0
- 8a0:	35 95       	asr	r19
- 8a2:	27 95       	ror	r18
- 8a4:	35 95       	asr	r19
- 8a6:	27 95       	ror	r18
- 8a8:	35 95       	asr	r19
- 8aa:	27 95       	ror	r18
- 8ac:	35 95       	asr	r19
- 8ae:	27 95       	ror	r18
- 8b0:	e1 e0       	ldi	r30, 0x01	; 1
- 8b2:	f0 e0       	ldi	r31, 0x00	; 0
- 8b4:	ec 0f       	add	r30, r28
- 8b6:	fd 1f       	adc	r31, r29
- 8b8:	e4 0f       	add	r30, r20
- 8ba:	f1 1d       	adc	r31, r1
- 8bc:	20 83       	st	Z, r18
-		iterator_of_BitArr++;
- 8be:	44 e0       	ldi	r20, 0x04	; 4
- 8c0:	47 0f       	add	r20, r23
-		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_3);
- 8c2:	28 2f       	mov	r18, r24
- 8c4:	28 70       	andi	r18, 0x08	; 8
- 8c6:	30 e0       	ldi	r19, 0x00	; 0
- 8c8:	35 95       	asr	r19
- 8ca:	27 95       	ror	r18
- 8cc:	35 95       	asr	r19
- 8ce:	27 95       	ror	r18
- 8d0:	35 95       	asr	r19
- 8d2:	27 95       	ror	r18
- 8d4:	e1 e0       	ldi	r30, 0x01	; 1
- 8d6:	f0 e0       	ldi	r31, 0x00	; 0
- 8d8:	ec 0f       	add	r30, r28
- 8da:	fd 1f       	adc	r31, r29
- 8dc:	e4 0f       	add	r30, r20
- 8de:	f1 1d       	adc	r31, r1
- 8e0:	20 83       	st	Z, r18
-		iterator_of_BitArr++;
- 8e2:	45 e0       	ldi	r20, 0x05	; 5
- 8e4:	47 0f       	add	r20, r23
-		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_2);
- 8e6:	28 2f       	mov	r18, r24
- 8e8:	24 70       	andi	r18, 0x04	; 4
- 8ea:	30 e0       	ldi	r19, 0x00	; 0
- 8ec:	35 95       	asr	r19
- 8ee:	27 95       	ror	r18
- 8f0:	35 95       	asr	r19
- 8f2:	27 95       	ror	r18
- 8f4:	e1 e0       	ldi	r30, 0x01	; 1
- 8f6:	f0 e0       	ldi	r31, 0x00	; 0
- 8f8:	ec 0f       	add	r30, r28
- 8fa:	fd 1f       	adc	r31, r29
- 8fc:	e4 0f       	add	r30, r20
- 8fe:	f1 1d       	adc	r31, r1
- 900:	20 83       	st	Z, r18
-		iterator_of_BitArr++;
- 902:	46 e0       	ldi	r20, 0x06	; 6
- 904:	47 0f       	add	r20, r23
-		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_1);
- 906:	28 2f       	mov	r18, r24
- 908:	22 70       	andi	r18, 0x02	; 2
- 90a:	30 e0       	ldi	r19, 0x00	; 0
- 90c:	35 95       	asr	r19
- 90e:	27 95       	ror	r18
- 910:	e1 e0       	ldi	r30, 0x01	; 1
- 912:	f0 e0       	ldi	r31, 0x00	; 0
- 914:	ec 0f       	add	r30, r28
- 916:	fd 1f       	adc	r31, r29
- 918:	e4 0f       	add	r30, r20
- 91a:	f1 1d       	adc	r31, r1
- 91c:	20 83       	st	Z, r18
-		iterator_of_BitArr++;
- 91e:	27 e0       	ldi	r18, 0x07	; 7
- 920:	27 0f       	add	r18, r23
-		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_0);
- 922:	e1 e0       	ldi	r30, 0x01	; 1
- 924:	f0 e0       	ldi	r31, 0x00	; 0
- 926:	ec 0f       	add	r30, r28
- 928:	fd 1f       	adc	r31, r29
- 92a:	e2 0f       	add	r30, r18
- 92c:	f1 1d       	adc	r31, r1
- 92e:	81 70       	andi	r24, 0x01	; 1
- 930:	80 83       	st	Z, r24
-		iterator_of_BitArr++;
- 932:	78 5f       	subi	r23, 0xF8	; 248
-	uint8_t iterator_of_BitArr = 0;
-	/*initializing the iterator for the array of the inserted Characters in the string*/
-	uint8_t iterator_of_characters = 0;
-	/*assigning the bits of the character in the passed string to the array of bits*/
-	/*bits are arranged in the array the form of an extra long number"Index 0:MSB,..,..,..,. . .,Index N:LSB"*/
-	for(iterator_of_characters = 0; iterator_of_characters < StrLength; iterator_of_characters++)
- 934:	9f 5f       	subi	r25, 0xFF	; 255
- 936:	29 2f       	mov	r18, r25
- 938:	30 e0       	ldi	r19, 0x00	; 0
- 93a:	cc 5f       	subi	r28, 0xFC	; 252
- 93c:	de 4f       	sbci	r29, 0xFE	; 254
- 93e:	48 81       	ld	r20, Y
- 940:	59 81       	ldd	r21, Y+1	; 0x01
- 942:	c4 50       	subi	r28, 0x04	; 4
- 944:	d1 40       	sbci	r29, 0x01	; 1
- 946:	24 17       	cp	r18, r20
- 948:	35 07       	cpc	r19, r21
- 94a:	08 f4       	brcc	.+2      	; 0x94e <__stack+0xef>
- 94c:	6b cf       	rjmp	.-298    	; 0x824 <__DATA_REGION_LENGTH__+0x24>
-		iterator_of_BitArr++;
-		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_0);
-		iterator_of_BitArr++;
-	}
-	/*calculating the size of the array of bits taking into consideration the size of the 16 bits of CRC_16*/
-	BitArr_Size = iterator_of_BitArr + 15;
- 94e:	71 5f       	subi	r23, 0xF1	; 241
-	/*reset the iterator of the Bits Array to zero to iterate through the array*/
-	iterator_of_BitArr = 0;
- 950:	60 e0       	ldi	r22, 0x00	; 0
-	/*Moving to the first occurance of high bit to start our CRC calculation*/
-	while(BitArr[iterator_of_BitArr]!=1)
- 952:	01 c0       	rjmp	.+2      	; 0x956 <__stack+0xf7>
-	{
-		/*increment the iterator to the first occurance of High bit*/
-		iterator_of_BitArr++;
- 954:	6f 5f       	subi	r22, 0xFF	; 255
-	/*calculating the size of the array of bits taking into consideration the size of the 16 bits of CRC_16*/
-	BitArr_Size = iterator_of_BitArr + 15;
-	/*reset the iterator of the Bits Array to zero to iterate through the array*/
-	iterator_of_BitArr = 0;
-	/*Moving to the first occurance of high bit to start our CRC calculation*/
-	while(BitArr[iterator_of_BitArr]!=1)
- 956:	46 2f       	mov	r20, r22
- 958:	50 e0       	ldi	r21, 0x00	; 0
- 95a:	e1 e0       	ldi	r30, 0x01	; 1
- 95c:	f0 e0       	ldi	r31, 0x00	; 0
- 95e:	ec 0f       	add	r30, r28
- 960:	fd 1f       	adc	r31, r29
- 962:	e4 0f       	add	r30, r20
- 964:	f5 1f       	adc	r31, r21
- 966:	80 81       	ld	r24, Z
- 968:	81 30       	cpi	r24, 0x01	; 1
- 96a:	a1 f7       	brne	.-24     	; 0x954 <__stack+0xf5>
- 96c:	20 e0       	ldi	r18, 0x00	; 0
- 96e:	2f c0       	rjmp	.+94     	; 0x9ce <__stack+0x16f>
-		/*increment the iterator to the first occurance of High bit*/
-		iterator_of_BitArr++;
-	}
-	for (uint8_t i = 0; i<=16; i++)
-	{
-		Window_16_Element |= ((uint32_t)BitArr[iterator_of_BitArr+i]<<(16-i));
- 970:	e2 2e       	mov	r14, r18
- 972:	f1 2c       	mov	r15, r1
- 974:	fa 01       	movw	r30, r20
- 976:	ee 0d       	add	r30, r14
- 978:	ff 1d       	adc	r31, r15
- 97a:	81 e0       	ldi	r24, 0x01	; 1
- 97c:	90 e0       	ldi	r25, 0x00	; 0
- 97e:	8c 0f       	add	r24, r28
- 980:	9d 1f       	adc	r25, r29
- 982:	e8 0f       	add	r30, r24
- 984:	f9 1f       	adc	r31, r25
- 986:	80 81       	ld	r24, Z
- 988:	90 e0       	ldi	r25, 0x00	; 0
- 98a:	a0 e0       	ldi	r26, 0x00	; 0
- 98c:	b0 e0       	ldi	r27, 0x00	; 0
- 98e:	e0 e1       	ldi	r30, 0x10	; 16
- 990:	f0 e0       	ldi	r31, 0x00	; 0
- 992:	ee 19       	sub	r30, r14
- 994:	ff 09       	sbc	r31, r15
- 996:	04 c0       	rjmp	.+8      	; 0x9a0 <__stack+0x141>
- 998:	88 0f       	add	r24, r24
- 99a:	99 1f       	adc	r25, r25
- 99c:	aa 1f       	adc	r26, r26
- 99e:	bb 1f       	adc	r27, r27
- 9a0:	ea 95       	dec	r30
- 9a2:	d2 f7       	brpl	.-12     	; 0x998 <__stack+0x139>
- 9a4:	c0 50       	subi	r28, 0x00	; 0
- 9a6:	df 4f       	sbci	r29, 0xFF	; 255
- 9a8:	c8 80       	ld	r12, Y
- 9aa:	d9 80       	ldd	r13, Y+1	; 0x01
- 9ac:	ea 80       	ldd	r14, Y+2	; 0x02
- 9ae:	fb 80       	ldd	r15, Y+3	; 0x03
- 9b0:	c0 50       	subi	r28, 0x00	; 0
- 9b2:	d1 40       	sbci	r29, 0x01	; 1
- 9b4:	8c 29       	or	r24, r12
- 9b6:	9d 29       	or	r25, r13
- 9b8:	ae 29       	or	r26, r14
- 9ba:	bf 29       	or	r27, r15
- 9bc:	c0 50       	subi	r28, 0x00	; 0
- 9be:	df 4f       	sbci	r29, 0xFF	; 255
- 9c0:	88 83       	st	Y, r24
- 9c2:	99 83       	std	Y+1, r25	; 0x01
- 9c4:	aa 83       	std	Y+2, r26	; 0x02
- 9c6:	bb 83       	std	Y+3, r27	; 0x03
- 9c8:	c0 50       	subi	r28, 0x00	; 0
- 9ca:	d1 40       	sbci	r29, 0x01	; 1
-	while(BitArr[iterator_of_BitArr]!=1)
-	{
-		/*increment the iterator to the first occurance of High bit*/
-		iterator_of_BitArr++;
-	}
-	for (uint8_t i = 0; i<=16; i++)
- 9cc:	2f 5f       	subi	r18, 0xFF	; 255
- 9ce:	21 31       	cpi	r18, 0x11	; 17
- 9d0:	78 f2       	brcs	.-98     	; 0x970 <__stack+0x111>
- 9d2:	53 c0       	rjmp	.+166    	; 0xa7a <__stack+0x21b>
-	}
-	/*Start the modulo Operation continues until the polynomial doesn't fit into the reminder*/
-	while(iterator_of_BitArr < BitArr_Size-16)
-	{
-		/*Xoring operation between the Window and the polynomial*/
-		Window_16_Element ^= polynomial;
- 9d4:	c0 50       	subi	r28, 0x00	; 0
- 9d6:	df 4f       	sbci	r29, 0xFF	; 255
- 9d8:	88 81       	ld	r24, Y
- 9da:	99 81       	ldd	r25, Y+1	; 0x01
- 9dc:	aa 81       	ldd	r26, Y+2	; 0x02
- 9de:	bb 81       	ldd	r27, Y+3	; 0x03
- 9e0:	c0 50       	subi	r28, 0x00	; 0
- 9e2:	d1 40       	sbci	r29, 0x01	; 1
- 9e4:	45 e0       	ldi	r20, 0x05	; 5
- 9e6:	84 27       	eor	r24, r20
- 9e8:	90 58       	subi	r25, 0x80	; 128
- 9ea:	41 e0       	ldi	r20, 0x01	; 1
- 9ec:	a4 27       	eor	r26, r20
- 9ee:	c0 50       	subi	r28, 0x00	; 0
- 9f0:	df 4f       	sbci	r29, 0xFF	; 255
- 9f2:	88 83       	st	Y, r24
- 9f4:	99 83       	std	Y+1, r25	; 0x01
- 9f6:	aa 83       	std	Y+2, r26	; 0x02
- 9f8:	bb 83       	std	Y+3, r27	; 0x03
- 9fa:	c0 50       	subi	r28, 0x00	; 0
- 9fc:	d1 40       	sbci	r29, 0x01	; 1
-		do
-		{
-			Window_16_Element <<= 1;
- 9fe:	c0 50       	subi	r28, 0x00	; 0
- a00:	df 4f       	sbci	r29, 0xFF	; 255
- a02:	88 81       	ld	r24, Y
- a04:	99 81       	ldd	r25, Y+1	; 0x01
- a06:	aa 81       	ldd	r26, Y+2	; 0x02
- a08:	bb 81       	ldd	r27, Y+3	; 0x03
- a0a:	c0 50       	subi	r28, 0x00	; 0
- a0c:	d1 40       	sbci	r29, 0x01	; 1
- a0e:	88 0f       	add	r24, r24
- a10:	99 1f       	adc	r25, r25
- a12:	aa 1f       	adc	r26, r26
- a14:	bb 1f       	adc	r27, r27
- a16:	c0 50       	subi	r28, 0x00	; 0
- a18:	df 4f       	sbci	r29, 0xFF	; 255
- a1a:	88 83       	st	Y, r24
- a1c:	99 83       	std	Y+1, r25	; 0x01
- a1e:	aa 83       	std	Y+2, r26	; 0x02
- a20:	bb 83       	std	Y+3, r27	; 0x03
- a22:	c0 50       	subi	r28, 0x00	; 0
- a24:	d1 40       	sbci	r29, 0x01	; 1
-			iterator_of_BitArr++;
- a26:	6f 5f       	subi	r22, 0xFF	; 255
-			/*Adding new element from the array of bits to the window*/
-			Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
- a28:	46 2f       	mov	r20, r22
- a2a:	50 e0       	ldi	r21, 0x00	; 0
- a2c:	fa 01       	movw	r30, r20
- a2e:	70 96       	adiw	r30, 0x10	; 16
- a30:	81 e0       	ldi	r24, 0x01	; 1
- a32:	90 e0       	ldi	r25, 0x00	; 0
- a34:	8c 0f       	add	r24, r28
- a36:	9d 1f       	adc	r25, r29
- a38:	e8 0f       	add	r30, r24
- a3a:	f9 1f       	adc	r31, r25
- a3c:	e0 81       	ld	r30, Z
- a3e:	c0 50       	subi	r28, 0x00	; 0
- a40:	df 4f       	sbci	r29, 0xFF	; 255
- a42:	88 81       	ld	r24, Y
- a44:	99 81       	ldd	r25, Y+1	; 0x01
- a46:	aa 81       	ldd	r26, Y+2	; 0x02
- a48:	bb 81       	ldd	r27, Y+3	; 0x03
- a4a:	c0 50       	subi	r28, 0x00	; 0
- a4c:	d1 40       	sbci	r29, 0x01	; 1
- a4e:	8e 2b       	or	r24, r30
- a50:	c0 50       	subi	r28, 0x00	; 0
- a52:	df 4f       	sbci	r29, 0xFF	; 255
- a54:	88 83       	st	Y, r24
- a56:	99 83       	std	Y+1, r25	; 0x01
- a58:	aa 83       	std	Y+2, r26	; 0x02
- a5a:	bb 83       	std	Y+3, r27	; 0x03
- a5c:	c0 50       	subi	r28, 0x00	; 0
- a5e:	d1 40       	sbci	r29, 0x01	; 1
-		} while ((Get_Bit(Window_16_Element,16) == 0)&&(iterator_of_BitArr < BitArr_Size-16));
- a60:	c0 50       	subi	r28, 0x00	; 0
- a62:	df 4f       	sbci	r29, 0xFF	; 255
- a64:	88 81       	ld	r24, Y
- a66:	99 81       	ldd	r25, Y+1	; 0x01
- a68:	aa 81       	ldd	r26, Y+2	; 0x02
- a6a:	bb 81       	ldd	r27, Y+3	; 0x03
- a6c:	c0 50       	subi	r28, 0x00	; 0
- a6e:	d1 40       	sbci	r29, 0x01	; 1
- a70:	a0 fd       	sbrc	r26, 0
- a72:	03 c0       	rjmp	.+6      	; 0xa7a <__stack+0x21b>
- a74:	42 17       	cp	r20, r18
- a76:	53 07       	cpc	r21, r19
- a78:	14 f2       	brlt	.-124    	; 0x9fe <__stack+0x19f>
+ 740:	c0 50       	subi	r28, 0x00	; 0
+ 742:	df 4f       	sbci	r29, 0xFF	; 255
+ 744:	48 81       	ld	r20, Y
+ 746:	59 81       	ldd	r21, Y+1	; 0x01
+ 748:	6a 81       	ldd	r22, Y+2	; 0x02
+ 74a:	7b 81       	ldd	r23, Y+3	; 0x03
+ 74c:	c0 50       	subi	r28, 0x00	; 0
+ 74e:	d1 40       	sbci	r29, 0x01	; 1
+ 750:	60 ff       	sbrs	r22, 0
+ 752:	c6 cf       	rjmp	.-116    	; 0x6e0 <CRC_16_Chk+0x256>
 	for (uint8_t i = 0; i<=16; i++)
 	{
 		Window_16_Element |= ((uint32_t)BitArr[iterator_of_BitArr+i]<<(16-i));
 	}
 	/*Start the modulo Operation continues until the polynomial doesn't fit into the reminder*/
 	while(iterator_of_BitArr < BitArr_Size-16)
- a7a:	86 2f       	mov	r24, r22
- a7c:	90 e0       	ldi	r25, 0x00	; 0
- a7e:	27 2f       	mov	r18, r23
- a80:	30 e0       	ldi	r19, 0x00	; 0
- a82:	20 51       	subi	r18, 0x10	; 16
- a84:	31 09       	sbc	r19, r1
- a86:	82 17       	cp	r24, r18
- a88:	93 07       	cpc	r25, r19
- a8a:	0c f4       	brge	.+2      	; 0xa8e <__stack+0x22f>
- a8c:	a3 cf       	rjmp	.-186    	; 0x9d4 <__stack+0x175>
-			iterator_of_BitArr++;
-			/*Adding new element from the array of bits to the window*/
-			Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
-		} while ((Get_Bit(Window_16_Element,16) == 0)&&(iterator_of_BitArr < BitArr_Size-16));
+ 754:	ea 2f       	mov	r30, r26
+ 756:	f0 e0       	ldi	r31, 0x00	; 0
+ 758:	29 2f       	mov	r18, r25
+ 75a:	30 e0       	ldi	r19, 0x00	; 0
+ 75c:	20 51       	subi	r18, 0x10	; 16
+ 75e:	31 09       	sbc	r19, r1
+ 760:	e2 17       	cp	r30, r18
+ 762:	f3 07       	cpc	r31, r19
+ 764:	0c f4       	brge	.+2      	; 0x768 <CRC_16_Chk+0x2de>
+ 766:	97 cf       	rjmp	.-210    	; 0x696 <CRC_16_Chk+0x20c>
+				/*Adding new element from the array of bits to the window*/
+				Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
+			} while ((Get_Bit(Window_16_Element,16) == 0));
+		}
 	}
 	if((uint16_t)Window_16_Element != 0)
- a8e:	c0 50       	subi	r28, 0x00	; 0
- a90:	df 4f       	sbci	r29, 0xFF	; 255
- a92:	88 81       	ld	r24, Y
- a94:	99 81       	ldd	r25, Y+1	; 0x01
- a96:	aa 81       	ldd	r26, Y+2	; 0x02
- a98:	bb 81       	ldd	r27, Y+3	; 0x03
- a9a:	c0 50       	subi	r28, 0x00	; 0
- a9c:	d1 40       	sbci	r29, 0x01	; 1
- a9e:	89 2b       	or	r24, r25
- aa0:	11 f0       	breq	.+4      	; 0xaa6 <__stack+0x247>
+ 768:	c0 50       	subi	r28, 0x00	; 0
+ 76a:	df 4f       	sbci	r29, 0xFF	; 255
+ 76c:	88 81       	ld	r24, Y
+ 76e:	99 81       	ldd	r25, Y+1	; 0x01
+ 770:	aa 81       	ldd	r26, Y+2	; 0x02
+ 772:	bb 81       	ldd	r27, Y+3	; 0x03
+ 774:	c0 50       	subi	r28, 0x00	; 0
+ 776:	d1 40       	sbci	r29, 0x01	; 1
+ 778:	89 2b       	or	r24, r25
+ 77a:	11 f0       	breq	.+4      	; 0x780 <CRC_16_Chk+0x2f6>
 		ErrRetVal = ERROR_NOK;
- aa2:	81 e0       	ldi	r24, 0x01	; 1
- aa4:	01 c0       	rjmp	.+2      	; 0xaa8 <__stack+0x249>
+ 77c:	81 e0       	ldi	r24, 0x01	; 1
+ 77e:	01 c0       	rjmp	.+2      	; 0x782 <CRC_16_Chk+0x2f8>
 	else
 		ErrRetVal = ERROR_OK;
- aa6:	80 e0       	ldi	r24, 0x00	; 0
+ 780:	80 e0       	ldi	r24, 0x00	; 0
 	return ErrRetVal;
 }
- aa8:	cb 5f       	subi	r28, 0xFB	; 251
- aaa:	de 4f       	sbci	r29, 0xFE	; 254
- aac:	0f b6       	in	r0, 0x3f	; 63
- aae:	f8 94       	cli
- ab0:	de bf       	out	0x3e, r29	; 62
- ab2:	0f be       	out	0x3f, r0	; 63
- ab4:	cd bf       	out	0x3d, r28	; 61
- ab6:	df 91       	pop	r29
- ab8:	cf 91       	pop	r28
- aba:	ff 90       	pop	r15
- abc:	ef 90       	pop	r14
- abe:	df 90       	pop	r13
- ac0:	cf 90       	pop	r12
- ac2:	08 95       	ret
+ 782:	cb 5f       	subi	r28, 0xFB	; 251
+ 784:	de 4f       	sbci	r29, 0xFE	; 254
+ 786:	0f b6       	in	r0, 0x3f	; 63
+ 788:	f8 94       	cli
+ 78a:	de bf       	out	0x3e, r29	; 62
+ 78c:	0f be       	out	0x3f, r0	; 63
+ 78e:	cd bf       	out	0x3d, r28	; 61
+ 790:	df 91       	pop	r29
+ 792:	cf 91       	pop	r28
+ 794:	ff 90       	pop	r15
+ 796:	ef 90       	pop	r14
+ 798:	df 90       	pop	r13
+ 79a:	cf 90       	pop	r12
+ 79c:	08 95       	ret
 
-00000ac4 <main>:
-	//}
+0000079e <main>:
 	//uint8_t l = (passworLength+(16-wordLength));
 	
 	/*DISPLAY_SetNumber_of_Asterisk(6);//<======setsNumberofasteriks*/
 	/*DISPLAY_SetState(Waiting);//<====setsthestate of the system*/
-	CRC_16_Calc(Name);
- ac4:	81 e6       	ldi	r24, 0x61	; 97
- ac6:	90 e0       	ldi	r25, 0x00	; 0
- ac8:	0e 94 45 02 	call	0x48a	; 0x48a <CRC_16_Calc>
+	//CRC_16_Calc(Name);
 	retValofChk = CRC_16_Chk(Name);
- acc:	81 e6       	ldi	r24, 0x61	; 97
- ace:	90 e0       	ldi	r25, 0x00	; 0
- ad0:	0e 94 e4 03 	call	0x7c8	; 0x7c8 <CRC_16_Chk>
- ad4:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
- ad8:	ff cf       	rjmp	.-2      	; 0xad8 <main+0x14>
+ 79e:	81 e6       	ldi	r24, 0x61	; 97
+ 7a0:	90 e0       	ldi	r25, 0x00	; 0
+ 7a2:	0e 94 45 02 	call	0x48a	; 0x48a <CRC_16_Chk>
+ 7a6:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 7aa:	ff cf       	rjmp	.-2      	; 0x7aa <main+0xc>
 
-00000ada <_exit>:
- ada:	f8 94       	cli
+000007ac <_exit>:
+ 7ac:	f8 94       	cli
 
-00000adc <__stop_program>:
- adc:	ff cf       	rjmp	.-2      	; 0xadc <__stop_program>
+000007ae <__stop_program>:
+ 7ae:	ff cf       	rjmp	.-2      	; 0x7ae <__stop_program>
