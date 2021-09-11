@@ -17,6 +17,6 @@
 
 void DISPLAY_MainFunction(void);
 void DISPLAY_ShiftAndDisplay(uint8_t StringLength, uint8_t* StringPTR);
-
+void DISPLAY_START_SHIFTING(uint8_t stringLength, uint8_t passWordLength);
 
 #endif /* DISPLAY_H_ */

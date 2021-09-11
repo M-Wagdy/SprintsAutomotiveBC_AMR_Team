@@ -29,6 +29,7 @@ int main(void)
 		while(LCD_SendData('*')!= OperationSuccess);
 	}
 	uint8_t l = (passworLength+(16-wordLength));
+	/*DISPLAY_SetState(PassEntering);*/
 	while (1) 
     {
 		for(uint8_t y = 0; y<(16-wordLength); y++)
@@ -44,10 +45,13 @@ int main(void)
 			while(LCD_SendCommand(0xc0|l)!= OperationSuccess);
 			while(LCD_SendData(' ')!= OperationSuccess);
 			while(LCD_SendCommand((0xc0|l)-1)!= OperationSuccess);
-			for(uint32_t volatile x = 0; x < 2000; x++);
+			for(uint32_t volatile x = 0; x < 50000; x++);
 			l--;
 		}
 		l = (passworLength+(16-wordLength));
+/*
+		DISPLAY_MainFunction();
+		for(uint32_t volatile x = 0; x < 50000; x++);*/
     }
 }
 

@@ -5,9 +5,6 @@
 #define LCD_4_BIT	(1)
 /*Cfg_End*/
 
-/*set the value to 1 if you are not using RTOS*/
-#define Timer_Usage 0 
-
 /*Local Macros*/
 /*functions states*/
 #define Sending_First_Nibble								(1)
@@ -59,13 +56,8 @@ ERROR_STATE_t LCD_SendCommand(uint8_t CMD)
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D7, READ_BIT(CMD, BIT_7));
 		/*writing data to the register by pulling the enable pin high for 1 Us*/
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_HIGH);
-		#if Timer_Usage
-		/*set status of the function*/
-		State = First_Nibble_Sent;
-		#else
 		/*set status of the function*/
 		State = Sending_First_Nibble;
-		#endif
 		break;
 	case Sending_First_Nibble:
 		/*start timer delay in background*/
@@ -101,13 +93,8 @@ ERROR_STATE_t LCD_SendCommand(uint8_t CMD)
          while(ERROR_OK != TIM_DelayStatus(TIMER_2, (void (*)(void))LCD_SendCommand));
          /*if timer delay function finished correctly pull enable pin low*/
          DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port,gastr_LCD_Config[LCD_Channel_0].u8_LCD_En,PIN_LOW);
-		 #if Timer_Usage
 		 /*set status of the function*/
-		 State = OperationStarted;
-		 #else
-         /*reset the function's state*/
-         State = Second_Nibble_Sent;
-		 #endif
+		 State = Second_Nibble_Sent;
       }
 		break;
 	case Second_Nibble_Sent:
@@ -184,6 +171,9 @@ ERROR_STATE_t LCD_SendCommand(uint8_t CMD)
 	/*return from function*/
 	return ErrRetVal;
 }
+
+
+
 ERROR_STATE_t LCD_SendData(uint8_t Character)
 {
 	/*function starting*/
@@ -201,16 +191,10 @@ ERROR_STATE_t LCD_SendData(uint8_t Character)
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D6, READ_BIT(Character, BIT_6));
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D5, READ_BIT(Character, BIT_5));
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_D4, READ_BIT(Character, BIT_4));
-
 		/*writing data to the register by pulling the enable pin high for 1 Us*/
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_HIGH);
-		#if Timer_Usage
-		/*set status of the function*/
-		State = First_Nibble_Sent;
-		#else
 		/*set status of the function*/
 		State = Sending_First_Nibble;
-		#endif
 		break;
 	case Sending_First_Nibble:
 		/*start timer delay in background*/
@@ -236,13 +220,8 @@ ERROR_STATE_t LCD_SendData(uint8_t Character)
 
 		/*writing data to the register by pulling the enable pin high for 1 Us*/
 		DIO_WritePin(gastr_LCD_Config[LCD_Channel_0].u8_LCD_Port, gastr_LCD_Config[LCD_Channel_0].u8_LCD_En, PIN_HIGH);
-		#if Timer_Usage
-		/*set status of the function*/
-		State = OperationStarted;
-		#else
 		/*set status of the function*/
 		State = Sending_Second_Nibble;
-		#endif
 		break;
 	case Sending_Second_Nibble:
 		/*start timer delay in background*/
@@ -262,7 +241,7 @@ ERROR_STATE_t LCD_SendData(uint8_t Character)
 		ErrRetVal = OperationFail;
 	}
 	/************************************************************************/
-	/*                                                                      */
+	/*                     8_Bit Mode send data Function                    */
 	/************************************************************************/
 	#else
 	switch (State)
@@ -305,8 +284,11 @@ ERROR_STATE_t LCD_SendData(uint8_t Character)
 	#endif
 	/*return from function*/
 	return ErrRetVal;
-
 }
+
+
+
+
 ERROR_STATE_t LCD_Init()
 {
 	/*function starting*/
@@ -536,6 +518,10 @@ ERROR_STATE_t LCD_Init()
 	#endif
 	return ErrRetVal;
 }
+
+
+
+
 ERROR_STATE_t LCD_SendString(const uint8_t* String)
 {
 	uint8_t ErrRetVal = OperationStarted;
@@ -560,9 +546,14 @@ ERROR_STATE_t LCD_SendString(const uint8_t* String)
 	}
 	return ErrRetVal;
 }
-/*urgent a blocking function*/
+
+
+
+
+
 ERROR_STATE_t LCD_SendNumber(uint32_t Number)
 {
+	/*urgent a blocking function*/
 	uint8_t ErrRetVal = OperationStarted;
 	uint8_t FunRetVal = OperationStarted;
 	uint8_t String[10];
@@ -581,6 +572,11 @@ ERROR_STATE_t LCD_SendNumber(uint32_t Number)
    }
 	return ErrRetVal;
 }
+
+
+
+
+
 ERROR_STATE_t LCD_ReadDispLoc(uint8_t Location, uint8_t* Data)
 {
 	uint8_t ErrRetVal = OperationStarted;
