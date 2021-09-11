@@ -206,7 +206,7 @@ uint8_t CRC_16_Calc (uint8_t* STRING)
 	/*the value of the used polynomial for CRC_16*/
 	const uint32_t polynomial = 0b00000000000000011000000000000101;
 	/*variable that holds the value to be XORED and SHIFTED*/
-	uint32_t Window_16_Element =0;
+	uint32_t volatile Window_16_Element =0;
 	/*initialize the variable that holds the number of characters to which CRC is calculated*/
 	/*number of characters in the inserted string*/
 	uint16_t StrLength =0;
@@ -275,7 +275,7 @@ uint8_t CRC_16_Calc (uint8_t* STRING)
 	}
 	/*Add the calculated CRC to the End of the Passed String*/
 	STRING[StrLength] = (uint8_t)(Window_16_Element>>8);
-	STRING[StrLength+1] = (uint8_t)(Window_16_Element&0x0000000F);
+	STRING[StrLength+1] = (uint8_t)(Window_16_Element&0x000000FF);
 	STRING[StrLength+2] = NULL_TERMINATOR;
 	/*return zero*/
 	return OperationSuccess;
