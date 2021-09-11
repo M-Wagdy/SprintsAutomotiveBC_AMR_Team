@@ -472,15 +472,13 @@ Discarded input sections
                 0x00000000      0x2f6 HAL/LCD/src/LCD.o
  .text.LCD_SendNumber
                 0x00000000       0x4e HAL/LCD/src/LCD.o
- .bss.Character.1823
+ .bss.Character.1807
                 0x00000000        0x1 HAL/LCD/src/LCD.o
- .data.State.1822
+ .data.State.1806
                 0x00000000        0x1 HAL/LCD/src/LCD.o
  .text          0x00000000        0x0 HAL/LCD/src/LCD_Lcfg.o
  .data          0x00000000        0x0 HAL/LCD/src/LCD_Lcfg.o
  .bss           0x00000000        0x0 HAL/LCD/src/LCD_Lcfg.o
- .rodata.gastr_LCD_8_Config
-                0x00000000        0xd HAL/LCD/src/LCD_Lcfg.o
  .text          0x00000000        0x0 LIB/UTILS.o
  .data          0x00000000        0x0 LIB/UTILS.o
  .bss           0x00000000        0x0 LIB/UTILS.o
@@ -1022,7 +1020,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x173e
+.text           0x00000000     0x1670
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Users/vetmo/Downloads/Ahmed/Atmel/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -1119,106 +1117,106 @@ END GROUP
  .text.vTaskSwitchContext
                 0x000003ca       0xa8 FreeRTOS/Source/tasks.o
                 0x000003ca                vTaskSwitchContext
- .text.LCD_SendData
-                0x00000472      0x200 HAL/LCD/src/LCD.o
-                0x00000472                LCD_SendData
  .text.LCD_SendCommand
-                0x00000672      0x23a HAL/LCD/src/LCD.o
-                0x00000672                LCD_SendCommand
+                0x00000472      0x1c4 HAL/LCD/src/LCD.o
+                0x00000472                LCD_SendCommand
+ .text.LCD_SendData
+                0x00000636      0x174 HAL/LCD/src/LCD.o
+                0x00000636                LCD_SendData
  .text.LCD_Init
-                0x000008ac      0x244 HAL/LCD/src/LCD.o
-                0x000008ac                LCD_Init
+                0x000007aa      0x274 HAL/LCD/src/LCD.o
+                0x000007aa                LCD_Init
  .text.LCD_SendString
-                0x00000af0       0x3a HAL/LCD/src/LCD.o
-                0x00000af0                LCD_SendString
+                0x00000a1e       0x3a HAL/LCD/src/LCD.o
+                0x00000a1e                LCD_SendString
  .text.DIO_SetPinDirection
-                0x00000b2a       0xd2 MCAL/DIO/src/DIO.o
-                0x00000b2a                DIO_SetPinDirection
+                0x00000a58       0xd2 MCAL/DIO/src/DIO.o
+                0x00000a58                DIO_SetPinDirection
  .text.DIO_WritePin
-                0x00000bfc       0xd2 MCAL/DIO/src/DIO.o
-                0x00000bfc                DIO_WritePin
+                0x00000b2a       0xd2 MCAL/DIO/src/DIO.o
+                0x00000b2a                DIO_WritePin
  .text.GetFreqPrescaleRatio
-                0x00000cce      0x17a MCAL/TIMER/src/TIMER.o
+                0x00000bfc      0x17a MCAL/TIMER/src/TIMER.o
  .text.TIM_Init
-                0x00000e48       0x98 MCAL/TIMER/src/TIMER.o
-                0x00000e48                TIM_Init
+                0x00000d76       0x98 MCAL/TIMER/src/TIMER.o
+                0x00000d76                TIM_Init
  .text.TIM_Start
-                0x00000ee0       0x4e MCAL/TIMER/src/TIMER.o
-                0x00000ee0                TIM_Start
+                0x00000e0e       0x4e MCAL/TIMER/src/TIMER.o
+                0x00000e0e                TIM_Start
  .text.TIM_GetStatus
-                0x00000f2e      0x128 MCAL/TIMER/src/TIMER.o
-                0x00000f2e                TIM_GetStatus
+                0x00000e5c      0x128 MCAL/TIMER/src/TIMER.o
+                0x00000e5c                TIM_GetStatus
  .text.TIM_DelayUs
-                0x00001056       0xfc MCAL/TIMER/src/TIMER.o
-                0x00001056                TIM_DelayUs
+                0x00000f84       0xfc MCAL/TIMER/src/TIMER.o
+                0x00000f84                TIM_DelayUs
  .text.TIM_DelayMs
-                0x00001152      0x122 MCAL/TIMER/src/TIMER.o
-                0x00001152                TIM_DelayMs
+                0x00001080      0x122 MCAL/TIMER/src/TIMER.o
+                0x00001080                TIM_DelayMs
  .text.TIM_DelayStatus
-                0x00001274       0xbe MCAL/TIMER/src/TIMER.o
-                0x00001274                TIM_DelayStatus
- .text.main     0x00001332      0x118 main.o
-                0x00001332                main
+                0x000011a2       0xc2 MCAL/TIMER/src/TIMER.o
+                0x000011a2                TIM_DelayStatus
+ .text.main     0x00001264      0x118 main.o
+                0x00001264                main
  .text.avr-libc.fplib
-                0x0000144a        0xa c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
-                0x0000144a                __nesf2
-                0x0000144a                __eqsf2
-                0x0000144a                __cmpsf2
-                0x0000144a                __ltsf2
-                0x0000144a                __lesf2
+                0x0000137c        0xa c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+                0x0000137c                __nesf2
+                0x0000137c                __eqsf2
+                0x0000137c                __cmpsf2
+                0x0000137c                __ltsf2
+                0x0000137c                __lesf2
  .text.avr-libc.fplib
-                0x00001454        0x8 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3.o)
-                0x00001454                __divsf3
+                0x00001386        0x8 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3.o)
+                0x00001386                __divsf3
  .text.avr-libc.fplib
-                0x0000145c       0xdc c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3x.o)
-                0x0000147c                __divsf3x
-                0x00001482                __divsf3_pse
+                0x0000138e       0xdc c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3x.o)
+                0x000013ae                __divsf3x
+                0x000013b4                __divsf3_pse
  .text.avr-libc.fplib
-                0x00001538       0x5e c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
-                0x00001538                __fixunssfsi
+                0x0000146a       0x5e c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+                0x0000146a                __fixunssfsi
  .text.avr-libc.fplib
-                0x00001596       0x7a c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
-                0x00001596                __floatunsisf
-                0x0000159a                __floatsisf
+                0x000014c8       0x7a c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                0x000014c8                __floatunsisf
+                0x000014cc                __floatsisf
  .text.avr-libc.fplib
-                0x00001610       0x48 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
-                0x00001610                __fp_cmp
+                0x00001542       0x48 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+                0x00001542                __fp_cmp
  .text.avr-libc.fplib
-                0x00001658        0xc c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_inf.o)
-                0x00001658                __fp_inf
+                0x0000158a        0xc c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+                0x0000158a                __fp_inf
  .text.avr-libc.fplib
-                0x00001664        0x6 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_nan.o)
-                0x00001664                __fp_nan
+                0x00001596        0x6 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+                0x00001596                __fp_nan
  .text.avr-libc.fplib
-                0x0000166a        0xe c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
-                0x0000166a                __fp_pscA
+                0x0000159c        0xe c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+                0x0000159c                __fp_pscA
  .text.avr-libc.fplib
-                0x00001678        0xe c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
-                0x00001678                __fp_pscB
+                0x000015aa        0xe c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+                0x000015aa                __fp_pscB
  .text.avr-libc.fplib
-                0x00001686       0x22 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_round.o)
-                0x00001686                __fp_round
+                0x000015b8       0x22 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_round.o)
+                0x000015b8                __fp_round
  .text.avr-libc.fplib
-                0x000016a8       0x44 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_split3.o)
-                0x000016a8                __fp_split3
-                0x000016b8                __fp_splitA
+                0x000015da       0x44 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+                0x000015da                __fp_split3
+                0x000015ea                __fp_splitA
  .text.avr-libc.fplib
-                0x000016ec        0xe c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_zero.o)
-                0x000016ec                __fp_zero
-                0x000016ee                __fp_szero
- .text.libgcc   0x000016fa        0xc c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
-                0x000016fa                __tablejump2__
+                0x0000161e        0xe c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+                0x0000161e                __fp_zero
+                0x00001620                __fp_szero
+ .text.libgcc   0x0000162c        0xc c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
+                0x0000162c                __tablejump2__
  .text.libgcc.mul
-                0x00001706       0x16 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_muluhisi3.o)
-                0x00001706                __muluhisi3
+                0x00001638       0x16 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_muluhisi3.o)
+                0x00001638                __muluhisi3
  .text.libgcc.mul
-                0x0000171c       0x1e c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
-                0x0000171c                __umulhisi3
-                0x0000173a                . = ALIGN (0x2)
+                0x0000164e       0x1e c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
+                0x0000164e                __umulhisi3
+                0x0000166c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000173a        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000173a                _exit
-                0x0000173a                exit
+ .fini9         0x0000166c        0x0 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000166c                _exit
+                0x0000166c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1237,85 +1235,90 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000173a        0x4 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000166c        0x4 c:/users/vetmo/downloads/ahmed/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000173e                _etext = .
+                0x00001670                _etext = .
 
-.data           0x00800060       0x1e load address 0x0000173e
+.data           0x00800060       0x2c load address 0x00001670
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.State.1783
+ .data.State.1767
                 0x00800060        0x1 HAL/LCD/src/LCD.o
- .data.State.1761
+ .data.State.1753
                 0x00800061        0x1 HAL/LCD/src/LCD.o
  .data.State.1734
                 0x00800062        0x1 HAL/LCD/src/LCD.o
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
+ .rodata.gastr_LCD_8_Config
+                0x00800063        0xd HAL/LCD/src/LCD_Lcfg.o
+                0x00800063                gastr_LCD_8_Config
  .rodata.gastr_LCD_Config
-                0x00800063        0x8 HAL/LCD/src/LCD_Lcfg.o
-                0x00800063                gastr_LCD_Config
+                0x00800070        0x8 HAL/LCD/src/LCD_Lcfg.o
+                0x00800070                gastr_LCD_Config
  .rodata.gastr_Timer_Config
-                0x0080006b        0x9 MCAL/TIMER/src/TIMER_Lcfg.o
-                0x0080006b                gastr_Timer_Config
+                0x00800078        0x9 MCAL/TIMER/src/TIMER_Lcfg.o
+                0x00800078                gastr_Timer_Config
  .rodata.str1.1
-                0x00800074        0xa main.o
+                0x00800081        0xa main.o
  *(.gnu.linkonce.r*)
-                0x0080007e                . = ALIGN (0x2)
-                0x0080007e                _edata = .
-                0x0080007e                PROVIDE (__data_end, .)
+                0x0080008c                . = ALIGN (0x2)
+ *fill*         0x0080008b        0x1 
+                0x0080008c                _edata = .
+                0x0080008c                PROVIDE (__data_end, .)
 
-.bss            0x0080007e       0x3e
-                0x0080007e                PROVIDE (__bss_start, .)
+.bss            0x0080008c       0x3e
+                0x0080008c                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.uxSchedulerSuspended
-                0x0080007e        0x1 FreeRTOS/Source/tasks.o
+                0x0080008c        0x1 FreeRTOS/Source/tasks.o
  .bss.xNextTaskUnblockTime
-                0x0080007f        0x2 FreeRTOS/Source/tasks.o
+                0x0080008d        0x2 FreeRTOS/Source/tasks.o
  .bss.xNumOfOverflows
-                0x00800081        0x1 FreeRTOS/Source/tasks.o
+                0x0080008f        0x1 FreeRTOS/Source/tasks.o
  .bss.xYieldPending
-                0x00800082        0x1 FreeRTOS/Source/tasks.o
+                0x00800090        0x1 FreeRTOS/Source/tasks.o
  .bss.xPendedTicks
-                0x00800083        0x2 FreeRTOS/Source/tasks.o
+                0x00800091        0x2 FreeRTOS/Source/tasks.o
  .bss.uxTopReadyPriority
-                0x00800085        0x1 FreeRTOS/Source/tasks.o
+                0x00800093        0x1 FreeRTOS/Source/tasks.o
  .bss.xTickCount
-                0x00800086        0x2 FreeRTOS/Source/tasks.o
+                0x00800094        0x2 FreeRTOS/Source/tasks.o
  .bss.pxOverflowDelayedTaskList
-                0x00800088        0x2 FreeRTOS/Source/tasks.o
+                0x00800096        0x2 FreeRTOS/Source/tasks.o
  .bss.pxDelayedTaskList
-                0x0080008a        0x2 FreeRTOS/Source/tasks.o
+                0x00800098        0x2 FreeRTOS/Source/tasks.o
  .bss.pxReadyTasksLists
-                0x0080008c       0x24 FreeRTOS/Source/tasks.o
+                0x0080009a       0x24 FreeRTOS/Source/tasks.o
  .bss.pxCurrentTCB
-                0x008000b0        0x2 FreeRTOS/Source/tasks.o
-                0x008000b0                pxCurrentTCB
- .bss.Number.1806
-                0x008000b2        0x1 HAL/LCD/src/LCD.o
+                0x008000be        0x2 FreeRTOS/Source/tasks.o
+                0x008000be                pxCurrentTCB
+ .bss.Number.1790
+                0x008000c0        0x1 HAL/LCD/src/LCD.o
  .bss.gptr_CallerFunc
-                0x008000b3        0x2 MCAL/TIMER/src/TIMER.o
+                0x008000c1        0x2 MCAL/TIMER/src/TIMER.o
  .bss.gEnu_State
-                0x008000b5        0x1 MCAL/TIMER/src/TIMER.o
+                0x008000c3        0x1 MCAL/TIMER/src/TIMER.o
+                0x008000c3                gEnu_State
  .bss.gu8_Remindar
-                0x008000b6        0x1 MCAL/TIMER/src/TIMER.o
+                0x008000c4        0x1 MCAL/TIMER/src/TIMER.o
  .bss.gu8_OverflowsComplete
-                0x008000b7        0x1 MCAL/TIMER/src/TIMER.o
+                0x008000c5        0x1 MCAL/TIMER/src/TIMER.o
  .bss.gu32_Overflows
-                0x008000b8        0x4 MCAL/TIMER/src/TIMER.o
+                0x008000c6        0x4 MCAL/TIMER/src/TIMER.o
  *(COMMON)
-                0x008000bc                PROVIDE (__bss_end, .)
-                0x0000173e                __data_load_start = LOADADDR (.data)
-                0x0000175c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008000ca                PROVIDE (__bss_end, .)
+                0x00001670                __data_load_start = LOADADDR (.data)
+                0x0000169c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008000bc        0x0
+.noinit         0x008000ca        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008000bc                _end = .
+                0x008000ca                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -1409,19 +1412,19 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x40a7
+.debug_info     0x00000000     0x4066
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Users/vetmo/Downloads/Ahmed/Atmel/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x000004e6      0x24e FreeRTOS/Source/portable/GCC/ATMega323/port.o
  .debug_info    0x00000734     0x1991 FreeRTOS/Source/tasks.o
- .debug_info    0x000020c5     0x119e HAL/LCD/src/LCD.o
- .debug_info    0x00003263      0x28e HAL/LCD/src/LCD_Lcfg.o
- .debug_info    0x000034f1      0x2d9 MCAL/DIO/src/DIO.o
- .debug_info    0x000037ca      0x58f MCAL/TIMER/src/TIMER.o
- .debug_info    0x00003d59       0xe4 MCAL/TIMER/src/TIMER_Lcfg.o
- .debug_info    0x00003e3d      0x26a main.o
+ .debug_info    0x000020c5     0x1157 HAL/LCD/src/LCD.o
+ .debug_info    0x0000321c      0x28e HAL/LCD/src/LCD_Lcfg.o
+ .debug_info    0x000034aa      0x2d9 MCAL/DIO/src/DIO.o
+ .debug_info    0x00003783      0x595 MCAL/TIMER/src/TIMER.o
+ .debug_info    0x00003d18       0xe4 MCAL/TIMER/src/TIMER_Lcfg.o
+ .debug_info    0x00003dfc      0x26a main.o
 
-.debug_abbrev   0x00000000      0xe7c
+.debug_abbrev   0x00000000      0xe8d
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Users/vetmo/Downloads/Ahmed/Atmel/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3      0x143 FreeRTOS/Source/portable/GCC/ATMega323/port.o
@@ -1429,30 +1432,30 @@ END GROUP
  .debug_abbrev  0x0000087a      0x1a2 HAL/LCD/src/LCD.o
  .debug_abbrev  0x00000a1c       0x95 HAL/LCD/src/LCD_Lcfg.o
  .debug_abbrev  0x00000ab1       0xbf MCAL/DIO/src/DIO.o
- .debug_abbrev  0x00000b70      0x1b4 MCAL/TIMER/src/TIMER.o
- .debug_abbrev  0x00000d24       0x7b MCAL/TIMER/src/TIMER_Lcfg.o
- .debug_abbrev  0x00000d9f       0xdd main.o
+ .debug_abbrev  0x00000b70      0x1c5 MCAL/TIMER/src/TIMER.o
+ .debug_abbrev  0x00000d35       0x7b MCAL/TIMER/src/TIMER_Lcfg.o
+ .debug_abbrev  0x00000db0       0xdd main.o
 
-.debug_line     0x00000000     0x269d
+.debug_line     0x00000000     0x2628
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Users/vetmo/Downloads/Ahmed/Atmel/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_line    0x00000116      0x302 FreeRTOS/Source/portable/GCC/ATMega323/port.o
  .debug_line    0x00000418     0x1006 FreeRTOS/Source/tasks.o
- .debug_line    0x0000141e      0x6ba HAL/LCD/src/LCD.o
- .debug_line    0x00001ad8       0xb0 HAL/LCD/src/LCD_Lcfg.o
- .debug_line    0x00001b88      0x304 MCAL/DIO/src/DIO.o
- .debug_line    0x00001e8c      0x5bc MCAL/TIMER/src/TIMER.o
- .debug_line    0x00002448       0xa1 MCAL/TIMER/src/TIMER_Lcfg.o
- .debug_line    0x000024e9      0x1b4 main.o
+ .debug_line    0x0000141e      0x645 HAL/LCD/src/LCD.o
+ .debug_line    0x00001a63       0xb0 HAL/LCD/src/LCD_Lcfg.o
+ .debug_line    0x00001b13      0x304 MCAL/DIO/src/DIO.o
+ .debug_line    0x00001e17      0x5bc MCAL/TIMER/src/TIMER.o
+ .debug_line    0x000023d3       0xa1 MCAL/TIMER/src/TIMER_Lcfg.o
+ .debug_line    0x00002474      0x1b4 main.o
 
-.debug_frame    0x00000000      0x870
+.debug_frame    0x00000000      0x88c
  *(.debug_frame)
  .debug_frame   0x00000000       0x84 FreeRTOS/Source/portable/GCC/ATMega323/port.o
  .debug_frame   0x00000084      0x50c FreeRTOS/Source/tasks.o
- .debug_frame   0x00000590      0x11c HAL/LCD/src/LCD.o
- .debug_frame   0x000006ac       0x64 MCAL/DIO/src/DIO.o
- .debug_frame   0x00000710      0x12c MCAL/TIMER/src/TIMER.o
- .debug_frame   0x0000083c       0x34 main.o
+ .debug_frame   0x00000590      0x138 HAL/LCD/src/LCD.o
+ .debug_frame   0x000006c8       0x64 MCAL/DIO/src/DIO.o
+ .debug_frame   0x0000072c      0x12c MCAL/TIMER/src/TIMER.o
+ .debug_frame   0x00000858       0x34 main.o
 
 .debug_str      0x00000000     0x1451
  *(.debug_str)
@@ -1461,9 +1464,9 @@ END GROUP
                                 0x330 (size before relaxing)
  .debug_str     0x00000471      0x9ec FreeRTOS/Source/tasks.o
                                 0xca9 (size before relaxing)
- .debug_str     0x00000e5d      0x21e HAL/LCD/src/LCD.o
-                                0x3f4 (size before relaxing)
- .debug_str     0x0000107b       0xf8 HAL/LCD/src/LCD_Lcfg.o
+ .debug_str     0x00000e5d      0x28e HAL/LCD/src/LCD.o
+                                0x464 (size before relaxing)
+ .debug_str     0x000010eb       0x88 HAL/LCD/src/LCD_Lcfg.o
                                 0x32d (size before relaxing)
  .debug_str     0x00001173       0x72 MCAL/DIO/src/DIO.o
                                 0x333 (size before relaxing)
@@ -1474,14 +1477,14 @@ END GROUP
  .debug_str     0x0000140d       0x44 main.o
                                 0x248 (size before relaxing)
 
-.debug_loc      0x00000000     0x3408
+.debug_loc      0x00000000     0x3424
  *(.debug_loc)
  .debug_loc     0x00000000      0x2a0 FreeRTOS/Source/portable/GCC/ATMega323/port.o
  .debug_loc     0x000002a0     0x1d44 FreeRTOS/Source/tasks.o
- .debug_loc     0x00001fe4      0x7bf HAL/LCD/src/LCD.o
- .debug_loc     0x000027a3      0x4ea MCAL/DIO/src/DIO.o
- .debug_loc     0x00002c8d      0x6e3 MCAL/TIMER/src/TIMER.o
- .debug_loc     0x00003370       0x98 main.o
+ .debug_loc     0x00001fe4      0x7db HAL/LCD/src/LCD.o
+ .debug_loc     0x000027bf      0x4ea MCAL/DIO/src/DIO.o
+ .debug_loc     0x00002ca9      0x6e3 MCAL/TIMER/src/TIMER.o
+ .debug_loc     0x0000338c       0x98 main.o
 
 .debug_macinfo
  *(.debug_macinfo)

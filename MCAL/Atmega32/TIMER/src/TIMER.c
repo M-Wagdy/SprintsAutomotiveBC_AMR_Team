@@ -36,7 +36,7 @@ static ERROR_STATE_t GetFreqPrescaleRatio(TIM_CH_t TIM_channel, float32_t * Rati
 static uint32_t gu32_Overflows = 0;
 static uint8_t gu8_OverflowsComplete = LOW;
 static uint8_t gu8_Remindar = 0;
-static Enu_DelayStateMachine gEnu_State = DelayReady;
+volatile Enu_DelayStateMachine gEnu_State = DelayReady;
 static Ptr_VoidFuncVoid_t gptr_CallerFunc = NULL_PTR;
 
 /*- GLOBAL EXTERN VARIABLES
