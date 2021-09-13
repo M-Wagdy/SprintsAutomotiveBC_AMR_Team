@@ -1,9 +1,9 @@
 FreeRTOS/Source/stream_buffer.d FreeRTOS/Source/stream_buffer.o: \
  ../../../../FreeRTOS/FreeRTOS/Source/stream_buffer.c \
- c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
- c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
- c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
- c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
+ e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
+ e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
+ e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
+ e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  ../../../../FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h \
  ../FreeRTOS/include_cfg/FreeRTOSConfig.h \
  ../../../../FreeRTOS/FreeRTOS/Source/include/projdefs.h \
@@ -15,13 +15,13 @@ FreeRTOS/Source/stream_buffer.d FreeRTOS/Source/stream_buffer.o: \
  ../../../../FreeRTOS/FreeRTOS/Source/include/list.h \
  ../../../../FreeRTOS/FreeRTOS/Source/include/stream_buffer.h
 
-c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
+e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
 
-c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
+e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
 
-c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
+e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
 
-c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
+e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
 ../../../../FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h:
 

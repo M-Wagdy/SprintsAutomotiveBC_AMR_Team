@@ -24,8 +24,288 @@ uint8_t Position = 0;
 /*Moving to the interface files*/
 uint8_t Number_of_Asteriks = 0;
 uint8_t Shifting_State = OperationStarted;//OperationStarted
+uint8_t LastShiftingState = OperationStarted;
 uint8_t WrongPassEntries = 0;
+uint32_t RemainingSeconds = 0;
 
+void DISPLAY_MainFunction(void)
+{
+	uint8_t static Last_state = OperationStarted;
+	uint8_t static Counter = 0;
+	uint8_t State =0;
+	DISPLAY_GetNumber_of_Asterisk(&Number_of_Asteriks);
+	DISPLAY_GetState(&State);
+	if((Last_state == CorrectPassword || Last_state == WrongPassword || Last_state == Waiting)&&(Counter!=0))
+	{
+		State = Last_state;
+	}
+	switch(State)
+	{
+		case SystemLoading:
+			if(Last_state != State)
+			{
+				Position = 0;
+				while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_HOME)!=OperationSuccess);
+				while(LCD_SendString((uint8_t*)"System Loading") != OperationSuccess);
+				Shifting_State = ShiftingRight;
+			}
+			DISPLAY_START_SHIFTING(SystemLoading_StringWidth,0);
+			break;
+		case Welcome:
+			if(Last_state != State)
+			{
+				Position = 0;
+				while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_HOME)!=OperationSuccess);
+				while(LCD_SendString((uint8_t*)"WELCOME") != OperationSuccess);
+				Shifting_State = ShiftingRight;
+			}
+			DISPLAY_START_SHIFTING(Welcome_StringWidth,0);
+			break;
+		case PassEntering:
+			if(Last_state != State)
+			{
+				Position = DISPLAY_WIDTH-EnterPass_StringWidth;
+				while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_HOME)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_CURS_Position0|Position)!=OperationSuccess);
+				while (LCD_SendString((uint8_t*)"Enter Pass") != OperationSuccess);
+				Shifting_State = ShiftingLeft;
+				while (LCD_SendCommand(LCD_CURS_LINE2)!=OperationSuccess);
+				for(uint8_t i = 0; i < Number_of_Asteriks; i++)
+				{
+					while(LCD_SendData('*')!= OperationSuccess);
+					if (i>5)
+					{
+						break;
+					}
+				}
+			}
+			DISPLAY_START_SHIFTING(EnterPass_StringWidth,Number_of_Asteriks);
+			break;
+		case CorrectPassword:
+			if(Last_state != State)
+			{
+				Position = 0;
+				DISPLAY_SetNumber_of_Asterisk(0);
+				while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_HOME)!=OperationSuccess);
+				while (LCD_SendString((uint8_t*)"Pass OK") != OperationSuccess);
+				Shifting_State = ShiftingRight;
+			}
+			DISPLAY_START_SHIFTING(CorrectPass_StringWidth,0);
+			Counter ++;
+			if(Counter == (uint8_t)(TwoSeconds/MainFunction_Periodicity))
+			{
+				WrongPassEntries = 0;
+				Counter = 0;
+				DISPLAY_SetState(SevenSegments);
+			}
+			break;
+		/*Counter*/
+		case WrongPassword:
+			if(Last_state != State)
+			{
+				Position = 0;
+				DISPLAY_SetNumber_of_Asterisk(0);
+				while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_HOME)!=OperationSuccess);
+				while (LCD_SendString((uint8_t*)"Wrong Pass") != OperationSuccess);
+				Shifting_State = ShiftingRight;
+			}
+			DISPLAY_START_SHIFTING(WrongPass_StringWidth,0);
+			Counter ++;
+			if(Counter == (uint8_t)(TwoSeconds/MainFunction_Periodicity))
+			{
+				Counter = 0;
+				WrongPassEntries++;
+				if(WrongPassEntries==3)
+					DISPLAY_SetState(Waiting);
+				else
+					DISPLAY_SetState(PassEntering);
+			}
+			break;
+		case Waiting:
+			if(Last_state != State)
+			{
+				Position = DISPLAY_WIDTH - Waiting_StringWidth;
+				DISPLAY_SetNumber_of_Asterisk(0);
+				while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_HOME)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_CURS_Position0|Position)!=OperationSuccess);
+				while (LCD_SendString((uint8_t*)"Waiting") != OperationSuccess);
+				Shifting_State = ShiftingLeft;
+				LastShiftingState = Shifting_State;
+				while (LCD_SendCommand(LCD_CURS_LINE2)!=OperationSuccess);
+			}
+			RemainingSeconds = ((TenSeconds-(Counter*MainFunction_Periodicity))/1000);
+			Counter ++;
+			DISPLAY_START_SHIFTING(Waiting_StringWidth,0);
+			if((Shifting_State == ShiftingLeft) && (LastShiftingState == ShiftingLeft))
+			{
+				while(LCD_SendCommand(LCD_SHIFTCURSRIGHT)!=OperationSuccess);
+				LCD_SendNumber(RemainingSeconds);
+				if(RemainingSeconds/10)
+				{
+					while(LCD_SendData(' ')!=OperationSuccess);/**/
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				}
+				else
+				{
+					while(LCD_SendData(' ')!=OperationSuccess);/**/
+					while(LCD_SendData(' ')!=OperationSuccess);/**/
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				}
+			}
+			else if ((Shifting_State == ShiftingRight) && (LastShiftingState == ShiftingRight))
+			{
+				while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				LCD_SendNumber(RemainingSeconds);
+				if(RemainingSeconds/10)
+				{
+					while(LCD_SendData(' ')!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				}
+				else
+				{
+					while(LCD_SendData(' ')!=OperationSuccess);
+					while(LCD_SendData(' ')!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				}
+			}
+			else if ((Shifting_State == ShiftingRight) && (LastShiftingState == ShiftingLeft))
+			{
+				while(LCD_SendCommand(LCD_SHIFTCURSRIGHT)!=OperationSuccess);
+				LCD_SendNumber(RemainingSeconds);
+				if(RemainingSeconds/10)
+				{
+					while(LCD_SendData(' ')!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				}
+				else
+				{
+					while(LCD_SendData(' ')!=OperationSuccess);
+					while(LCD_SendData(' ')!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				}
+			}
+			else if ((Shifting_State == ShiftingLeft) && (LastShiftingState == ShiftingRight))
+			{
+				while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				LCD_SendNumber(RemainingSeconds);
+				if(RemainingSeconds/10)
+				{
+					while(LCD_SendData(' ')!=OperationSuccess);/**/
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				}
+				else
+				{
+					while(LCD_SendData(' ')!=OperationSuccess);/**/
+					while(LCD_SendData(' ')!=OperationSuccess);/**/
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				}
+			}
+			LastShiftingState = Shifting_State;
+			//if(Counter == (uint8_t)((TenSeconds/MainFunction_Periodicity)-1))
+			if(RemainingSeconds == 0)
+			{
+				WrongPassEntries = 0;
+				Counter = 0;
+				DISPLAY_SetState(PassEntering);
+			}
+			break;
+		case SevenSegments:
+			if(Last_state != State)
+			{
+				Position = 0;
+				while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_HOME)!=OperationSuccess);
+				while (LCD_SendString((uint8_t*)"System is ON") != OperationSuccess);
+				Shifting_State = ShiftingRight;
+			}
+			DISPLAY_START_SHIFTING(SystemOn_StringWidth,0);
+			break;
+		case ChangePassword:
+			if(Last_state != State)
+			{
+				Position = DISPLAY_WIDTH-ChangePassword_StringWidth;
+				while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_HOME)!=OperationSuccess);
+				while (LCD_SendCommand(LCD_CURS_Position0|Position)!=OperationSuccess);
+				while (LCD_SendString((uint8_t*)"Changing Pass") != OperationSuccess);
+				Shifting_State = ShiftingLeft;
+				while (LCD_SendCommand(0xc0)!=OperationSuccess);
+				for(uint8_t i = 0; i < Number_of_Asteriks; i++)
+				{
+					while(LCD_SendData('*')!= OperationSuccess);
+					if (i>5)
+					{
+						break;
+					}
+				}
+			}
+			break;
+		default:
+			while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
+			break;
+	}
+	Last_state = State;
+}
+
+void DISPLAY_START_SHIFTING(uint8_t stringLength, uint8_t passWordLength)
+{
+	uint8_t volatile StringMotionRange = DISPLAY_WIDTH - stringLength;
+	switch (Shifting_State)
+	{
+		case ShiftingLeft:
+			if(passWordLength!=0)
+			{
+				while(LCD_SendData('*')!= OperationSuccess);
+			}
+			while(LCD_SendCommand(LCD_SHIFTDISPLEFT)!= OperationSuccess);
+			Position--;
+			if (Position == 0)
+			{
+				Shifting_State = ShiftingRight;
+			}
+			break;
+		case ShiftingRight:
+			if(passWordLength!=0)
+			{
+				while (LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				while(LCD_SendData(' ')!= OperationSuccess);
+				while (LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+			}
+			while(LCD_SendCommand(LCD_SHIFTDISPRIGHT)!= OperationSuccess);
+			Position++;
+			if (Position >= StringMotionRange)
+			{
+				Shifting_State = ShiftingLeft;
+			}
+			break;
+	}
+}
+
+
+
+#if 0
 void DISPLAY_MainFunction(void)
 {
 	uint8_t static Last_state = OperationStarted;
@@ -195,43 +475,6 @@ void DISPLAY_MainFunction(void)
 	Last_state = State;
 }
 
-void DISPLAY_START_SHIFTING(uint8_t stringLength, uint8_t passWordLength)
-{
-	uint8_t volatile StringMotionRange = DISPLAY_WIDTH - stringLength;
-	switch (Shifting_State)
-	{
-		case ShiftingLeft:
-			if(passWordLength!=0)
-			{
-				while(LCD_SendData('*')!= OperationSuccess);
-			}
-			while(LCD_SendCommand(LCD_SHIFTDISPLEFT)!= OperationSuccess);
-			Position--;
-			if (Position == 0)
-			{
-				Shifting_State = ShiftingRight;
-			}
-			break;
-		case ShiftingRight:
-			if(passWordLength!=0)
-			{
-				while (LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
-				while(LCD_SendData(' ')!= OperationSuccess);
-				while (LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
-			}
-			while(LCD_SendCommand(LCD_SHIFTDISPRIGHT)!= OperationSuccess);
-			Position++;
-			if (Position >= StringMotionRange)
-			{
-				Shifting_State = ShiftingLeft;
-			}
-			break;
-	}
-}
-
-
-
-#if 0
 void DISPLAY_MainFunction(void)
 {
 	uint8_t static Last_state = OperationStarted;

@@ -157,6 +157,7 @@ uint8_t STR_Number2String(uint32_t Number, uint8_t* String)
 	if(Number==0)
 	{
 		*String='0';
+		*(String+1)='\0';
 	}
 	else
 	{

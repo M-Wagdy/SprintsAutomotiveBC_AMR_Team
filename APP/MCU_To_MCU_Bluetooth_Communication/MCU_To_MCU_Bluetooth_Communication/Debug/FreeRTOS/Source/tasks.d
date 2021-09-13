@@ -1,11 +1,11 @@
 FreeRTOS/Source/tasks.d FreeRTOS/Source/tasks.o: \
  ../../../../FreeRTOS/FreeRTOS/Source/tasks.c \
- c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
- c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
+ e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
+ e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
+ e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
  ../../../../FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h \
- c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
- c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
+ e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
+ e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  ../FreeRTOS/include_cfg/FreeRTOSConfig.h \
  ../../../../FreeRTOS/FreeRTOS/Source/include/projdefs.h \
  ../../../../FreeRTOS/FreeRTOS/Source/include/portable.h \
@@ -18,17 +18,17 @@ FreeRTOS/Source/tasks.d FreeRTOS/Source/tasks.o: \
  ../../../../FreeRTOS/FreeRTOS/Source/include/task.h \
  ../../../../FreeRTOS/FreeRTOS/Source/include/stack_macros.h
 
-c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
+e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
-c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
+e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
-c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
+e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
 
 ../../../../FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h:
 
-c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
+e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
 
-c:\users\vetmo\downloads\ahmed\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
+e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
 
 ../FreeRTOS/include_cfg/FreeRTOSConfig.h:
 
