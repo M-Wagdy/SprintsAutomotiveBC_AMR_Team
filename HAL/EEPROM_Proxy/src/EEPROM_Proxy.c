@@ -74,9 +74,14 @@ ERROR_STATE_t EEPROM_ProxyLoadFromMemory(uint16_t StartingPosition, uint16_t End
 				FunRetVal = CRC_16_Chk(CharArr);
 				if (FunRetVal == ERROR_NOK)
 				{
-					ErrRetVal = MemoryEmpty;//corruptedMemory	
+					ErrRetVal = MemoryEmpty;//corruptedMemory
+					break;	
 				}				
-				break;
+				else
+				{
+					ErrRetVal = OperationSuccess;
+					break;
+				}
 			}
 			else if (CharArr[iterator] == 0xFF)
 			{

@@ -22,7 +22,7 @@ int main(void)
 	//uint8_t passworLength = 4;
 	//uint8_t const wordLength = 9;
 	//uint8_t positionaftefirstlineword = 0xc0;
-	while(LCD_Init() != OperationSuccess);//<===forLCDInitialization
+	//while(LCD_Init() != OperationSuccess);//<===forLCDInitialization
 	/*uint8_t shifting_State;
 	uint8_t Position;
 	uint8_t LastShiftingState;
@@ -40,10 +40,10 @@ int main(void)
 	//}
 	//uint8_t l = (passworLength+(16-wordLength));
 	
-	DISPLAY_SetNumber_of_Asterisk(6);//<======setsNumberofasteriks
-	DISPLAY_SetState(Waiting);//<====setsthestate of the system
-	//CRC_16_Calc(Name);
-	retValofChk = CRC_16_Chk(Name);
+	//DISPLAY_SetNumber_of_Asterisk(6);//<======setsNumberofasteriks
+	//DISPLAY_SetState(Waiting);//<====setsthestate of the system
+	CRC_16_Calc(Name);
+	//retValofChk = CRC_16_Chk(Name);
 	while (1) 
     {
 		//LCD_SendNumber(0);
@@ -64,7 +64,7 @@ int main(void)
 			//l--;
 		//}
 		//l = (passworLength+(16-wordLength));
-		DISPLAY_MainFunction();//<=====main function of Display module
+		//DISPLAY_MainFunction();//<=====main function of Display module
 		/******
 		******/
 /*
@@ -221,7 +221,7 @@ int main(void)
 			}
 		}
 		LastShiftingState = shifting_State;*/
-		for(uint32_t volatile x = 0; x < 50000; x++);//<=====Dummydelay function
+		//for(uint32_t volatile x = 0; x < 50000; x++);//<=====Dummydelay function
 	}
 }
 
