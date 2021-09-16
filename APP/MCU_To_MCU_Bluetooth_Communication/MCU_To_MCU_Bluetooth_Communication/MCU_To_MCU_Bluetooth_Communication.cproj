@@ -123,7 +123,7 @@
       <Value>../../../../HAL/LED/inc</Value>
       <Value>../App/Indicator/inc</Value>
       <Value>../../../../HAL/SevenSeg/inc</Value>
-      <Value>../App/Display/inc</Value>
+      <Value>../App/SSD_Display/inc</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -314,24 +314,6 @@
       <SubType>compile</SubType>
       <Link>Mcal\Atmega32\PWM\src\PWM.c</Link>
     </Compile>
-    <Compile Include="App\Display\inc\Display.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="App\Display\inc\Display_Interface.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="App\Display\inc\Display_Lcfg.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="App\Display\src\Display.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="App\Display\src\Display_Interface.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="App\Display\src\Display_Lcfg.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="App\HMI\inc\HMI.h">
       <SubType>compile</SubType>
     </Compile>
@@ -365,6 +347,24 @@
     <Compile Include="App\Indicator\src\Indicator_Lcfg.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="App\SSD_Display\inc\SSD_Display.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\SSD_Display\inc\SSD_Display_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\SSD_Display\inc\SSD_Display_Lcfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\SSD_Display\src\SSD_Display.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\SSD_Display\src\SSD_Display_Interface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="App\SSD_Display\src\SSD_Display_Lcfg.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="FreeRTOS\FreeRTOSConfig.h">
       <SubType>compile</SubType>
     </Compile>
@@ -385,15 +385,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Display\inc" />
-    <Folder Include="App\Display\src" />
     <Folder Include="App\HMI" />
     <Folder Include="App\HMI\inc" />
     <Folder Include="App\HMI\src" />
     <Folder Include="App\Indicator" />
     <Folder Include="App\Indicator\inc" />
     <Folder Include="App\Indicator\src" />
-    <Folder Include="App\Display" />
+    <Folder Include="App\SSD_Display\" />
+    <Folder Include="App\SSD_Display\inc\" />
+    <Folder Include="App\SSD_Display\src\" />
     <Folder Include="FreeRTOS\" />
     <Folder Include="FreeRTOS\include" />
     <Folder Include="FreeRTOS\portable" />

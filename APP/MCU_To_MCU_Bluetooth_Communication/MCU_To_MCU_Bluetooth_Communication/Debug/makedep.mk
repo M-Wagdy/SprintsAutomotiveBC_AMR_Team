@@ -28,12 +28,6 @@
 
 ..\..\..\MCAL\Atmega32\PWM\src\PWM.c
 
-App\Display\src\Display.c
-
-App\Display\src\Display_Interface.c
-
-App\Display\src\Display_Lcfg.c
-
 App\HMI\src\HMI.c
 
 App\HMI\src\HMI_Interface.c
@@ -45,6 +39,12 @@ App\Indicator\src\Indicator.c
 App\Indicator\src\Indicator_interface.c
 
 App\Indicator\src\Indicator_Lcfg.c
+
+App\SSD_Display\src\SSD_Display.c
+
+App\SSD_Display\src\SSD_Display_Interface.c
+
+App\SSD_Display\src\SSD_Display_Lcfg.c
 
 HAL\Keypad\src\Keypad_Lcfg.c
 

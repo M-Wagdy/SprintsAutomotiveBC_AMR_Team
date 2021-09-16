@@ -1,12 +1,12 @@
 /*
- * Display_Interface.c
+ * SSD_Display_Interface.c
  *
  * Created: 9/7/2021 3:10:55 PM
  * Author: Mohamed Wagdy
  */ 
 
 /*INCLUDES-------------------------------*/
-#include "Display_Interface.h"
+#include "SSD_Display_Interface.h"
 
 /*- LOCAL MACROS
 ------------------------------------------*/
@@ -24,7 +24,7 @@ static uint8_t gu8_SevenSegmentValue = 0;
 *
 * @return function error state.
 */
-extern ERROR_STATE_t Display_GetSevenSegment(uint8_t * Value)
+extern ERROR_STATE_t SSD_Display_GetSevenSegment(uint8_t * Value)
 {
    /* Variable to store function error state. */
    ERROR_STATE_t Display_ErrorState;
@@ -53,7 +53,7 @@ extern ERROR_STATE_t Display_GetSevenSegment(uint8_t * Value)
 *
 * @return function error state.
 */
-extern ERROR_STATE_t Display_SetSevenSegment(uint8_t Value)
+extern ERROR_STATE_t SSD_Display_SetSevenSegment(uint8_t Value)
 {
    /* Variable to store function error state. */
    ERROR_STATE_t Display_ErrorState;

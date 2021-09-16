@@ -6,8 +6,6 @@
  */ 
 
 /*INCLUDES-------------------------------*/
-#include "MC_REGISTERS.h"
-#include "math.h"
 #include "Keypad.h"
 #include "HMI.h"
 #include "HMI_Interface.h"
@@ -40,7 +38,6 @@ extern void HMI_MainFunction(void)
    if (u8_Init == 0)
    {
       KP_Init(KP_UsedChannel);
-      DDRB |= 0xF0;
       u8_Init = 1;
    }
    
@@ -58,20 +55,15 @@ extern void HMI_MainFunction(void)
          {
             /* Set device erase flag. */
             HMI_SetDeviceEraseFlag();
-            PORTB &= ~(0xF0);
-            PORTB |= (13<<4);
          }
          /* password change pattern keys are pressed */
          else if(PASSWORD_CHANGE_VALUE == u32_Key)
          {
             /* Set password change flag. */
             HMI_SetPasswordChangeFlag();
-            PORTB &= ~(0xF0);
-            PORTB |= (14<<4);
          }
          else
          {
-            PORTB &= ~(0xF0);
          }
       }
       /* If a single key is pressed. */
@@ -83,15 +75,12 @@ extern void HMI_MainFunction(void)
             if((u32_Key >> u8_KeyCounter) & 1 )
             {
                HMI_SetKeyPressed(u8_KeyCounter);
-               PORTB &= ~(0xF0);
-               PORTB |= (u8_KeyCounter<<4);
                break;
             }
          }
       }
       else
       {
-         PORTB &= ~(0xF0);
       }
    }
    u32_OldKey = u32_Key;
