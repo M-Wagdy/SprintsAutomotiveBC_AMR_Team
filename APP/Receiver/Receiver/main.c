@@ -59,7 +59,7 @@ void NumberChange_Task( void *pvParameters )
       DISPLAY_SetNumber_of_Asterisk(ast);
       SSD_Display_SetSevenSegment(Number);
       Number++;
-      //ast++;
+      ast++;
       if(Number > 99)
       {
          Number = 0;
