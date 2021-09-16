@@ -44,6 +44,7 @@ extern void Indicator_MainFunction(void)
    /* Initialization sequence. */
    if (u8_Init == 0)
    {
+      Indicator_SetPattern(INDICATOR_MALFUNCTION_PATTERN);
       LED_Init(LED_UsedChannel);
       u8_Init = 1;
    }

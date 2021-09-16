@@ -21,7 +21,9 @@ main.d main.o: .././main.c ../App/SSD_Display/inc/SSD_Display.h \
  ../../../../FreeRTOS/Source/portable/GCC/ATMega323/portmacro.h \
  ../../../../FreeRTOS/Source/include/mpu_wrappers.h \
  ../../../../FreeRTOS/Source/include/task.h \
- ../../../../FreeRTOS/Source/include/list.h
+ ../../../../FreeRTOS/Source/include/list.h \
+ ../App/SSD_Display/inc/SSD_Display_Interface.h \
+ ../App/SSD_Display/inc/SSD_Display_Lcfg.h
 
 ../App/SSD_Display/inc/SSD_Display.h:
 
@@ -72,3 +74,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../../../../FreeRTOS/Source/include/task.h:
 
 ../../../../FreeRTOS/Source/include/list.h:
+
+../App/SSD_Display/inc/SSD_Display_Interface.h:
+
+../App/SSD_Display/inc/SSD_Display_Lcfg.h:

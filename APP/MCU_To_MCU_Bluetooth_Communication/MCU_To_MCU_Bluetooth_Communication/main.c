@@ -43,7 +43,7 @@ void SSD_Display_Task( void *pvParameters )
    }
 }
 
-#if 0
+#if 1
 #include "SSD_Display_Interface.h"
 void NumberChange_Task( void *pvParameters )
 {
@@ -70,7 +70,7 @@ int main(void)
    xTaskCreate( HMI_Task, "HMI", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
    xTaskCreate( Feedback_Task, "Indicator", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
    xTaskCreate( SSD_Display_Task, "SevenSegment", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
-   /*xTaskCreate( NumberChange_Task, "number", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );*/
+   xTaskCreate( NumberChange_Task, "number", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
    
    vTaskStartScheduler();
    while(1)
