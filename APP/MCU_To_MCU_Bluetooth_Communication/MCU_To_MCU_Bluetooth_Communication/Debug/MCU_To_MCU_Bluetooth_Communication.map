@@ -47,7 +47,7 @@ e:/new folder/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4
 e:/new folder/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
                               FreeRTOS/Source/croutine.o (__do_clear_bss)
 e:/new folder/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
-                              APP/DISPLAY/src/DISPLAY.o (__umulhisi3)
+                              APP/LCD_DISPLAY/src/DISPLAY.o (__umulhisi3)
 e:/new folder/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_muluhisi3.o)
                               MCAL/TIMER/src/TIMER.o (__muluhisi3)
 e:/new folder/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(memcpy.o)
@@ -665,65 +665,65 @@ Discarded input sections
  .debug_line    0x00000000       0xa1 MCAL/TIMER/src/TIMER_Lcfg.o
  .debug_str     0x00000000      0x223 MCAL/TIMER/src/TIMER_Lcfg.o
  .comment       0x00000000       0x31 MCAL/TIMER/src/TIMER_Lcfg.o
- .text          0x00000000        0x0 APP/DISPLAY/src/DISPLAY.o
- .data          0x00000000        0x0 APP/DISPLAY/src/DISPLAY.o
- .bss           0x00000000        0x0 APP/DISPLAY/src/DISPLAY.o
+ .text          0x00000000        0x0 APP/LCD_DISPLAY/src/DISPLAY.o
+ .data          0x00000000        0x0 APP/LCD_DISPLAY/src/DISPLAY.o
+ .bss           0x00000000        0x0 APP/LCD_DISPLAY/src/DISPLAY.o
  .text.DISPLAY_START_SHIFTING
-                0x00000000       0x96 APP/DISPLAY/src/DISPLAY.o
+                0x00000000       0x96 APP/LCD_DISPLAY/src/DISPLAY.o
  .rodata.str1.1
-                0x00000000       0x58 APP/DISPLAY/src/DISPLAY.o
+                0x00000000       0x58 APP/LCD_DISPLAY/src/DISPLAY.o
  .text.DISPLAY_MainFunction
-                0x00000000      0x62e APP/DISPLAY/src/DISPLAY.o
+                0x00000000      0x62e APP/LCD_DISPLAY/src/DISPLAY.o
  .progmem.gcc_sw_table.DISPLAY_MainFunction
-                0x00000000       0x10 APP/DISPLAY/src/DISPLAY.o
+                0x00000000       0x10 APP/LCD_DISPLAY/src/DISPLAY.o
  .bss.Counter.1754
-                0x00000000        0x1 APP/DISPLAY/src/DISPLAY.o
+                0x00000000        0x1 APP/LCD_DISPLAY/src/DISPLAY.o
  .data.Last_state.1753
-                0x00000000        0x1 APP/DISPLAY/src/DISPLAY.o
+                0x00000000        0x1 APP/LCD_DISPLAY/src/DISPLAY.o
  .bss.RemainingSeconds
-                0x00000000        0x4 APP/DISPLAY/src/DISPLAY.o
+                0x00000000        0x4 APP/LCD_DISPLAY/src/DISPLAY.o
  .bss.WrongPassEntries
-                0x00000000        0x1 APP/DISPLAY/src/DISPLAY.o
+                0x00000000        0x1 APP/LCD_DISPLAY/src/DISPLAY.o
  .data.LastShiftingState
-                0x00000000        0x1 APP/DISPLAY/src/DISPLAY.o
+                0x00000000        0x1 APP/LCD_DISPLAY/src/DISPLAY.o
  .data.Shifting_State
-                0x00000000        0x1 APP/DISPLAY/src/DISPLAY.o
+                0x00000000        0x1 APP/LCD_DISPLAY/src/DISPLAY.o
  .bss.Number_of_Asteriks
-                0x00000000        0x1 APP/DISPLAY/src/DISPLAY.o
- .bss.Position  0x00000000        0x1 APP/DISPLAY/src/DISPLAY.o
- .debug_info    0x00000000      0x9b6 APP/DISPLAY/src/DISPLAY.o
- .debug_abbrev  0x00000000      0x10d APP/DISPLAY/src/DISPLAY.o
- .debug_loc     0x00000000      0x152 APP/DISPLAY/src/DISPLAY.o
+                0x00000000        0x1 APP/LCD_DISPLAY/src/DISPLAY.o
+ .bss.Position  0x00000000        0x1 APP/LCD_DISPLAY/src/DISPLAY.o
+ .debug_info    0x00000000      0x9b6 APP/LCD_DISPLAY/src/DISPLAY.o
+ .debug_abbrev  0x00000000      0x10d APP/LCD_DISPLAY/src/DISPLAY.o
+ .debug_loc     0x00000000      0x152 APP/LCD_DISPLAY/src/DISPLAY.o
  .debug_aranges
-                0x00000000       0x28 APP/DISPLAY/src/DISPLAY.o
- .debug_ranges  0x00000000       0x18 APP/DISPLAY/src/DISPLAY.o
- .debug_line    0x00000000      0x665 APP/DISPLAY/src/DISPLAY.o
- .debug_str     0x00000000      0x32e APP/DISPLAY/src/DISPLAY.o
- .comment       0x00000000       0x31 APP/DISPLAY/src/DISPLAY.o
- .debug_frame   0x00000000       0x70 APP/DISPLAY/src/DISPLAY.o
- .text          0x00000000        0x0 APP/DISPLAY/src/DISPLAY_Interface.o
- .data          0x00000000        0x0 APP/DISPLAY/src/DISPLAY_Interface.o
- .bss           0x00000000        0x0 APP/DISPLAY/src/DISPLAY_Interface.o
+                0x00000000       0x28 APP/LCD_DISPLAY/src/DISPLAY.o
+ .debug_ranges  0x00000000       0x18 APP/LCD_DISPLAY/src/DISPLAY.o
+ .debug_line    0x00000000      0x66d APP/LCD_DISPLAY/src/DISPLAY.o
+ .debug_str     0x00000000      0x332 APP/LCD_DISPLAY/src/DISPLAY.o
+ .comment       0x00000000       0x31 APP/LCD_DISPLAY/src/DISPLAY.o
+ .debug_frame   0x00000000       0x70 APP/LCD_DISPLAY/src/DISPLAY.o
+ .text          0x00000000        0x0 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
+ .data          0x00000000        0x0 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
+ .bss           0x00000000        0x0 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
  .text.DISPLAY_GetState
-                0x00000000        0xa APP/DISPLAY/src/DISPLAY_Interface.o
+                0x00000000        0xa APP/LCD_DISPLAY/src/DISPLAY_Interface.o
  .text.DISPLAY_GetNumber_of_Asterisk
-                0x00000000        0xa APP/DISPLAY/src/DISPLAY_Interface.o
+                0x00000000        0xa APP/LCD_DISPLAY/src/DISPLAY_Interface.o
  .text.DISPLAY_SetState
-                0x00000000        0x6 APP/DISPLAY/src/DISPLAY_Interface.o
+                0x00000000        0x6 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
  .text.DISPLAY_SetNumber_of_Asterisk
-                0x00000000        0x6 APP/DISPLAY/src/DISPLAY_Interface.o
+                0x00000000        0x6 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
  .bss.Number_of_Asteriks
-                0x00000000        0x1 APP/DISPLAY/src/DISPLAY_Interface.o
- .data.State    0x00000000        0x1 APP/DISPLAY/src/DISPLAY_Interface.o
- .debug_info    0x00000000      0x14d APP/DISPLAY/src/DISPLAY_Interface.o
- .debug_abbrev  0x00000000       0x7a APP/DISPLAY/src/DISPLAY_Interface.o
+                0x00000000        0x1 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
+ .data.State    0x00000000        0x1 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
+ .debug_info    0x00000000      0x14d APP/LCD_DISPLAY/src/DISPLAY_Interface.o
+ .debug_abbrev  0x00000000       0x7a APP/LCD_DISPLAY/src/DISPLAY_Interface.o
  .debug_aranges
-                0x00000000       0x38 APP/DISPLAY/src/DISPLAY_Interface.o
- .debug_ranges  0x00000000       0x28 APP/DISPLAY/src/DISPLAY_Interface.o
- .debug_line    0x00000000       0xbb APP/DISPLAY/src/DISPLAY_Interface.o
- .debug_str     0x00000000      0x254 APP/DISPLAY/src/DISPLAY_Interface.o
- .comment       0x00000000       0x31 APP/DISPLAY/src/DISPLAY_Interface.o
- .debug_frame   0x00000000       0x54 APP/DISPLAY/src/DISPLAY_Interface.o
+                0x00000000       0x38 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
+ .debug_ranges  0x00000000       0x28 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
+ .debug_line    0x00000000       0xbf APP/LCD_DISPLAY/src/DISPLAY_Interface.o
+ .debug_str     0x00000000      0x258 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
+ .comment       0x00000000       0x31 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
+ .debug_frame   0x00000000       0x54 APP/LCD_DISPLAY/src/DISPLAY_Interface.o
  .text          0x00000000        0x0 APP/STORAGE/src/STORAGE.o
  .data          0x00000000        0x0 APP/STORAGE/src/STORAGE.o
  .bss           0x00000000        0x0 APP/STORAGE/src/STORAGE.o
@@ -1009,8 +1009,8 @@ LOAD MCAL/PWM/src/PWM.o
 LOAD MCAL/PWM/src/PWM_Lcfg.o
 LOAD MCAL/TIMER/src/TIMER.o
 LOAD MCAL/TIMER/src/TIMER_Lcfg.o
-LOAD APP/DISPLAY/src/DISPLAY.o
-LOAD APP/DISPLAY/src/DISPLAY_Interface.o
+LOAD APP/LCD_DISPLAY/src/DISPLAY.o
+LOAD APP/LCD_DISPLAY/src/DISPLAY_Interface.o
 LOAD APP/STORAGE/src/STORAGE.o
 LOAD main.o
 START GROUP

@@ -120,7 +120,7 @@
       <Value>../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323</Value>
       <Value>../FreeRTOS/include_cfg</Value>
       <Value>../../../../MCAL/Atmega32/EEPROM/inc</Value>
-      <Value>../APP/DISPLAY/inc</Value>
+      <Value>../APP/LCD_DISPLAY/inc</Value>
       <Value>../../../../HAL/EEPROM_Proxy/inc</Value>
       <Value>../APP/STORAGE/inc</Value>
     </ListValues>
@@ -361,16 +361,16 @@
       <SubType>compile</SubType>
       <Link>MCAL\TIMER\src\TIMER_Lcfg.c</Link>
     </Compile>
-    <Compile Include="APP\DISPLAY\inc\DISPLAY.h">
+    <Compile Include="APP\LCD_DISPLAY\inc\DISPLAY.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="APP\DISPLAY\inc\DISPLAY_Interface.h">
+    <Compile Include="APP\LCD_DISPLAY\inc\DISPLAY_Interface.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="APP\DISPLAY\src\DISPLAY.c">
+    <Compile Include="APP\LCD_DISPLAY\src\DISPLAY.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="APP\DISPLAY\src\DISPLAY_Interface.c">
+    <Compile Include="APP\LCD_DISPLAY\src\DISPLAY_Interface.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="APP\STORAGE\inc\STORAGE.h">
@@ -387,9 +387,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="APP\DISPLAY" />
-    <Folder Include="APP\DISPLAY\inc" />
-    <Folder Include="APP\DISPLAY\src" />
+    <Folder Include="APP\LCD_DISPLAY" />
+    <Folder Include="APP\LCD_DISPLAY\inc" />
+    <Folder Include="APP\LCD_DISPLAY\src" />
     <Folder Include="APP\STORAGE" />
     <Folder Include="APP\STORAGE\inc" />
     <Folder Include="APP\STORAGE\src" />

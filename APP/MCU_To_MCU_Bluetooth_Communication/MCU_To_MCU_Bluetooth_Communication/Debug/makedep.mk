@@ -40,9 +40,9 @@
 
 ..\..\..\MCAL\Atmega32\TIMER\src\TIMER_Lcfg.c
 
-APP\DISPLAY\src\DISPLAY.c
+APP\LCD_DISPLAY\src\DISPLAY.c
 
-APP\DISPLAY\src\DISPLAY_Interface.c
+APP\LCD_DISPLAY\src\DISPLAY_Interface.c
 
 APP\STORAGE\src\STORAGE.c
 

@@ -1,6 +1,7 @@
-APP/DISPLAY/src/DISPLAY.d APP/DISPLAY/src/DISPLAY.o: \
- ../APP/DISPLAY/src/DISPLAY.c ../APP/DISPLAY/inc/DISPLAY.h \
- ../APP/DISPLAY/inc/DISPLAY_Interface.h ../../../../LIB/LIB.h \
+APP/LCD_DISPLAY/src/DISPLAY_Interface.d \
+ APP/LCD_DISPLAY/src/DISPLAY_Interface.o: \
+ ../APP/LCD_DISPLAY/src/DISPLAY_Interface.c \
+ ../APP/LCD_DISPLAY/inc/DISPLAY_Interface.h ../../../../LIB/LIB.h \
  ../../../../LIB/STD_TYPES.h ../../../../LIB/BIT_MATH.h \
  ../../../../LIB/UTILS.h ../../../../HAL/LCD/inc/LCD.h \
  ../../../../MCAL/Atmega32/DIO/inc/DIO.h ../../../../LIB/STD_TYPES.h \
@@ -8,9 +9,7 @@ APP/DISPLAY/src/DISPLAY.d APP/DISPLAY/src/DISPLAY.o: \
  ../../../../MCAL/Atmega32/TIMER/inc/TIMER_Lcfg.h \
  ../../../../HAL/LCD/inc/LCD_Lcfg.h
 
-../APP/DISPLAY/inc/DISPLAY.h:
-
-../APP/DISPLAY/inc/DISPLAY_Interface.h:
+../APP/LCD_DISPLAY/inc/DISPLAY_Interface.h:
 
 ../../../../LIB/LIB.h:
 
