@@ -1,5 +1,5 @@
 /*
- * Display.c
+ * SSD_Display.c
  *
  * Created: 9/7/2021 3:10:35 PM
  * Author: Mohamed Wagdy
@@ -7,8 +7,8 @@
 
 /*INCLUDES-------------------------------*/
 #include "SevenSeg.h"
-#include "Display.h"
-#include "Display_Interface.h"
+#include "SSD_Display.h"
+#include "SSD_Display_Interface.h"
 
 /*- GLOBAL EXTERN VARIABLES
 -------------------------------*/
@@ -20,12 +20,12 @@ extern const STR_DISPLAY_SEGMENT_config_t STR_DisplaySegmentConfig;
 *
 * @return function error state.
 */
-extern void Display_MainFunction(void)
+extern void SSD_Display_MainFunction(void)
 {
    /* Used Local variables */
    static uint8_t u8_Init = 0;  
    uint8_t u8_SevenSegmentNumber; 
-   static Enu_DisplayStateMachine State = Display_FirstNumber;
+   static Enu_SSDDisplayStateMachine State = SSD_Display_FirstNumber;
    
    /* Initialization sequence. */
    if (u8_Init == 0)
@@ -36,19 +36,19 @@ extern void Display_MainFunction(void)
    }
    
    /* Get the number to display. */
-   Display_GetSevenSegment(&u8_SevenSegmentNumber);
+   SSD_Display_GetSevenSegment(&u8_SevenSegmentNumber);
    
    switch(State)
    {
-      case Display_FirstNumber:
+      case SSD_Display_FirstNumber:
          /* Display the first number. */
          SevenSeg_Display(STR_DisplaySegmentConfig.u8_SegmentCh0, u8_SevenSegmentNumber%10);
-         State = Display_SecondNumber;
+         State = SSD_Display_SecondNumber;
          break;
-      case Display_SecondNumber:
+      case SSD_Display_SecondNumber:
          /* Display the second number. */
          SevenSeg_Display(STR_DisplaySegmentConfig.u8_SegmentCh1, u8_SevenSegmentNumber/10);
-         State = Display_FirstNumber;
+         State = SSD_Display_FirstNumber;
          break;
    }      
 }

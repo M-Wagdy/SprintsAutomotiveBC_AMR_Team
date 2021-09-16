@@ -5,7 +5,7 @@
  * Author : vetmo
  */ 
 
-#include "Display.h"
+#include "SSD_Display.h"
 #include "HMI.h"
 #include "Indicator.h"
 #include "FreeRTOS.h"
@@ -31,19 +31,20 @@ void Feedback_Task( void *pvParameters )
    }
 }
 
-void Display_Task( void *pvParameters )
+void SSD_Display_Task( void *pvParameters )
 {
    portTickType xLastWakeTime;
    xLastWakeTime=xTaskGetTickCount();
    
    for( ;; )
    {
-      Display_MainFunction();
+      SSD_Display_MainFunction();
       vTaskDelayUntil(&xLastWakeTime, 10);
    }
 }
 
-#include "Display_Interface.h"
+#if 0
+#include "SSD_Display_Interface.h"
 void NumberChange_Task( void *pvParameters )
 {
    portTickType xLastWakeTime;
@@ -53,7 +54,7 @@ void NumberChange_Task( void *pvParameters )
    vTaskDelayUntil(&xLastWakeTime, 100);
    for( ;; )
    {
-      Display_SetSevenSegment(Number);
+      SSD_Display_SetSevenSegment(Number);
       Number++;
       if(Number > 99)
       {
@@ -62,13 +63,14 @@ void NumberChange_Task( void *pvParameters )
       vTaskDelayUntil(&xLastWakeTime, 100);
    }
 }
+#endif
 
 int main(void)
 {   
    xTaskCreate( HMI_Task, "HMI", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
    xTaskCreate( Feedback_Task, "Indicator", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
-   xTaskCreate( Display_Task, "SevenSegment", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
-   xTaskCreate( NumberChange_Task, "number", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
+   xTaskCreate( SSD_Display_Task, "SevenSegment", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
+   /*xTaskCreate( NumberChange_Task, "number", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );*/
    
    vTaskStartScheduler();
    while(1)

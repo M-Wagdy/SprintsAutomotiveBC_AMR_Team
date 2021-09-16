@@ -1,4 +1,4 @@
-main.d main.o: .././main.c ../App/Display/inc/Display.h \
+main.d main.o: .././main.c ../App/SSD_Display/inc/SSD_Display.h \
  ../../../../LIB/inc/STD_types.h ../App/HMI/inc/HMI.h \
  ../App/Indicator/inc/Indicator.h \
  ../../../../FreeRTOS/Source/include/FreeRTOS.h \
@@ -21,10 +21,9 @@ main.d main.o: .././main.c ../App/Display/inc/Display.h \
  ../../../../FreeRTOS/Source/portable/GCC/ATMega323/portmacro.h \
  ../../../../FreeRTOS/Source/include/mpu_wrappers.h \
  ../../../../FreeRTOS/Source/include/task.h \
- ../../../../FreeRTOS/Source/include/list.h \
- ../App/Display/inc/Display_Interface.h ../App/Display/inc/Display_Lcfg.h
+ ../../../../FreeRTOS/Source/include/list.h
 
-../App/Display/inc/Display.h:
+../App/SSD_Display/inc/SSD_Display.h:
 
 ../../../../LIB/inc/STD_types.h:
 
@@ -73,7 +72,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../../../../FreeRTOS/Source/include/task.h:
 
 ../../../../FreeRTOS/Source/include/list.h:
-
-../App/Display/inc/Display_Interface.h:
-
-../App/Display/inc/Display_Lcfg.h:
