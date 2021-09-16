@@ -22,5 +22,6 @@ uint8_t STR_CompareString(uint8_t* String_1, uint8_t* String_2, uint8_t* Result)
 uint8_t STR_String2Number(uint8_t* String, uint16_t* Number);
 uint8_t STR_Number2String(uint32_t Number, uint8_t* String);
 uint8_t STR_StringReverse(uint8_t* String);
-
+uint8_t CRC_16_Calc (uint8_t* STRING);
+uint8_t CRC_16_Chk (uint8_t* STRING);
 #endif

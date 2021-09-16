@@ -157,6 +157,7 @@ uint8_t STR_Number2String(uint32_t Number, uint8_t* String)
 	if(Number==0)
 	{
 		*String='0';
+		*(String+1)='\0';
 	}
 	else
 	{
@@ -191,4 +192,176 @@ uint8_t STR_StringReverse(uint8_t* String)
 	}
 	return 0;
 }
+/*
+Used websites:
+https://www.rapidtables.com/convert/number/ascii-hex-bin-dec-converter.html
+https://rndtool.info/CRC-step-by-step-calculator/
+https://www.lammertbies.nl/comm/info/crc-calculation
+https://www.youtube.com/watch?v=izG7qT0EpBw
+*/
+uint8_t CRC_16_Calc (uint8_t* STRING)
+{
+	/*change array of character to array of bits*/
+	/*initialize the array of bits*/
+	uint8_t BitArr[255] = {0};
+	/*the value of the used polynomial for CRC_16*/
+	const uint32_t polynomial = 0b00000000000000011000000000000101;
+	/*variable that holds the value to be XORED and SHIFTED*/
+	uint32_t volatile Window_16_Element =0;
+	/*initialize the variable that holds the number of characters to which CRC is calculated*/
+	/*number of characters in the inserted string*/
+	uint16_t StrLength =0;
+	/*initialize the variable that holds the number of bits in the inserted string*/
+	uint8_t BitArr_Size = 0;
+	/*using STR_Length() function to calculate Number of characters in the inserted String*/
+	STR_Length(STRING, &StrLength);
+	/*initializing the iterator for the array of bits of the inserted Character string*/
+	uint8_t iterator_of_BitArr = 0;
+	/*initializing the iterator for the array of the inserted Characters in the string*/
+	uint8_t iterator_of_characters = 0;
+	/*assigning the bits of the character in the passed string to the array of bits*/
+	/*bits are arranged in the array the form of an extra long number"Index 0:MSB,..,..,..,. . .,Index N:LSB"*/
+	for(iterator_of_characters = 0; iterator_of_characters < StrLength; iterator_of_characters++)
+	{
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_7);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_6);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_5);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_4);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_3);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_2);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_1);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_0);
+		iterator_of_BitArr++;
+	}
+	/*calculating the size of the array of bits taking into consideration the size of the 16 bits of CRC_16*/
+	BitArr_Size = iterator_of_BitArr + 15;
+	/*reset the iterator of the Bits Array to zero to iterate through the array*/
+	iterator_of_BitArr = 0;
+	/*Moving to the first occurance of high bit to start our CRC calculation*/
+	while(BitArr[iterator_of_BitArr]!=1)
+	{
+		/*increment the iterator to the first occurance of High bit*/
+		iterator_of_BitArr++;
+	}
+	for (uint8_t i = 0; i<=16; i++)
+	{
+		Window_16_Element |= ((uint32_t)BitArr[iterator_of_BitArr+i]<<(16-i));
+	}
+	/*Start the modulo Operation continues until the polynomial doesn't fit into the reminder*/
+	while(iterator_of_BitArr < BitArr_Size-15)
+	{
+		/*Xoring operation between the Window and the polynomial*/
+			Window_16_Element ^= polynomial;
+			if(!Window_16_Element)
+				break;
+		if(iterator_of_BitArr < BitArr_Size-16)
+		{
+			do 
+			{
+			Window_16_Element <<= 1;
+			iterator_of_BitArr++;
+			/*Adding new element from the array of bits to the window*/
+			Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
+			} while ((Get_Bit(Window_16_Element,16) == 0));
+		}
+		else
+		{
+			iterator_of_BitArr++;
+		}
+	}
+	/*Add the calculated CRC to the End of the Passed String*/
+	STRING[StrLength] = (uint8_t)(Window_16_Element>>8);
+	STRING[StrLength+1] = (uint8_t)(Window_16_Element&0x000000FF);
+	STRING[StrLength+2] = NULL_TERMINATOR;
+	/*return zero*/
+	return OperationSuccess;
+}
 
+uint8_t CRC_16_Chk (uint8_t* STRING)
+{
+	/*change array of character to array of bits*/
+	/*initialize the array of bits*/
+	uint8_t BitArr[255] = {0};
+	/*Error Return value*/
+	uint8_t ErrRetVal = ERROR_OK;
+	/*the value of the used polynomial for CRC_16*/
+	const uint32_t polynomial = 0b00000000000000011000000000000101;
+	/*variable that holds the value to be XORED and SHIFTED*/
+	uint32_t volatile Window_16_Element =0;
+	/*initialize the variable that holds the number of characters to which CRC is calculated*/
+	/*number of characters in the inserted string*/
+	uint16_t StrLength =0;
+	/*initialize the variable that holds the number of bits in the inserted string*/
+	uint8_t BitArr_Size = 0;
+	/*using STR_Length() function to calculate Number of characters in the inserted String*/
+	STR_Length(STRING, &StrLength);
+	/*initializing the iterator for the array of bits of the inserted Character string*/
+	uint8_t iterator_of_BitArr = 0;
+	/*initializing the iterator for the array of the inserted Characters in the string*/
+	uint8_t iterator_of_characters = 0;
+	/*assigning the bits of the character in the passed string to the array of bits*/
+	/*bits are arranged in the array the form of an extra long number"Index 0:MSB,..,..,..,. . .,Index N:LSB"*/
+	for(iterator_of_characters = 0; iterator_of_characters < StrLength; iterator_of_characters++)
+	{
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_7);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_6);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_5);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_4);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_3);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_2);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_1);
+		iterator_of_BitArr++;
+		BitArr[iterator_of_BitArr] = READ_BIT(STRING[iterator_of_characters],BIT_0);
+		iterator_of_BitArr++;
+	}
+	/*calculating the size of the array of bits taking into consideration the size of the 16 bits of CRC_16*/
+	BitArr_Size = iterator_of_BitArr + 15;
+	/*reset the iterator of the Bits Array to zero to iterate through the array*/
+	iterator_of_BitArr = 0;
+	/*Moving to the first occurance of high bit to start our CRC calculation*/
+	while(BitArr[iterator_of_BitArr]!=1)
+	{
+		/*increment the iterator to the first occurance of High bit*/
+		iterator_of_BitArr++;
+	}
+	for (uint8_t i = 0; i<=16; i++)
+	{
+		Window_16_Element |= ((uint32_t)BitArr[iterator_of_BitArr+i]<<(16-i));
+	}
+	/*Start the modulo Operation continues until the polynomial doesn't fit into the reminder*/
+	while(iterator_of_BitArr < BitArr_Size-16)
+	{
+		/*Xoring operation between the Window and the polynomial*/
+		Window_16_Element ^= polynomial;
+		if(!Window_16_Element)
+			break;
+		if((iterator_of_BitArr < BitArr_Size-16))
+		{
+			do
+			{
+				Window_16_Element <<= 1;
+				iterator_of_BitArr++;
+				/*Adding new element from the array of bits to the window*/
+				Window_16_Element |= (uint16_t)BitArr[iterator_of_BitArr+16];
+			} while ((Get_Bit(Window_16_Element,16) == 0));
+		}
+	}
+	if((uint16_t)Window_16_Element != 0)
+		ErrRetVal = ERROR_NOK;
+	else
+		ErrRetVal = ERROR_OK;
+	return ErrRetVal;
+}
