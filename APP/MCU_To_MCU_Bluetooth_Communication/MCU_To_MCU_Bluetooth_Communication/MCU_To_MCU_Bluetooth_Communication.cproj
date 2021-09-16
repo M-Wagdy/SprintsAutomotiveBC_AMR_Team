@@ -361,16 +361,16 @@
       <SubType>compile</SubType>
       <Link>MCAL\TIMER\src\TIMER_Lcfg.c</Link>
     </Compile>
-    <Compile Include="APP\LCD_DISPLAY\inc\DISPLAY.h">
+    <Compile Include="APP\LCD_DISPLAY\inc\LCD_DISPLAY.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="APP\LCD_DISPLAY\inc\DISPLAY_Interface.h">
+    <Compile Include="APP\LCD_DISPLAY\inc\LCD_DISPLAY_Interface.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="APP\LCD_DISPLAY\src\DISPLAY.c">
+    <Compile Include="APP\LCD_DISPLAY\src\LCD_DISPLAY.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="APP\LCD_DISPLAY\src\DISPLAY_Interface.c">
+    <Compile Include="APP\LCD_DISPLAY\src\LCD_DISPLAY_Interface.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="APP\STORAGE\inc\STORAGE.h">

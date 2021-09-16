@@ -92,8 +92,8 @@ C_SRCS +=  \
 ../../../../MCAL/Atmega32/PWM/src/PWM_Lcfg.c \
 ../../../../MCAL/Atmega32/TIMER/src/TIMER.c \
 ../../../../MCAL/Atmega32/TIMER/src/TIMER_Lcfg.c \
-../APP/LCD_DISPLAY/src/DISPLAY.c \
-../APP/LCD_DISPLAY/src/DISPLAY_Interface.c \
+../APP/LCD_DISPLAY/src/LCD_DISPLAY.c \
+../APP/LCD_DISPLAY/src/LCD_DISPLAY_Interface.c \
 ../APP/STORAGE/src/STORAGE.c \
 ../main.c
 
@@ -124,8 +124,8 @@ MCAL/PWM/src/PWM.o \
 MCAL/PWM/src/PWM_Lcfg.o \
 MCAL/TIMER/src/TIMER.o \
 MCAL/TIMER/src/TIMER_Lcfg.o \
-APP/LCD_DISPLAY/src/DISPLAY.o \
-APP/LCD_DISPLAY/src/DISPLAY_Interface.o \
+APP/LCD_DISPLAY/src/LCD_DISPLAY.o \
+APP/LCD_DISPLAY/src/LCD_DISPLAY_Interface.o \
 APP/STORAGE/src/STORAGE.o \
 main.o
 
@@ -149,8 +149,8 @@ MCAL/PWM/src/PWM.o \
 MCAL/PWM/src/PWM_Lcfg.o \
 MCAL/TIMER/src/TIMER.o \
 MCAL/TIMER/src/TIMER_Lcfg.o \
-APP/LCD_DISPLAY/src/DISPLAY.o \
-APP/LCD_DISPLAY/src/DISPLAY_Interface.o \
+APP/LCD_DISPLAY/src/LCD_DISPLAY.o \
+APP/LCD_DISPLAY/src/LCD_DISPLAY_Interface.o \
 APP/STORAGE/src/STORAGE.o \
 main.o
 
@@ -174,8 +174,8 @@ MCAL/PWM/src/PWM.d \
 MCAL/PWM/src/PWM_Lcfg.d \
 MCAL/TIMER/src/TIMER.d \
 MCAL/TIMER/src/TIMER_Lcfg.d \
-APP/LCD_DISPLAY/src/DISPLAY.d \
-APP/LCD_DISPLAY/src/DISPLAY_Interface.d \
+APP/LCD_DISPLAY/src/LCD_DISPLAY.d \
+APP/LCD_DISPLAY/src/LCD_DISPLAY_Interface.d \
 APP/STORAGE/src/STORAGE.d \
 main.d
 
@@ -199,8 +199,8 @@ MCAL/PWM/src/PWM.d \
 MCAL/PWM/src/PWM_Lcfg.d \
 MCAL/TIMER/src/TIMER.d \
 MCAL/TIMER/src/TIMER_Lcfg.d \
-APP/LCD_DISPLAY/src/DISPLAY.d \
-APP/LCD_DISPLAY/src/DISPLAY_Interface.d \
+APP/LCD_DISPLAY/src/LCD_DISPLAY.d \
+APP/LCD_DISPLAY/src/LCD_DISPLAY_Interface.d \
 APP/STORAGE/src/STORAGE.d \
 main.d
 
@@ -351,14 +351,14 @@ MCAL/TIMER/src/TIMER_Lcfg.o: ../../../../MCAL/Atmega32/TIMER/src/TIMER_Lcfg.c
 	@echo Finished building: $<
 	
 
-APP/LCD_DISPLAY/src/DISPLAY.o: ../APP/LCD_DISPLAY/src/DISPLAY.c
+APP/LCD_DISPLAY/src/LCD_DISPLAY.o: ../APP/LCD_DISPLAY/src/LCD_DISPLAY.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)E:\New folder\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"E:\New folder\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/LCD_DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "E:\New folder\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-APP/LCD_DISPLAY/src/DISPLAY_Interface.o: ../APP/LCD_DISPLAY/src/DISPLAY_Interface.c
+APP/LCD_DISPLAY/src/LCD_DISPLAY_Interface.o: ../APP/LCD_DISPLAY/src/LCD_DISPLAY_Interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)E:\New folder\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"E:\New folder\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\include" -I"../../../../LIB" -I"../../../../HAL/LCD/inc" -I"../../../../MCAL/Atmega32/DIO/inc" -I"../../../../MCAL/Atmega32/PWM/inc" -I"../../../../MCAL/Atmega32/TIMER/inc" -I"../../../../FreeRTOS/FreeRTOS/Source/include" -I"../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323" -I"../FreeRTOS/include_cfg" -I"../../../../MCAL/Atmega32/EEPROM/inc" -I"../APP/LCD_DISPLAY/inc" -I"../../../../HAL/EEPROM_Proxy/inc" -I"../APP/STORAGE/inc"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "E:\New folder\Atmel\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

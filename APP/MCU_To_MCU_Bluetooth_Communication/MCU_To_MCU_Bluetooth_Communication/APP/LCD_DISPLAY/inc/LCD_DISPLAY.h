@@ -8,7 +8,7 @@
 
 #ifndef DISPLAY_H_
 #define DISPLAY_H_d
-#include "DISPLAY_Interface.h"
+#include "LCD_DISPLAY_Interface.h"
 #include "LCD.h"
 
 #define ShiftingLeft 1

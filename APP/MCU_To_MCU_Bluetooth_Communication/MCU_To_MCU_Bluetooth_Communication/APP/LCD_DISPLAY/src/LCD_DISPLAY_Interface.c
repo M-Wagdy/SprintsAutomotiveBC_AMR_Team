@@ -4,7 +4,7 @@
  * Created: 9/7/2021 6:38:01 PM
  *  Author: Ahmed Adel
  */ 
-#include "DISPLAY_Interface.h"
+#include "LCD_DISPLAY_Interface.h"
 uint8_t static State = OperationStarted;
 uint8_t static Number_of_Asteriks = 0;
 

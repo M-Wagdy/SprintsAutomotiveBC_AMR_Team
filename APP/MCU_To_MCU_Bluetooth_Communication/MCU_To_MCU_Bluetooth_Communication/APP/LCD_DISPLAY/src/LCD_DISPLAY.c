@@ -5,7 +5,7 @@
  * Created: 9/7/2021 6:37:39 PM
  *  Author: Ahmed Adel
  */ 
-#include "DISPLAY.h"
+#include "LCD_DISPLAY.h"
 /*Macros*/
 #define DISPLAY_WIDTH					(16)
 #define SystemLoading_StringWidth		(14)
