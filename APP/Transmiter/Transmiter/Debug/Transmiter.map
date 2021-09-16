@@ -30,6 +30,8 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
                               Mcal/Atmega32/PWM/src/PWM.o (__mulsf3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3.o) (__mulsf3x)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+                              LIB/src/UTILS.o (__udivmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
@@ -205,6 +207,25 @@ Discarded input sections
  .debug_line    0x00000000       0x1a FreeRTOS/timers.o
  .debug_str     0x00000000      0x195 FreeRTOS/timers.o
  .comment       0x00000000       0x31 FreeRTOS/timers.o
+ .text          0x00000000        0x0 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .data          0x00000000        0x0 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .bss           0x00000000        0x0 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .text.EEPROM_ProxySaveToMemory
+                0x00000000       0x40 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .text.EEPROM_ProxyLoadFromMemory
+                0x00000000       0x7a HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .text.EEPROM_EraseSection
+                0x00000000        0xa HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_info    0x00000000      0x2b0 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_abbrev  0x00000000       0xe8 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_loc     0x00000000      0x31b HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_aranges
+                0x00000000       0x30 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_ranges  0x00000000       0x20 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_line    0x00000000      0x185 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_str     0x00000000      0x2b4 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .comment       0x00000000       0x31 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
+ .debug_frame   0x00000000       0x88 HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
  .text          0x00000000        0x0 HAL/Keypad/src/Keypad.o
  .data          0x00000000        0x0 HAL/Keypad/src/Keypad.o
  .bss           0x00000000        0x0 HAL/Keypad/src/Keypad.o
@@ -215,11 +236,63 @@ Discarded input sections
                 0x00000000       0x54 HAL/LED/src/LED.o
  .text.LED_Status
                 0x00000000       0x60 HAL/LED/src/LED.o
+ .text          0x00000000        0x0 LIB/src/UTILS.o
+ .data          0x00000000        0x0 LIB/src/UTILS.o
+ .bss           0x00000000        0x0 LIB/src/UTILS.o
+ .text.dummy_delay
+                0x00000000       0x54 LIB/src/UTILS.o
+ .text.StringCompare
+                0x00000000       0x42 LIB/src/UTILS.o
+ .text.STR_Length
+                0x00000000       0x26 LIB/src/UTILS.o
+ .text.STR_CharIsNumeric
+                0x00000000       0x16 LIB/src/UTILS.o
+ .text.STR_StringIsNumeric
+                0x00000000       0x54 LIB/src/UTILS.o
+ .text.STR_CompareString
+                0x00000000       0x40 LIB/src/UTILS.o
+ .text.STR_String2Number
+                0x00000000       0x80 LIB/src/UTILS.o
+ .text.STR_StringReverse
+                0x00000000       0x26 LIB/src/UTILS.o
+ .text.STR_Number2String
+                0x00000000       0x56 LIB/src/UTILS.o
+ .text.CRC_16_Calc
+                0x00000000      0x358 LIB/src/UTILS.o
+ .text.CRC_16_Chk
+                0x00000000      0x314 LIB/src/UTILS.o
+ .debug_info    0x00000000      0x580 LIB/src/UTILS.o
+ .debug_abbrev  0x00000000      0x1ad LIB/src/UTILS.o
+ .debug_loc     0x00000000      0x970 LIB/src/UTILS.o
+ .debug_aranges
+                0x00000000       0x70 LIB/src/UTILS.o
+ .debug_ranges  0x00000000       0x60 LIB/src/UTILS.o
+ .debug_line    0x00000000      0x647 LIB/src/UTILS.o
+ .debug_str     0x00000000      0x35c LIB/src/UTILS.o
+ .comment       0x00000000       0x31 LIB/src/UTILS.o
+ .debug_frame   0x00000000      0x184 LIB/src/UTILS.o
  .text          0x00000000        0x0 Mcal/Atmega32/DIO/src/DIO.o
  .data          0x00000000        0x0 Mcal/Atmega32/DIO/src/DIO.o
  .bss           0x00000000        0x0 Mcal/Atmega32/DIO/src/DIO.o
  .text.DIO_TogglePin
                 0x00000000       0x7c Mcal/Atmega32/DIO/src/DIO.o
+ .text          0x00000000        0x0 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .data          0x00000000        0x0 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .bss           0x00000000        0x0 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .text.EEPROM_Read
+                0x00000000       0x22 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .text.EEPROM_Write
+                0x00000000       0x24 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .debug_info    0x00000000      0x14a Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .debug_abbrev  0x00000000       0xc3 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .debug_loc     0x00000000       0x95 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .debug_aranges
+                0x00000000       0x28 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .debug_ranges  0x00000000       0x18 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .debug_line    0x00000000       0xfc Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .debug_str     0x00000000      0x1f7 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .comment       0x00000000       0x31 Mcal/Atmega32/EEPROM/src/EEPROM.o
+ .debug_frame   0x00000000       0x34 Mcal/Atmega32/EEPROM/src/EEPROM.o
  .text          0x00000000        0x0 Mcal/Atmega32/PWM/src/PWM.o
  .data          0x00000000        0x0 Mcal/Atmega32/PWM/src/PWM.o
  .bss           0x00000000        0x0 Mcal/Atmega32/PWM/src/PWM.o
@@ -253,6 +326,33 @@ Discarded input sections
  .text          0x00000000        0x0 App/Indicator/src/Indicator_Lcfg.o
  .data          0x00000000        0x0 App/Indicator/src/Indicator_Lcfg.o
  .bss           0x00000000        0x0 App/Indicator/src/Indicator_Lcfg.o
+ .text          0x00000000        0x0 App/STORAGE/src/STORAGE.o
+ .data          0x00000000        0x0 App/STORAGE/src/STORAGE.o
+ .bss           0x00000000        0x0 App/STORAGE/src/STORAGE.o
+ .text.STORAGE_MAC_Save
+                0x00000000       0x32 App/STORAGE/src/STORAGE.o
+ .text.STORAGE_MAC_Load
+                0x00000000       0x10 App/STORAGE/src/STORAGE.o
+ .text.STORAGE_DataPacket_Save
+                0x00000000       0x32 App/STORAGE/src/STORAGE.o
+ .text.STORAGE_DataPacket_Load
+                0x00000000       0x10 App/STORAGE/src/STORAGE.o
+ .text.STORAGE_Password_Save
+                0x00000000       0x32 App/STORAGE/src/STORAGE.o
+ .text.STORAGE_Password_Load
+                0x00000000       0x10 App/STORAGE/src/STORAGE.o
+ .text.STORAGE_MAC_ERASE
+                0x00000000        0xa App/STORAGE/src/STORAGE.o
+ .debug_info    0x00000000      0x3aa App/STORAGE/src/STORAGE.o
+ .debug_abbrev  0x00000000       0xd0 App/STORAGE/src/STORAGE.o
+ .debug_loc     0x00000000      0x2f2 App/STORAGE/src/STORAGE.o
+ .debug_aranges
+                0x00000000       0x50 App/STORAGE/src/STORAGE.o
+ .debug_ranges  0x00000000       0x40 App/STORAGE/src/STORAGE.o
+ .debug_line    0x00000000      0x18a App/STORAGE/src/STORAGE.o
+ .debug_str     0x00000000      0x2a4 App/STORAGE/src/STORAGE.o
+ .comment       0x00000000       0x31 App/STORAGE/src/STORAGE.o
+ .debug_frame   0x00000000       0xb4 App/STORAGE/src/STORAGE.o
  .text          0x00000000        0x0 HAL/Keypad/src/Keypad_Lcfg.o
  .data          0x00000000        0x0 HAL/Keypad/src/Keypad_Lcfg.o
  .bss           0x00000000        0x0 HAL/Keypad/src/Keypad_Lcfg.o
@@ -310,6 +410,22 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.div
+                0x00000000       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -387,9 +503,12 @@ LOAD FreeRTOS/portable/MemMang/heap_4.o
 LOAD FreeRTOS/queue.o
 LOAD FreeRTOS/tasks.o
 LOAD FreeRTOS/timers.o
+LOAD HAL/EEPROM_Proxy/src/EEPROM_Proxy.o
 LOAD HAL/Keypad/src/Keypad.o
 LOAD HAL/LED/src/LED.o
+LOAD LIB/src/UTILS.o
 LOAD Mcal/Atmega32/DIO/src/DIO.o
+LOAD Mcal/Atmega32/EEPROM/src/EEPROM.o
 LOAD Mcal/Atmega32/PWM/src/PWM.o
 LOAD App/HMI/src/HMI.o
 LOAD App/HMI/src/HMI_Interface.o
@@ -397,6 +516,7 @@ LOAD App/HMI/src/HMI_Lcfg.o
 LOAD App/Indicator/src/Indicator.o
 LOAD App/Indicator/src/Indicator_interface.o
 LOAD App/Indicator/src/Indicator_Lcfg.o
+LOAD App/STORAGE/src/STORAGE.o
 LOAD HAL/Keypad/src/Keypad_Lcfg.o
 LOAD HAL/LED/src/LED_Lcfg.o
 LOAD main.o
@@ -815,7 +935,7 @@ END GROUP
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.u8_OldPattern.1972
+ .data.u8_OldPattern.1976
                 0x00800060        0x1 App/Indicator/src/Indicator.o
  .data.gu8_IndicatorPattern
                 0x00800061        0x1 App/Indicator/src/Indicator_interface.o
@@ -905,11 +1025,11 @@ END GROUP
                 0x0080072b                pxCurrentTCB
  .bss.gu8_IsLEDInit
                 0x0080072d        0x1 HAL/LED/src/LED.o
- .bss.u32_LastSetKey.1657
+ .bss.u32_LastSetKey.1661
                 0x0080072e        0x4 App/HMI/src/HMI.o
- .bss.u32_OldKey.1656
+ .bss.u32_OldKey.1660
                 0x00800732        0x4 App/HMI/src/HMI.o
- .bss.u8_Init.1654
+ .bss.u8_Init.1658
                 0x00800736        0x1 App/HMI/src/HMI.o
  .bss.gu8_KeyPressedValue
                 0x00800737        0x1 App/HMI/src/HMI_Interface.o
@@ -917,11 +1037,11 @@ END GROUP
                 0x00800738        0x1 App/HMI/src/HMI_Interface.o
  .bss.gu8_DeviceEraseFlag
                 0x00800739        0x1 App/HMI/src/HMI_Interface.o
- .bss.u8_Duty.1974
+ .bss.u8_Duty.1978
                 0x0080073a        0x1 App/Indicator/src/Indicator.o
- .bss.State.1973
+ .bss.State.1977
                 0x0080073b        0x1 App/Indicator/src/Indicator.o
- .bss.u8_Init.1970
+ .bss.u8_Init.1974
                 0x0080073c        0x1 App/Indicator/src/Indicator.o
  *(COMMON)
                 0x0080073d                PROVIDE (__bss_end, .)
@@ -1056,51 +1176,51 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x420a
+.debug_info     0x00000000     0x42b2
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_info    0x000004e6      0x2cd FreeRTOS/list.o
  .debug_info    0x000007b3      0x24e FreeRTOS/portable/GCC/ATMega323/port.o
  .debug_info    0x00000a01      0x380 FreeRTOS/portable/MemMang/heap_4.o
  .debug_info    0x00000d81     0x1585 FreeRTOS/tasks.o
- .debug_info    0x00002306      0x3cf HAL/Keypad/src/Keypad.o
- .debug_info    0x000026d5      0x4ef HAL/LED/src/LED.o
- .debug_info    0x00002bc4      0x2cb Mcal/Atmega32/DIO/src/DIO.o
- .debug_info    0x00002e8f      0x383 Mcal/Atmega32/PWM/src/PWM.o
- .debug_info    0x00003212      0x17d App/HMI/src/HMI.o
- .debug_info    0x0000338f      0x1d9 App/HMI/src/HMI_Interface.o
- .debug_info    0x00003568       0x78 App/HMI/src/HMI_Lcfg.o
- .debug_info    0x000035e0      0x314 App/Indicator/src/Indicator.o
- .debug_info    0x000038f4      0x109 App/Indicator/src/Indicator_interface.o
- .debug_info    0x000039fd      0x130 App/Indicator/src/Indicator_Lcfg.o
- .debug_info    0x00003b2d      0x19c HAL/Keypad/src/Keypad_Lcfg.o
- .debug_info    0x00003cc9      0x177 HAL/LED/src/LED_Lcfg.o
- .debug_info    0x00003e40      0x253 main.o
- .debug_info    0x00004093      0x177 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
+ .debug_info    0x00002306      0x3dd HAL/Keypad/src/Keypad.o
+ .debug_info    0x000026e3      0x4fd HAL/LED/src/LED.o
+ .debug_info    0x00002be0      0x2d9 Mcal/Atmega32/DIO/src/DIO.o
+ .debug_info    0x00002eb9      0x391 Mcal/Atmega32/PWM/src/PWM.o
+ .debug_info    0x0000324a      0x18b App/HMI/src/HMI.o
+ .debug_info    0x000033d5      0x1e7 App/HMI/src/HMI_Interface.o
+ .debug_info    0x000035bc       0x86 App/HMI/src/HMI_Lcfg.o
+ .debug_info    0x00003642      0x314 App/Indicator/src/Indicator.o
+ .debug_info    0x00003956      0x117 App/Indicator/src/Indicator_interface.o
+ .debug_info    0x00003a6d      0x13e App/Indicator/src/Indicator_Lcfg.o
+ .debug_info    0x00003bab      0x1aa HAL/Keypad/src/Keypad_Lcfg.o
+ .debug_info    0x00003d55      0x185 HAL/LED/src/LED_Lcfg.o
+ .debug_info    0x00003eda      0x253 main.o
+ .debug_info    0x0000412d      0x185 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
 
-.debug_abbrev   0x00000000     0x1643
+.debug_abbrev   0x00000000     0x16c7
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_abbrev  0x000004a3       0xf8 FreeRTOS/list.o
  .debug_abbrev  0x0000059b      0x143 FreeRTOS/portable/GCC/ATMega323/port.o
  .debug_abbrev  0x000006de      0x1e4 FreeRTOS/portable/MemMang/heap_4.o
  .debug_abbrev  0x000008c2      0x2a5 FreeRTOS/tasks.o
- .debug_abbrev  0x00000b67      0x133 HAL/Keypad/src/Keypad.o
- .debug_abbrev  0x00000c9a      0x198 HAL/LED/src/LED.o
- .debug_abbrev  0x00000e32       0xb4 Mcal/Atmega32/DIO/src/DIO.o
- .debug_abbrev  0x00000ee6      0x111 Mcal/Atmega32/PWM/src/PWM.o
- .debug_abbrev  0x00000ff7       0xbd App/HMI/src/HMI.o
- .debug_abbrev  0x000010b4       0x9a App/HMI/src/HMI_Interface.o
- .debug_abbrev  0x0000114e       0x40 App/HMI/src/HMI_Lcfg.o
- .debug_abbrev  0x0000118e      0x115 App/Indicator/src/Indicator.o
- .debug_abbrev  0x000012a3       0x80 App/Indicator/src/Indicator_interface.o
- .debug_abbrev  0x00001323       0x70 App/Indicator/src/Indicator_Lcfg.o
- .debug_abbrev  0x00001393       0x8a HAL/Keypad/src/Keypad_Lcfg.o
- .debug_abbrev  0x0000141d       0x8a HAL/LED/src/LED_Lcfg.o
- .debug_abbrev  0x000014a7      0x119 main.o
- .debug_abbrev  0x000015c0       0x83 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
+ .debug_abbrev  0x00000b67      0x13e HAL/Keypad/src/Keypad.o
+ .debug_abbrev  0x00000ca5      0x1a3 HAL/LED/src/LED.o
+ .debug_abbrev  0x00000e48       0xbf Mcal/Atmega32/DIO/src/DIO.o
+ .debug_abbrev  0x00000f07      0x11c Mcal/Atmega32/PWM/src/PWM.o
+ .debug_abbrev  0x00001023       0xc8 App/HMI/src/HMI.o
+ .debug_abbrev  0x000010eb       0xa5 App/HMI/src/HMI_Interface.o
+ .debug_abbrev  0x00001190       0x4b App/HMI/src/HMI_Lcfg.o
+ .debug_abbrev  0x000011db      0x115 App/Indicator/src/Indicator.o
+ .debug_abbrev  0x000012f0       0x8b App/Indicator/src/Indicator_interface.o
+ .debug_abbrev  0x0000137b       0x7b App/Indicator/src/Indicator_Lcfg.o
+ .debug_abbrev  0x000013f6       0x95 HAL/Keypad/src/Keypad_Lcfg.o
+ .debug_abbrev  0x0000148b       0x95 HAL/LED/src/LED_Lcfg.o
+ .debug_abbrev  0x00001520      0x119 main.o
+ .debug_abbrev  0x00001639       0x8e Mcal/Atmega32/PWM/src/PWM_Lcfg.o
 
-.debug_line     0x00000000     0x2b74
+.debug_line     0x00000000     0x2ad3
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_line    0x00000116      0x239 FreeRTOS/list.o
@@ -1114,13 +1234,13 @@ END GROUP
  .debug_line    0x000020fc      0x136 App/HMI/src/HMI.o
  .debug_line    0x00002232      0x165 App/HMI/src/HMI_Interface.o
  .debug_line    0x00002397       0x5a App/HMI/src/HMI_Lcfg.o
- .debug_line    0x000023f1      0x26f App/Indicator/src/Indicator.o
- .debug_line    0x00002660       0xc7 App/Indicator/src/Indicator_interface.o
- .debug_line    0x00002727       0x8f App/Indicator/src/Indicator_Lcfg.o
- .debug_line    0x000027b6       0xb7 HAL/Keypad/src/Keypad_Lcfg.o
- .debug_line    0x0000286d       0xd6 HAL/LED/src/LED_Lcfg.o
- .debug_line    0x00002943      0x19d main.o
- .debug_line    0x00002ae0       0x94 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
+ .debug_line    0x000023f1      0x20d App/Indicator/src/Indicator.o
+ .debug_line    0x000025fe       0xc7 App/Indicator/src/Indicator_interface.o
+ .debug_line    0x000026c5       0x8f App/Indicator/src/Indicator_Lcfg.o
+ .debug_line    0x00002754       0xb7 HAL/Keypad/src/Keypad_Lcfg.o
+ .debug_line    0x0000280b       0xd6 HAL/LED/src/LED_Lcfg.o
+ .debug_line    0x000028e1      0x15e main.o
+ .debug_line    0x00002a3f       0x94 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
 
 .debug_frame    0x00000000      0x988
  *(.debug_frame)
@@ -1150,33 +1270,33 @@ END GROUP
  .debug_str     0x0000078b      0x748 FreeRTOS/tasks.o
                                 0xae2 (size before relaxing)
  .debug_str     0x00000ed3      0x1b1 HAL/Keypad/src/Keypad.o
-                                0x325 (size before relaxing)
+                                0x332 (size before relaxing)
  .debug_str     0x00001084      0x11a HAL/LED/src/LED.o
-                                0x322 (size before relaxing)
+                                0x32f (size before relaxing)
  .debug_str     0x0000119e       0xb5 Mcal/Atmega32/DIO/src/DIO.o
-                                0x2e5 (size before relaxing)
+                                0x2f2 (size before relaxing)
  .debug_str     0x00001253      0x160 Mcal/Atmega32/PWM/src/PWM.o
-                                0x3d9 (size before relaxing)
+                                0x3e6 (size before relaxing)
  .debug_str     0x000013b3       0xb0 App/HMI/src/HMI.o
-                                0x23e (size before relaxing)
+                                0x24b (size before relaxing)
  .debug_str     0x00001463       0xb0 App/HMI/src/HMI_Interface.o
-                                0x276 (size before relaxing)
+                                0x283 (size before relaxing)
  .debug_str     0x00001513       0x1a App/HMI/src/HMI_Lcfg.o
-                                0x193 (size before relaxing)
+                                0x1a0 (size before relaxing)
  .debug_str     0x0000152d      0x17c App/Indicator/src/Indicator.o
                                 0x36e (size before relaxing)
  .debug_str     0x000016a9       0x6a App/Indicator/src/Indicator_interface.o
-                                0x1fd (size before relaxing)
+                                0x20a (size before relaxing)
  .debug_str     0x00001713       0x26 App/Indicator/src/Indicator_Lcfg.o
-                                0x23d (size before relaxing)
+                                0x24a (size before relaxing)
  .debug_str     0x00001739       0x20 HAL/Keypad/src/Keypad_Lcfg.o
-                                0x270 (size before relaxing)
+                                0x27d (size before relaxing)
  .debug_str     0x00001759       0x1a HAL/LED/src/LED_Lcfg.o
-                                0x28e (size before relaxing)
+                                0x29b (size before relaxing)
  .debug_str     0x00001773       0x28 main.o
                                 0x23e (size before relaxing)
  .debug_str     0x0000179b       0xd2 Mcal/Atmega32/PWM/src/PWM_Lcfg.o
-                                0x306 (size before relaxing)
+                                0x313 (size before relaxing)
 
 .debug_loc      0x00000000     0x30f7
  *(.debug_loc)

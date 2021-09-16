@@ -23,10 +23,12 @@ typedef float                           float32_t;
 typedef double                          double64_t;
 /*POINTER TO UNSIGNED INT*/
 typedef uint8_t*                        ptr_uint8_t;
+typedef uint16_t*                       ptr_uint16_t;
 typedef uint32_t*                       ptr_uint32_t;
 typedef uint64_t*                       ptr_uint64_t;
 /*POINTER TO SIGNED INT*/
 typedef int8_t*                         ptr_int8_t;
+typedef int16_t*                        ptr_int16_t;
 typedef int32_t*                        ptr_int32_t;
 typedef int64_t*                        ptr_int64_t;
 /*POINTER TO FLOAT*/

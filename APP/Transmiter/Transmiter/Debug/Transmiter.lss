@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000448  00000000  00000000  00001eac  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000420a  00000000  00000000  000022f4  2**0
+  6 .debug_info   000042b2  00000000  00000000  000022f4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00001643  00000000  00000000  000064fe  2**0
+  7 .debug_abbrev 000016c7  00000000  00000000  000065a6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00002b74  00000000  00000000  00007b41  2**0
+  8 .debug_line   00002ad3  00000000  00000000  00007c6d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000988  00000000  00000000  0000a6b8  2**2
+  9 .debug_frame  00000988  00000000  00000000  0000a740  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000186d  00000000  00000000  0000b040  2**0
+ 10 .debug_str    0000186d  00000000  00000000  0000b0c8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000030f7  00000000  00000000  0000c8ad  2**0
+ 11 .debug_loc    000030f7  00000000  00000000  0000c935  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000448  00000000  00000000  0000f9a4  2**0
+ 12 .debug_ranges 00000448  00000000  00000000  0000fa2c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -4080,7 +4080,7 @@ extern void HMI_MainFunction(void)
    
    /* Initialization sequence. */
    if (u8_Init == 0)
-    1618:	80 91 36 07 	lds	r24, 0x0736	; 0x800736 <u8_Init.1654>
+    1618:	80 91 36 07 	lds	r24, 0x0736	; 0x800736 <u8_Init.1658>
     161c:	81 11       	cpse	r24, r1
     161e:	07 c0       	rjmp	.+14     	; 0x162e <HMI_MainFunction+0x26>
    {
@@ -4089,7 +4089,7 @@ extern void HMI_MainFunction(void)
     1624:	0e 94 1b 07 	call	0xe36	; 0xe36 <KP_Init>
       u8_Init = 1;
     1628:	81 e0       	ldi	r24, 0x01	; 1
-    162a:	80 93 36 07 	sts	0x0736, r24	; 0x800736 <u8_Init.1654>
+    162a:	80 93 36 07 	sts	0x0736, r24	; 0x800736 <u8_Init.1658>
    }
    
    /* Get KEypad pressed keys. */
@@ -4101,10 +4101,10 @@ extern void HMI_MainFunction(void)
     1638:	0e 94 77 07 	call	0xeee	; 0xeee <KP_GetPressedValue>
    
    if(u32_OldKey == u32_Key && u32_LastSetKey != u32_Key)
-    163c:	80 91 32 07 	lds	r24, 0x0732	; 0x800732 <u32_OldKey.1656>
-    1640:	90 91 33 07 	lds	r25, 0x0733	; 0x800733 <u32_OldKey.1656+0x1>
-    1644:	a0 91 34 07 	lds	r26, 0x0734	; 0x800734 <u32_OldKey.1656+0x2>
-    1648:	b0 91 35 07 	lds	r27, 0x0735	; 0x800735 <u32_OldKey.1656+0x3>
+    163c:	80 91 32 07 	lds	r24, 0x0732	; 0x800732 <u32_OldKey.1660>
+    1640:	90 91 33 07 	lds	r25, 0x0733	; 0x800733 <u32_OldKey.1660+0x1>
+    1644:	a0 91 34 07 	lds	r26, 0x0734	; 0x800734 <u32_OldKey.1660+0x2>
+    1648:	b0 91 35 07 	lds	r27, 0x0735	; 0x800735 <u32_OldKey.1660+0x3>
     164c:	49 81       	ldd	r20, Y+1	; 0x01
     164e:	5a 81       	ldd	r21, Y+2	; 0x02
     1650:	6b 81       	ldd	r22, Y+3	; 0x03
@@ -4115,10 +4115,10 @@ extern void HMI_MainFunction(void)
     165a:	b7 07       	cpc	r27, r23
     165c:	09 f0       	breq	.+2      	; 0x1660 <HMI_MainFunction+0x58>
     165e:	42 c0       	rjmp	.+132    	; 0x16e4 <HMI_MainFunction+0xdc>
-    1660:	80 91 2e 07 	lds	r24, 0x072E	; 0x80072e <u32_LastSetKey.1657>
-    1664:	90 91 2f 07 	lds	r25, 0x072F	; 0x80072f <u32_LastSetKey.1657+0x1>
-    1668:	a0 91 30 07 	lds	r26, 0x0730	; 0x800730 <u32_LastSetKey.1657+0x2>
-    166c:	b0 91 31 07 	lds	r27, 0x0731	; 0x800731 <u32_LastSetKey.1657+0x3>
+    1660:	80 91 2e 07 	lds	r24, 0x072E	; 0x80072e <u32_LastSetKey.1661>
+    1664:	90 91 2f 07 	lds	r25, 0x072F	; 0x80072f <u32_LastSetKey.1661+0x1>
+    1668:	a0 91 30 07 	lds	r26, 0x0730	; 0x800730 <u32_LastSetKey.1661+0x2>
+    166c:	b0 91 31 07 	lds	r27, 0x0731	; 0x800731 <u32_LastSetKey.1661+0x3>
     1670:	48 17       	cp	r20, r24
     1672:	59 07       	cpc	r21, r25
     1674:	6a 07       	cpc	r22, r26
@@ -4126,10 +4126,10 @@ extern void HMI_MainFunction(void)
     1678:	a9 f1       	breq	.+106    	; 0x16e4 <HMI_MainFunction+0xdc>
    {
       u32_LastSetKey = u32_Key;
-    167a:	40 93 2e 07 	sts	0x072E, r20	; 0x80072e <u32_LastSetKey.1657>
-    167e:	50 93 2f 07 	sts	0x072F, r21	; 0x80072f <u32_LastSetKey.1657+0x1>
-    1682:	60 93 30 07 	sts	0x0730, r22	; 0x800730 <u32_LastSetKey.1657+0x2>
-    1686:	70 93 31 07 	sts	0x0731, r23	; 0x800731 <u32_LastSetKey.1657+0x3>
+    167a:	40 93 2e 07 	sts	0x072E, r20	; 0x80072e <u32_LastSetKey.1661>
+    167e:	50 93 2f 07 	sts	0x072F, r21	; 0x80072f <u32_LastSetKey.1661+0x1>
+    1682:	60 93 30 07 	sts	0x0730, r22	; 0x800730 <u32_LastSetKey.1661+0x2>
+    1686:	70 93 31 07 	sts	0x0731, r23	; 0x800731 <u32_LastSetKey.1661+0x3>
       /* If multi buttons are pressed. */
       if(MULTI_PRESS_BIT & u32_Key)
     168a:	40 ff       	sbrs	r20, 0
@@ -4216,10 +4216,10 @@ extern void HMI_MainFunction(void)
     16e6:	9a 81       	ldd	r25, Y+2	; 0x02
     16e8:	ab 81       	ldd	r26, Y+3	; 0x03
     16ea:	bc 81       	ldd	r27, Y+4	; 0x04
-    16ec:	80 93 32 07 	sts	0x0732, r24	; 0x800732 <u32_OldKey.1656>
-    16f0:	90 93 33 07 	sts	0x0733, r25	; 0x800733 <u32_OldKey.1656+0x1>
-    16f4:	a0 93 34 07 	sts	0x0734, r26	; 0x800734 <u32_OldKey.1656+0x2>
-    16f8:	b0 93 35 07 	sts	0x0735, r27	; 0x800735 <u32_OldKey.1656+0x3>
+    16ec:	80 93 32 07 	sts	0x0732, r24	; 0x800732 <u32_OldKey.1660>
+    16f0:	90 93 33 07 	sts	0x0733, r25	; 0x800733 <u32_OldKey.1660+0x1>
+    16f4:	a0 93 34 07 	sts	0x0734, r26	; 0x800734 <u32_OldKey.1660+0x2>
+    16f8:	b0 93 35 07 	sts	0x0735, r27	; 0x800735 <u32_OldKey.1660+0x3>
       
     16fc:	0f 90       	pop	r0
     16fe:	0f 90       	pop	r0
@@ -4319,7 +4319,7 @@ extern void Indicator_MainFunction(void)
    
    /* Initialization sequence. */
    if (u8_Init == 0)
-    1746:	80 91 3c 07 	lds	r24, 0x073C	; 0x80073c <u8_Init.1970>
+    1746:	80 91 3c 07 	lds	r24, 0x073C	; 0x80073c <u8_Init.1974>
     174a:	81 11       	cpse	r24, r1
     174c:	07 c0       	rjmp	.+14     	; 0x175c <Indicator_MainFunction+0x2a>
    {
@@ -4328,7 +4328,7 @@ extern void Indicator_MainFunction(void)
     1752:	0e 94 28 08 	call	0x1050	; 0x1050 <LED_Init>
       u8_Init = 1;
     1756:	81 e0       	ldi	r24, 0x01	; 1
-    1758:	80 93 3c 07 	sts	0x073C, r24	; 0x80073c <u8_Init.1970>
+    1758:	80 93 3c 07 	sts	0x073C, r24	; 0x80073c <u8_Init.1974>
    }
    
    /* Get the current pattern. */
@@ -4348,9 +4348,9 @@ extern void Indicator_MainFunction(void)
     176e:	e0 93 60 00 	sts	0x0060, r30	; 0x800060 <__DATA_REGION_ORIGIN__>
       /* Reinitialize the state and the duty cycle. */
       State = Indicator_LowTime;
-    1772:	10 92 3b 07 	sts	0x073B, r1	; 0x80073b <State.1973>
+    1772:	10 92 3b 07 	sts	0x073B, r1	; 0x80073b <State.1977>
       u8_Duty = MIN_DUTY;
-    1776:	10 92 3a 07 	sts	0x073A, r1	; 0x80073a <u8_Duty.1974>
+    1776:	10 92 3a 07 	sts	0x073A, r1	; 0x80073a <u8_Duty.1978>
    }
    
    if(INDICATOR_INVALID_PATTERN != u8_Pattern)
@@ -4359,7 +4359,7 @@ extern void Indicator_MainFunction(void)
     177e:	82 c0       	rjmp	.+260    	; 0x1884 <Indicator_MainFunction+0x152>
    {
       switch(State)
-    1780:	80 91 3b 07 	lds	r24, 0x073B	; 0x80073b <State.1973>
+    1780:	80 91 3b 07 	lds	r24, 0x073B	; 0x80073b <State.1977>
     1784:	81 30       	cpi	r24, 0x01	; 1
     1786:	f9 f0       	breq	.+62     	; 0x17c6 <Indicator_MainFunction+0x94>
     1788:	38 f0       	brcs	.+14     	; 0x1798 <Indicator_MainFunction+0x66>
@@ -4379,7 +4379,7 @@ extern void Indicator_MainFunction(void)
             /* Change state to rise time state. */
             State = Indicator_RiseTime;
     17a0:	81 e0       	ldi	r24, 0x01	; 1
-    17a2:	80 93 3b 07 	sts	0x073B, r24	; 0x80073b <State.1973>
+    17a2:	80 93 3b 07 	sts	0x073B, r24	; 0x80073b <State.1977>
             /* Put the task in waiting state for the low time period. */
             vTaskDelayUntil(&xLastWakeTime, aSTR_IndicatorConfig[u8_Pattern].u32_LowTime);
     17a6:	eb 81       	ldd	r30, Y+3	; 0x03
@@ -4408,22 +4408,22 @@ extern void Indicator_MainFunction(void)
     17ce:	ec 58       	subi	r30, 0x8C	; 140
     17d0:	ff 4f       	sbci	r31, 0xFF	; 255
     17d2:	65 89       	ldd	r22, Z+21	; 0x15
-    17d4:	80 91 3a 07 	lds	r24, 0x073A	; 0x80073a <u8_Duty.1974>
+    17d4:	80 91 3a 07 	lds	r24, 0x073A	; 0x80073a <u8_Duty.1978>
     17d8:	68 0f       	add	r22, r24
-    17da:	60 93 3a 07 	sts	0x073A, r22	; 0x80073a <u8_Duty.1974>
+    17da:	60 93 3a 07 	sts	0x073A, r22	; 0x80073a <u8_Duty.1978>
             /* Dim the led with the current duty cycle. */
             LED_Dim(LED_UsedChannel, u8_Duty);
     17de:	80 91 cc 00 	lds	r24, 0x00CC	; 0x8000cc <LED_UsedChannel>
     17e2:	0e 94 0a 09 	call	0x1214	; 0x1214 <LED_Dim>
             /* Change state to high time state. */
             if(u8_Duty == MAX_DUTY)
-    17e6:	80 91 3a 07 	lds	r24, 0x073A	; 0x80073a <u8_Duty.1974>
+    17e6:	80 91 3a 07 	lds	r24, 0x073A	; 0x80073a <u8_Duty.1978>
     17ea:	84 36       	cpi	r24, 0x64	; 100
     17ec:	19 f4       	brne	.+6      	; 0x17f4 <Indicator_MainFunction+0xc2>
             {
                State = Indicator_HighTime;
     17ee:	82 e0       	ldi	r24, 0x02	; 2
-    17f0:	80 93 3b 07 	sts	0x073B, r24	; 0x80073b <State.1973>
+    17f0:	80 93 3b 07 	sts	0x073B, r24	; 0x80073b <State.1977>
             }
             /* Put the task in waiting state for the step time period. */
             vTaskDelayUntil(&xLastWakeTime, aSTR_IndicatorConfig[u8_Pattern].u8_StepTime);
@@ -4449,7 +4449,7 @@ extern void Indicator_MainFunction(void)
             /* Change state to fall time state. */
             State = Indicator_FallTime;
     1818:	83 e0       	ldi	r24, 0x03	; 3
-    181a:	80 93 3b 07 	sts	0x073B, r24	; 0x80073b <State.1973>
+    181a:	80 93 3b 07 	sts	0x073B, r24	; 0x80073b <State.1977>
             /* Put the task in waiting state for the high time period. */
             vTaskDelayUntil(&xLastWakeTime, aSTR_IndicatorConfig[u8_Pattern].u32_HighTime);
     181e:	eb 81       	ldd	r30, Y+3	; 0x03
@@ -4478,21 +4478,21 @@ extern void Indicator_MainFunction(void)
     1846:	ec 58       	subi	r30, 0x8C	; 140
     1848:	ff 4f       	sbci	r31, 0xFF	; 255
     184a:	85 89       	ldd	r24, Z+21	; 0x15
-    184c:	60 91 3a 07 	lds	r22, 0x073A	; 0x80073a <u8_Duty.1974>
+    184c:	60 91 3a 07 	lds	r22, 0x073A	; 0x80073a <u8_Duty.1978>
     1850:	68 1b       	sub	r22, r24
-    1852:	60 93 3a 07 	sts	0x073A, r22	; 0x80073a <u8_Duty.1974>
+    1852:	60 93 3a 07 	sts	0x073A, r22	; 0x80073a <u8_Duty.1978>
             /* Dim the led with the current duty cycle. */
             LED_Dim(LED_UsedChannel, u8_Duty);
     1856:	80 91 cc 00 	lds	r24, 0x00CC	; 0x8000cc <LED_UsedChannel>
     185a:	0e 94 0a 09 	call	0x1214	; 0x1214 <LED_Dim>
             /* Change state to low time state. */
             if(u8_Duty == MIN_DUTY)
-    185e:	80 91 3a 07 	lds	r24, 0x073A	; 0x80073a <u8_Duty.1974>
+    185e:	80 91 3a 07 	lds	r24, 0x073A	; 0x80073a <u8_Duty.1978>
     1862:	81 11       	cpse	r24, r1
     1864:	02 c0       	rjmp	.+4      	; 0x186a <Indicator_MainFunction+0x138>
             {
                State = Indicator_LowTime;
-    1866:	10 92 3b 07 	sts	0x073B, r1	; 0x80073b <State.1973>
+    1866:	10 92 3b 07 	sts	0x073B, r1	; 0x80073b <State.1977>
             }
             /* Put the task in waiting state for the step time period. */
             vTaskDelayUntil(&xLastWakeTime, aSTR_IndicatorConfig[u8_Pattern].u8_StepTime);

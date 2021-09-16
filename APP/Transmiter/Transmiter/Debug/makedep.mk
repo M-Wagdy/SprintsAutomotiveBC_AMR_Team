@@ -18,11 +18,17 @@
 
 ..\..\..\FreeRTOS\Source\timers.c
 
+..\..\..\HAL\EEPROM_Proxy\src\EEPROM_Proxy.c
+
 ..\..\..\HAL\Keypad\src\Keypad.c
 
 ..\..\..\HAL\LED\src\LED.c
 
+..\..\..\LIB\src\UTILS.c
+
 ..\..\..\MCAL\Atmega32\DIO\src\DIO.c
+
+..\..\..\MCAL\Atmega32\EEPROM\src\EEPROM.c
 
 ..\..\..\MCAL\Atmega32\PWM\src\PWM.c
 
@@ -37,6 +43,8 @@ App\Indicator\src\Indicator.c
 App\Indicator\src\Indicator_interface.c
 
 App\Indicator\src\Indicator_Lcfg.c
+
+App\STORAGE\src\STORAGE.c
 
 HAL\Keypad\src\Keypad_Lcfg.c
 
