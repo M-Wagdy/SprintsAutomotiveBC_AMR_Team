@@ -1,5 +1,15 @@
 main.d main.o: .././main.c ../App/HMI/inc/HMI.h \
  ../../../../LIB/inc/STD_types.h ../App/Indicator/inc/Indicator.h \
+ ../App/BLUETOOTH_Mng_Master/inc/BLUETOOTH_Mng.h \
+ ../../../../LIB/inc/LIB.h ../../../../LIB/inc/STD_TYPES.h \
+ ../../../../LIB/inc/BIT_MATH.h ../../../../LIB/inc/UTILS.h \
+ ../App/BLUETOOTH_Mng_Master/inc/BLUETOOTH_Mng_Lcfg.h \
+ ../../../../LIB/inc/STD_TYPES.h \
+ ../../../../HAL/BLUETOOTH/inc/BLUETOOTH.h ../../../../LIB/inc/BIT_MATH.h \
+ ../../../../HAL/BLUETOOTH/inc/BLUETOOTH_Lcfg.h \
+ ../../../../MCAL/Atmega32/DIO/inc/DIO.h \
+ ../../../../MCAL/Atmega32/UART/inc/UART.h \
+ ../../../../MCAL/Atmega32/UART/inc/UART_Config.h \
  ../../../../FreeRTOS/Source/include/FreeRTOS.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -27,6 +37,32 @@ main.d main.o: .././main.c ../App/HMI/inc/HMI.h \
 ../../../../LIB/inc/STD_types.h:
 
 ../App/Indicator/inc/Indicator.h:
+
+../App/BLUETOOTH_Mng_Master/inc/BLUETOOTH_Mng.h:
+
+../../../../LIB/inc/LIB.h:
+
+../../../../LIB/inc/STD_TYPES.h:
+
+../../../../LIB/inc/BIT_MATH.h:
+
+../../../../LIB/inc/UTILS.h:
+
+../App/BLUETOOTH_Mng_Master/inc/BLUETOOTH_Mng_Lcfg.h:
+
+../../../../LIB/inc/STD_TYPES.h:
+
+../../../../HAL/BLUETOOTH/inc/BLUETOOTH.h:
+
+../../../../LIB/inc/BIT_MATH.h:
+
+../../../../HAL/BLUETOOTH/inc/BLUETOOTH_Lcfg.h:
+
+../../../../MCAL/Atmega32/DIO/inc/DIO.h:
+
+../../../../MCAL/Atmega32/UART/inc/UART.h:
+
+../../../../MCAL/Atmega32/UART/inc/UART_Config.h:
 
 ../../../../FreeRTOS/Source/include/FreeRTOS.h:
 

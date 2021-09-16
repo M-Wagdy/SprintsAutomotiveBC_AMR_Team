@@ -18,6 +18,8 @@
 
 ..\..\..\FreeRTOS\Source\timers.c
 
+..\..\..\HAL\BLUETOOTH\src\BLUETOOTH.c
+
 ..\..\..\HAL\EEPROM_Proxy\src\EEPROM_Proxy.c
 
 ..\..\..\HAL\Keypad\src\Keypad.c
@@ -30,7 +32,15 @@
 
 ..\..\..\MCAL\Atmega32\EEPROM\src\EEPROM.c
 
+..\..\..\MCAL\Atmega32\GLOBAL_Interrupt\src\GLOBAL_Interrupt.c
+
 ..\..\..\MCAL\Atmega32\PWM\src\PWM.c
+
+..\..\..\MCAL\Atmega32\UART\src\UART.c
+
+App\BLUETOOTH_Mng_Master\src\BLUETOOTH_Mng.c
+
+App\BLUETOOTH_Mng_Master\src\BLUETOOTH_Mng_Lcfg.c
 
 App\HMI\src\HMI.c
 
@@ -46,6 +56,8 @@ App\Indicator\src\Indicator_Lcfg.c
 
 App\STORAGE\src\STORAGE.c
 
+HAL\BLUETOOTH\src\BLUETOOTH_Lcfg.c
+
 HAL\Keypad\src\Keypad_Lcfg.c
 
 HAL\LED\src\LED_Lcfg.c
@@ -53,4 +65,6 @@ HAL\LED\src\LED_Lcfg.c
 main.c
 
 Mcal\Atmega32\PWM\src\PWM_Lcfg.c
+
+Mcal\Atmega32\UART\src\UART_Config.c
 
