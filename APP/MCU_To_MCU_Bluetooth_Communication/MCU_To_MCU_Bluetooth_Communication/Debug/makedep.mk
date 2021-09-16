@@ -2,49 +2,57 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-..\..\..\FreeRTOS\FreeRTOS\Source\croutine.c
+..\..\..\FreeRTOS\Source\croutine.c
 
-..\..\..\FreeRTOS\FreeRTOS\Source\event_groups.c
+..\..\..\FreeRTOS\Source\event_groups.c
 
-..\..\..\FreeRTOS\FreeRTOS\Source\list.c
+..\..\..\FreeRTOS\Source\list.c
 
-..\..\..\FreeRTOS\FreeRTOS\Source\portable\GCC\ATMega323\port.c
+..\..\..\FreeRTOS\Source\portable\GCC\ATMega323\port.c
 
-..\..\..\FreeRTOS\FreeRTOS\Source\portable\MemMang\heap_4.c
+..\..\..\FreeRTOS\Source\portable\MemMang\heap_4.c
 
-..\..\..\FreeRTOS\FreeRTOS\Source\queue.c
+..\..\..\FreeRTOS\Source\queue.c
 
-..\..\..\FreeRTOS\FreeRTOS\Source\stream_buffer.c
+..\..\..\FreeRTOS\Source\tasks.c
 
-..\..\..\FreeRTOS\FreeRTOS\Source\tasks.c
+..\..\..\FreeRTOS\Source\timers.c
 
-..\..\..\FreeRTOS\FreeRTOS\Source\timers.c
+..\..\..\HAL\Keypad\src\Keypad.c
 
-..\..\..\HAL\EEPROM_Proxy\src\EEPROM_Proxy.c
+..\..\..\HAL\LED\src\LED.c
 
-..\..\..\HAL\LCD\src\LCD.c
-
-..\..\..\HAL\LCD\src\LCD_Lcfg.c
-
-..\..\..\LIB\UTILS.c
+..\..\..\HAL\SevenSeg\src\SevenSeg.c
 
 ..\..\..\MCAL\Atmega32\DIO\src\DIO.c
 
-..\..\..\MCAL\Atmega32\EEPROM\src\EEPROM.c
-
 ..\..\..\MCAL\Atmega32\PWM\src\PWM.c
 
-..\..\..\MCAL\Atmega32\PWM\src\PWM_Lcfg.c
+App\HMI\src\HMI.c
 
-..\..\..\MCAL\Atmega32\TIMER\src\TIMER.c
+App\HMI\src\HMI_Interface.c
 
-..\..\..\MCAL\Atmega32\TIMER\src\TIMER_Lcfg.c
+App\HMI\src\HMI_Lcfg.c
 
-APP\LCD_DISPLAY\src\LCD_DISPLAY.c
+App\Indicator\src\Indicator.c
 
-APP\LCD_DISPLAY\src\LCD_DISPLAY_Interface.c
+App\Indicator\src\Indicator_interface.c
 
-APP\STORAGE\src\STORAGE.c
+App\Indicator\src\Indicator_Lcfg.c
+
+App\SSD_Display\src\SSD_Display.c
+
+App\SSD_Display\src\SSD_Display_Interface.c
+
+App\SSD_Display\src\SSD_Display_Lcfg.c
+
+HAL\Keypad\src\Keypad_Lcfg.c
+
+HAL\LED\src\LED_Lcfg.c
+
+HAL\SevenSeg\src\SevenSeg_Lcfg.c
 
 main.c
+
+Mcal\Atmega32\PWM\src\PWM_Lcfg.c
 

@@ -1,82 +1,74 @@
-main.d main.o: .././main.c \
- ../../../../FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h \
- e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
- e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
- ../FreeRTOS/include_cfg/FreeRTOSConfig.h \
- ../../../../FreeRTOS/FreeRTOS/Source/include/projdefs.h \
- ../../../../FreeRTOS/FreeRTOS/Source/include/portable.h \
- ../../../../FreeRTOS/FreeRTOS/Source/include/deprecated_definitions.h \
- ../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323/portmacro.h \
- ../../../../FreeRTOS/FreeRTOS/Source/include/mpu_wrappers.h \
- ../../../../FreeRTOS/FreeRTOS/Source/include/task.h \
- ../../../../FreeRTOS/FreeRTOS/Source/include/list.h \
- ../APP/LCD_DISPLAY/inc/LCD_DISPLAY.h \
- ../APP/LCD_DISPLAY/inc/LCD_DISPLAY_Interface.h ../../../../LIB/LIB.h \
- ../../../../LIB/STD_TYPES.h ../../../../LIB/BIT_MATH.h \
- ../../../../LIB/UTILS.h ../../../../HAL/LCD/inc/LCD.h \
- ../../../../MCAL/Atmega32/DIO/inc/DIO.h ../../../../LIB/STD_TYPES.h \
- ../../../../LIB/BIT_MATH.h ../../../../MCAL/Atmega32/TIMER/inc/TIMER.h \
- ../../../../MCAL/Atmega32/TIMER/inc/TIMER_Lcfg.h \
- ../../../../HAL/LCD/inc/LCD_Lcfg.h ../APP/STORAGE/inc/STORAGE.h \
- ../../../../HAL/EEPROM_Proxy/inc/EEPROM_Proxy.h \
- ../../../../MCAL/Atmega32/EEPROM/inc/EEPROM.h \
- ../../../../LIB/MC_REGISTERS.h
+main.d main.o: .././main.c ../App/SSD_Display/inc/SSD_Display.h \
+ ../../../../LIB/inc/STD_types.h ../App/HMI/inc/HMI.h \
+ ../App/Indicator/inc/Indicator.h \
+ ../../../../FreeRTOS/Source/include/FreeRTOS.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
+ ../FreeRTOS/FreeRTOSConfig.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
+ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include/avr/iom32.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
+ ../../../../FreeRTOS/Source/include/projdefs.h \
+ ../../../../FreeRTOS/Source/include/portable.h \
+ ../../../../FreeRTOS/Source/include/deprecated_definitions.h \
+ ../../../../FreeRTOS/Source/portable/GCC/ATMega323/portmacro.h \
+ ../../../../FreeRTOS/Source/include/mpu_wrappers.h \
+ ../../../../FreeRTOS/Source/include/task.h \
+ ../../../../FreeRTOS/Source/include/list.h
 
-../../../../FreeRTOS/FreeRTOS/Source/include/FreeRTOS.h:
+../App/SSD_Display/inc/SSD_Display.h:
 
-e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
+../../../../LIB/inc/STD_types.h:
 
-e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
+../App/HMI/inc/HMI.h:
 
-e:\new\ folder\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
+../App/Indicator/inc/Indicator.h:
 
-../FreeRTOS/include_cfg/FreeRTOSConfig.h:
+../../../../FreeRTOS/Source/include/FreeRTOS.h:
 
-../../../../FreeRTOS/FreeRTOS/Source/include/projdefs.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
-../../../../FreeRTOS/FreeRTOS/Source/include/portable.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
 
-../../../../FreeRTOS/FreeRTOS/Source/include/deprecated_definitions.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
 
-../../../../FreeRTOS/FreeRTOS/Source/portable/GCC/ATMega323/portmacro.h:
+../FreeRTOS/FreeRTOSConfig.h:
 
-../../../../FreeRTOS/FreeRTOS/Source/include/mpu_wrappers.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
-../../../../FreeRTOS/FreeRTOS/Source/include/task.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h:
 
-../../../../FreeRTOS/FreeRTOS/Source/include/list.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h:
 
-../APP/LCD_DISPLAY/inc/LCD_DISPLAY.h:
+C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include/avr/iom32.h:
 
-../APP/LCD_DISPLAY/inc/LCD_DISPLAY_Interface.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h:
 
-../../../../LIB/LIB.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h:
 
-../../../../LIB/STD_TYPES.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h:
 
-../../../../LIB/BIT_MATH.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 
-../../../../LIB/UTILS.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
-../../../../HAL/LCD/inc/LCD.h:
+../../../../FreeRTOS/Source/include/projdefs.h:
 
-../../../../MCAL/Atmega32/DIO/inc/DIO.h:
+../../../../FreeRTOS/Source/include/portable.h:
 
-../../../../LIB/STD_TYPES.h:
+../../../../FreeRTOS/Source/include/deprecated_definitions.h:
 
-../../../../LIB/BIT_MATH.h:
+../../../../FreeRTOS/Source/portable/GCC/ATMega323/portmacro.h:
 
-../../../../MCAL/Atmega32/TIMER/inc/TIMER.h:
+../../../../FreeRTOS/Source/include/mpu_wrappers.h:
 
-../../../../MCAL/Atmega32/TIMER/inc/TIMER_Lcfg.h:
+../../../../FreeRTOS/Source/include/task.h:
 
-../../../../HAL/LCD/inc/LCD_Lcfg.h:
-
-../APP/STORAGE/inc/STORAGE.h:
-
-../../../../HAL/EEPROM_Proxy/inc/EEPROM_Proxy.h:
-
-../../../../MCAL/Atmega32/EEPROM/inc/EEPROM.h:
-
-../../../../LIB/MC_REGISTERS.h:
+../../../../FreeRTOS/Source/include/list.h:
