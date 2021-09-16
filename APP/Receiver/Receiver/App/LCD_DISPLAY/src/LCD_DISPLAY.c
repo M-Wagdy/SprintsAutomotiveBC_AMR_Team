@@ -66,6 +66,7 @@ void DISPLAY_MainFunction(void)
 		case PassEntering:
 			if(Last_state != State)
 			{
+				//DISPLAY_SetNumber_of_Asterisk(0);
 				Position = DISPLAY_WIDTH-EnterPass_StringWidth;
 				while (LCD_SendCommand(LCD_CLR)!=OperationSuccess);
 				while (LCD_SendCommand(LCD_HOME)!=OperationSuccess);
@@ -73,14 +74,14 @@ void DISPLAY_MainFunction(void)
 				while (LCD_SendString((uint8_t*)"Enter Pass") != OperationSuccess);
 				Shifting_State = ShiftingLeft;
 				while (LCD_SendCommand(LCD_CURS_LINE2)!=OperationSuccess);
-				for(uint8_t i = 0; i < Number_of_Asteriks; i++)
+				/*for(uint8_t i = 0; i < Number_of_Asteriks; i++)
 				{
 					while(LCD_SendData('*')!= OperationSuccess);
 					if (i>5)
 					{
 						break;
 					}
-				}
+				}*/
 			}
 			DISPLAY_START_SHIFTING(EnterPass_StringWidth,Number_of_Asteriks);
 			break;
@@ -272,12 +273,37 @@ void DISPLAY_MainFunction(void)
 void DISPLAY_START_SHIFTING(uint8_t stringLength, uint8_t passWordLength)
 {
 	uint8_t volatile StringMotionRange = DISPLAY_WIDTH - stringLength;
+	if(passWordLength>6)
+	{
+		passWordLength = 6;
+	}
 	switch (Shifting_State)
 	{
 		case ShiftingLeft:
 			if(passWordLength!=0)
 			{
-				while(LCD_SendData('*')!= OperationSuccess);
+				while(LCD_SendCommand(LCD_SHIFTCURSRIGHT)!= OperationSuccess);
+				while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!= OperationSuccess);
+				for(uint8_t i = 0; i<7; i++)
+				{
+					if(i < passWordLength+1)
+					{
+						while(LCD_SendData('*')!= OperationSuccess);
+					}
+					else
+					{
+						while(LCD_SendData(' ')!= OperationSuccess);
+					}
+				}
+				for(uint8_t i = 0; i < 6; i++)
+				{
+					while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!= OperationSuccess);
+				}
+			}
+			else
+			{
+				//while(LCD_SendCommand(LCD_SHIFTCURSRIGHT)!= OperationSuccess);
+				while(LCD_SendData(' ')!= OperationSuccess);
 			}
 			while(LCD_SendCommand(LCD_SHIFTDISPLEFT)!= OperationSuccess);
 			Position--;
@@ -289,9 +315,28 @@ void DISPLAY_START_SHIFTING(uint8_t stringLength, uint8_t passWordLength)
 		case ShiftingRight:
 			if(passWordLength!=0)
 			{
-				while (LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
-				while(LCD_SendData(' ')!= OperationSuccess);
-				while (LCD_SendCommand(LCD_SHIFTCURSLEFT)!=OperationSuccess);
+				while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!= OperationSuccess);
+				for(uint8_t i = 0; i < 7; i++)
+				{
+					if(i < passWordLength)
+					{
+						while(LCD_SendData('*')!= OperationSuccess);						
+					}
+					else
+					{
+						while(LCD_SendData(' ')!= OperationSuccess);
+					}
+				}
+				
+				for(uint8_t i = 0; i < 7; i++)
+				{
+						while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!= OperationSuccess);
+				}
+				
+			}
+			else
+			{
+				while(LCD_SendCommand(LCD_SHIFTCURSLEFT)!= OperationSuccess);				
 			}
 			while(LCD_SendCommand(LCD_SHIFTDISPRIGHT)!= OperationSuccess);
 			Position++;

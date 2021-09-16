@@ -52,14 +52,14 @@ void NumberChange_Task( void *pvParameters )
    xLastWakeTime=xTaskGetTickCount();
    
    static uint8_t Number = 1;
-   static uint8_t ast = 1;
+   static uint8_t ast = 2;
    vTaskDelayUntil(&xLastWakeTime, 1000);
    for( ;; )
    {
       DISPLAY_SetNumber_of_Asterisk(ast);
       SSD_Display_SetSevenSegment(Number);
       Number++;
-      ast++;
+      //ast++;
       if(Number > 99)
       {
          Number = 0;
