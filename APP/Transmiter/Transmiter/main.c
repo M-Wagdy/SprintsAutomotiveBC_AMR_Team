@@ -43,7 +43,7 @@ int main(void)
 {   
    xTaskCreate( HMI_Task, "HMI", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
    xTaskCreate( Feedback_Task, "Indicator", configMINIMAL_STACK_SIZE, NULL_PTR, 1, NULL_PTR );
-   xTaskCreate( Bluetooth_Task, "Bluetooth", configMINIMAL_STACK_SIZE, NULL_PTR, 2, NULL_PTR );
+   xTaskCreate( Bluetooth_Task, "Bluetooth", configMINIMAL_STACK_SIZE, NULL_PTR, 0, NULL_PTR );
    
    vTaskStartScheduler();
    while(1)

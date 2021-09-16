@@ -25,18 +25,21 @@ static ERROR_STATE_t BLUETOOTH_SetATMode(uint8_t BluetoothNumber)
 {
 	uint8_t u8_ErrorState=ERROR_OK;
 	/*AT Mode Sequance*/
-	/*set the power pin low*/
+	
+   /*set the enable pin high*/
+	DIO_WritePin(
+	gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_ENABLE_PORT,
+	gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_ENABLE_PIN,
+	PIN_LOW
+	);
+   
+   /*set the power pin low*/
 	DIO_WritePin(
 					gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_POWER_PORT,
 					gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_POWER_PIN,
 					PIN_LOW
 				);		
-	/*set the enable pin high*/
-	DIO_WritePin(
-					gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_ENABLE_PORT,
-					gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_ENABLE_PIN,
-					PIN_LOW
-				);
+	
 	/*set the power pin high*/
 	DIO_WritePin(
 					gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_POWER_PORT,
@@ -44,6 +47,13 @@ static ERROR_STATE_t BLUETOOTH_SetATMode(uint8_t BluetoothNumber)
 					PIN_HIGH
 				);
 				
+   for(volatile uint8_t i = 0; i<100;i++)
+   {
+      for(volatile uint8_t j = 0; j<3; j++)
+      {
+         
+      }
+   }      
 	/*set the enable pin high*/
 	DIO_WritePin(
 					gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_ENABLE_PORT,
@@ -85,9 +95,16 @@ ERROR_STATE_t BLUETOOTH_Init(void)
 							gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_ENABLE_PIN,
 							PIN_OUTPUT
 							);
+                     
+      DIO_WritePin(
+         gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_ENABLE_PORT,
+         gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_ENABLE_PIN,
+         PIN_LOW
+      );
 		/*init the uart ch_0*/
 		UART_Init(gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_UART_CH);
 		
+      BLUETOOTH_SetATMode(BLUETOOTH_0);
 		gu8_InitFlag = INIT;
 		u8_ErrorState=ERROR_OK;
 	} 

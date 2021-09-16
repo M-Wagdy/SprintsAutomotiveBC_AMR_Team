@@ -5,6 +5,8 @@
 #include "STORAGE.h"
 #include "Indicator_Interface.h"
 #include "BLUETOOTH_Mng.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 /*- LOCAL MACROS------------------------------*/
 #define BT_STATE_INIT							(uint8_t)(0)
@@ -129,6 +131,8 @@ static uint8_t gu8_BLUETOOTH_KeypadDataPacket[BLUETOOTH_KD_PACKET_LEN]={
 																					};																				
 static uint8_t gu8_BLUETOOTH_RXCOM_FLAG=BLUETOOTH_RX_PENDING;
 
+static portTickType g_BluetoothLastWakeTime;
+
 /*- LOCAL FUNCTIONS IMPLEMENTATION------------------------*/
 /**
 * @brief: This function Extract MAC from scaned data.
@@ -212,33 +216,36 @@ static ERROR_STATE_t BT_Mng_SelfTest(void)
 	ERROR_STATE_t u8_BaudCounter = ZERO;
 	/*First check if the bluetooth is already configured to the desired*/
 	UART_SetBaudRate((gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_UART_CH),
-					(gastr_BuadRate_CFG[u8_BaudCounter].u32_UART_BUADRATE));
+					(gastr_BLUETOOTH_Mng_Config[BLUETOOTH_0].STR_BLUETOOTH_Mng_BAUDRATE_Cng.u32_UART_BUADRATE));
 	/*Send AT to bluetooth*/					
 	BLUETOOTH_ATModeGetCommand(BLUETOOTH_0,(ptr_uint8_t)BLUETOOTH_CMD_AT);
 	/*Wait for flag to set or for timeout*/
-	/*(TIMEOUT) WITH RTOS*/
+	vTaskDelayUntil(&g_BluetoothLastWakeTime, 1000);
+   
+   #if 0
 	if(BLUETOOTH_RX_PENDING==GET_BIT(gu8_BLUETOOTH_RXCOM_FLAG,(gu8_RX_Buffer_Counter-ONE)))
 	{
-		/*IF NOTHING HAS BEEN RECEIVED WAIT TILL TIME OUT THEN BREAK*/
+		/ *IF NOTHING HAS BEEN RECEIVED WAIT TILL TIME OUT THEN BREAK* /
 		for(u8_BaudCounter=ZERO;u8_BaudCounter<BLUETOOTH_BAUDRATE_NUMBERS;u8_BaudCounter++)
 		{
 			UART_SetBaudRate((gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_UART_CH),
 							(gastr_BuadRate_CFG[u8_BaudCounter].u32_UART_BUADRATE));	
 			BLUETOOTH_ATModeGetCommand(	BLUETOOTH_0,(ptr_uint8_t)BLUETOOTH_CMD_AT);
-			/*IF NOTHING HAS BEEN RECEIVED WAIT TILL TIME OUT THEN BREAK*/
-			/*(TIMEOUT) WITH RTOS*/
+			/ *IF NOTHING HAS BEEN RECEIVED WAIT TILL TIME OUT THEN BREAK* /
+	      vTaskDelayUntil(&g_BluetoothLastWakeTime, 200);
+	
 			if(BLUETOOTH_RX_COMPLETE==GET_BIT(gu8_BLUETOOTH_RXCOM_FLAG,(gu8_RX_Buffer_Counter-ONE)))
 			{
-				/*set the bluetooth baudrate to the current element in the arrray for the selftest*/
+				/ *set the bluetooth baudrate to the current element in the arrray for the selftest* /
 				while(ERROR_OK!=BLUETOOTH_ATModeSetCommand(	BLUETOOTH_0,(ptr_uint8_t)BLUETOOTH_CMD_SET_UART,
 															(gastr_BLUETOOTH_Mng_Config[BLUETOOTH_0].STR_BLUETOOTH_Mng_BAUDRATE_Cng.au8_BLUETOOTH_BAUDRATE)));
-				/*set the uart baudrate*/
+				/ *set the uart baudrate* /
 				UART_SetBaudRate((gastr_BLUETOOTH_Config[BLUETOOTH_0].u8_BLUETOOTH_UART_CH),(gastr_BLUETOOTH_Mng_Config[BLUETOOTH_0].STR_BLUETOOTH_Mng_BAUDRATE_Cng.u32_UART_BUADRATE));
 				break;	
 			}
 			else
 			{
-				/*Do Nothing.*/
+				/ *Do Nothing.* /
 			}
 
 		}
@@ -249,6 +256,7 @@ static ERROR_STATE_t BT_Mng_SelfTest(void)
 	{
 		/*Do Nothing*/
 	}
+   #endif
 	return u8_ErrorState;
 }
 /**
@@ -393,6 +401,7 @@ static ERROR_STATE_t BLUETOOTH_Mng_Init(void)
 		case BT_STATE_INIT:/*INIT*/
 			/*Initialize the bluetooth*/
 			BLUETOOTH_Init();
+         vTaskDelayUntil(&g_BluetoothLastWakeTime, 200);
 			/*Enable the uart rx interrupt*/
 			UART_EnableInterrupt(UART_CH_0,RX_INT);
 			/*Set the call back function in the uart rx isr*/
@@ -574,10 +583,15 @@ extern void BLUETOOTH_Mng_MainFunction(void)
 	static uint8_t u8_BT_PC_Flag=ZERO;
 	static uint8_t u8_BT_KP_Data=ZERO;
 	static uint8_t u8_BT_State=STATE_CHECKING;
+   
+   /* OS Variable used for calculating the function waiting period. */
+   
+   g_BluetoothLastWakeTime=xTaskGetTickCount();
+   
 	/*Check if the moduled has been init before*/
 	if(NOT_INIT==u8_BT_INIT_Flag)
 	{
-		u8_BT_INIT_Flag=BLUETOOTH_Mng_Init();
+		u8_BT_MNG_ErrorState=BLUETOOTH_Mng_Init();
 		if(BT_INIT_PENDING!=u8_BT_MNG_ErrorState)
 		{
 			u8_BT_INIT_Flag=INIT;

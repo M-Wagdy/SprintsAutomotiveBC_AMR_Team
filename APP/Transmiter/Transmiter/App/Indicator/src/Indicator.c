@@ -106,6 +106,13 @@ extern void Indicator_MainFunction(void)
             /* Put the task in waiting state for the step time period. */
             vTaskDelayUntil(&xLastWakeTime, aSTR_IndicatorConfig[u8_Pattern].u8_StepTime);
             break;
+         default:
+            vTaskDelayUntil(&xLastWakeTime, 10);
+            break;
       }
+   }
+   else
+   {
+      vTaskDelayUntil(&xLastWakeTime, 10);
    }
 }
